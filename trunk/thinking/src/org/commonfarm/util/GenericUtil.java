@@ -11,10 +11,10 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author David Yang
  */
-public class GenericsUtil {
-	private static final Log log = LogFactory.getLog(GenericsUtil.class);
+public class GenericUtil {
+	private static final Log log = LogFactory.getLog(GenericUtil.class);
 
-	private GenericsUtil() {
+	private GenericUtil() {
 	}
 
 	/**
