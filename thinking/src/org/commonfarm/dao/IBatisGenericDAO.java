@@ -8,20 +8,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ibatis.common.util.PaginatedList;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
+import org.commonfarm.dao.support.Page;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.util.Assert;
-import org.springside.core.dao.support.Page;
+
+import com.ibatis.common.util.PaginatedList;
 
 /**
- * IBatis Dao的泛型基�?.
- * <p/>
- * 继承于Spring的SqlMapClientDaoSupport,提供分页函数和若干便捷查询方法，并对返回值作了泛型类型转�?.
- *
- * @author suwei
+ * 
+ * @author David Yang
  * @see SqlMapClientDaoSupport
  */
 @SuppressWarnings("unchecked")
@@ -44,9 +42,9 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	public static final String POSTFIX_COUNT = ".count";
 
 	/**
-	 * 根据ID获取对象
+	 * 
 	 */
-	public <T> T get(Class<T> entityClass, Serializable id) {
+	public <T> T getObject(Class<T> entityClass, Serializable id) {
 
 		T o = (T) getSqlMapClientTemplate().queryForObject(entityClass.getName() + POSTFIX_SELECT, id);
 		if (o == null)
@@ -55,44 +53,42 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	}
 
 	/**
-	 * 获取全部对象
+	 * 
 	 */
-	public <T> List<T> getAll(Class<T> entityClass) {
+	public <T> List<T> getObjects(Class<T> entityClass) {
 		return getSqlMapClientTemplate().queryForList(entityClass.getName() + POSTFIX_SELECT, null);
 	}
 
 	/**
-	 * 新增对象
+	 * 
 	 */
 	public void insert(Object o) {
 		getSqlMapClientTemplate().insert(o.getClass().getName() + POSTFIX_INSERT, o);
 	}
 
 	/**
-	 * 保存对象
+	 * 
 	 */
 	public void update(Object o) {
 		getSqlMapClientTemplate().update(o.getClass().getName() + POSTFIX_UPDATE, o);
 	}
 
 	/**
-	 * 删除对象
+	 * 
 	 */
 	public void remove(Object o) {
 		getSqlMapClientTemplate().delete(o.getClass().getName() + POSTFIX_DELETE, o);
 	}
 
 	/**
-	 * 根据ID删除对象
+	 * 
 	 */
-	public <T> void removeById(Class<T> entityClass, Serializable id) {
+	public <T> void remove(Class<T> entityClass, Serializable id) {
 		getSqlMapClientTemplate().delete(entityClass.getName() + POSTFIX_DELETE_PRIAMARYKEY, id);
 	}
 
 	/**
-	 * map查询.
-	 *
-	 * @param map 包含各种属�?�的查询
+	 * 
 	 */
 	public <T> List<T> find(Class<T> entityClass, Map map) {
 		if (map == null)
@@ -104,9 +100,7 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	}
 
 	/**
-	 * sql 查询.
-	 *
-	 * @param sql 直接sql的语�?(�?要防止注入式攻击)
+	 * 
 	 */
 	public <T> List<T> find(Class<T> entityClass, String sql) {
 		Assert.hasText(sql);
@@ -117,9 +111,7 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	}
 
 	/**
-	 * 根据属�?�名和属性�?�查询对�?.
-	 *
-	 * @return 符合条件的对象列�?
+	 * 
 	 */
 	public <T> List<T> findBy(Class<T> entityClass, String name, Object value) {
 		Assert.hasText(name);
@@ -129,9 +121,7 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	}
 
 	/**
-	 * 根据属�?�名和属性�?�查询对�?.
-	 *
-	 * @return 符合条件的唯�?对象
+	 * 
 	 */
 	public <T> T findUniqueBy(Class<T> entityClass, String name, Object value) {
 		Assert.hasText(name);
@@ -149,7 +139,7 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	}
 
 	/**
-	 * 根据属�?�名和属性�?�以Like AnyWhere方式查询对象.
+	 * 
 	 */
 	public <T> List<T> findByLike(Class<T> entityClass, String name, String value) {
 		Assert.hasText(name);
@@ -161,10 +151,7 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	}
 
 	/**
-	 * 判断对象某些属�?�的值在数据库中不存在重�?
-	 *
-	 * @param tableName 数据表名�?
-	 * @param names	 在POJO里不能重复的属�?�列�?,以�?�号分割 �?"name,loginid,password" FIXME how about in different schema?
+	 * 
 	 */
 	public boolean isNotUnique(Object entity, String tableName, String names) {
 		try {
@@ -188,9 +175,7 @@ public class IBatisGenericDAO extends SqlMapClientDaoSupport {
 	}
 
 	/**
-	 * 分页查询函数，使用PaginatedList.
-	 *
-	 * @param pageNo 页号,�?0�?�?.
+	 * 
 	 */
 	public Page pagedQuery(Class entityClass, Object parameterObject, int pageNo, int pageSize) {
 
