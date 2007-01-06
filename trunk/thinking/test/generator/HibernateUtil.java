@@ -4,14 +4,19 @@
  */
 package generator;
 
-import org.hibernate.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.commonfarm.dao.Test;
+import org.commonfarm.util.ResourceUtil;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Projections;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
-
-import org.apache.commons.logging.*;
-import org.commonfarm.util.ResourceUtil;
 
 
 /**
@@ -37,7 +42,6 @@ public class HibernateUtil {
     // Create the initial SessionFactory from the default configuration files
     static {
         try {
-            //Thread.currentThread().getContextClassLoader().getResource("hibernate.cfg.xml");
             Configuration cfg = new AnnotationConfiguration().configure(ResourceUtil.getURL("classpath:generator/hibernate.cfg.xml"));
             sessionFactory = cfg.buildSessionFactory();
             SchemaExport se = null;//new SchemaExport(cfg);
@@ -87,9 +91,9 @@ public class HibernateUtil {
     }
     public static void main(String[] args) {
     	Session session = HibernateUtil.getSession();
-    	//Criteria criteria = session.createCriteria(Resource.class);
-    	//criteria.setProjection(Projections.count("id"));
-    	//Integer count = (Integer)criteria.uniqueResult();
-    	//System.out.print("count----------------" + count);
+    	Criteria criteria = session.createCriteria(Test.class);
+    	criteria.setProjection(Projections.count("id"));
+    	Integer count = (Integer)criteria.uniqueResult();
+    	System.out.print("count----------------" + count);
     }
 }
