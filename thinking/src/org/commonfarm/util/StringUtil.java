@@ -191,6 +191,11 @@ public class StringUtil {
         if (string.equals("")) return false;
         return true;
     }
+    public static boolean isEmpty(String string) {
+        if (string == null) return true;
+        if (string.equals("")) return true;
+        return false;
+    }
     
     /**
      * Create base64 password
