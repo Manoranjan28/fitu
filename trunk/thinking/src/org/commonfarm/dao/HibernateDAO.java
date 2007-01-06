@@ -3,9 +3,14 @@ package org.commonfarm.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.commonfarm.util.GenericUtil;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.ObjectRetrievalFailureException;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -13,111 +18,118 @@ import org.hibernate.criterion.Criterion;
  * @see HibernateGenericDAO
  */
 @SuppressWarnings("unchecked")
-public class HibernateDAO<T> extends HibernateGenericDAO implements EntityDAO<T> {
+public class HibernateDAO extends HibernateDaoSupport {
+	public HibernateDAO() {}
+	
+	public void flush() {
+		getHibernateTemplate().flush();
+	}
 
-	protected Class<T> entityClass;
-
-	/**
-	 * 
-	 */
-	public HibernateDAO() {
-		entityClass = GenericUtil.getSuperClassGenricType(getClass());
+	public void clear() {
+		getHibernateTemplate().clear();
 	}
 
 	/**
-	 * 
+	 * create Query object
+	 * Example:
+	 * 	dao.createQuery(hql)
+	 * 	dao.createQuery(hql,arg0);
+	 * 	dao.createQuery(hql,arg0,arg1);
+	 * 	dao.createQuery(hql,new Object[arg0,arg1,arg2])
+	 * @param values valiable parameter
 	 */
-	protected Class<T> getEntityClass() {
-		return entityClass;
+	public Query createQuery(String hql, Object... values) {
+		Assert.hasText(hql);
+		Query query = getSession().createQuery(hql);
+		for (int i = 0; i < values.length; i++) {
+			query.setParameter(i, values[i]);
+		}
+		return query;
 	}
 
 	/**
-	 * 
-	 *
-	 * @see HibernateGenericDAO#getId(Class,Object)
+	 * Create Criteria Object
+	 * @param criterions valiable parameter
 	 */
-	public T getObject(Serializable id) {
-		return getObject(getEntityClass(), id);
-	}
-
-	/**
-	 * 
-	 *
-	 * @see HibernateGenericDAO#getAll(Class)
-	 */
-	public List<T> getObjects() {
-		return getObjects(getEntityClass());
-	}
-
-	/**
-	 * 
-	 *
-	 * @see HibernateGenericDAO#getAll(Class,String,boolean)
-	 */
-	public List<T> getObjects(String orderBy, boolean isAsc) {
-		return getObjects(getEntityClass(), orderBy, isAsc);
-	}
-
-	/**
-	 * 
-	 *
-	 * @see HibernateGenericDAO#removeById(Class,Serializable)
-	 */
-	public void remove(Serializable id) {
-		removeById(getEntityClass(), id);
-	}
-
-	/**
-	 * 
-	 *
-	 * @see HibernateGenericDAO#createCriteria(Class,Criterion[])
-	 */
-	public Criteria createCriteria(Criterion... criterions) {
-		return createCriteria(getEntityClass(), criterions);
-	}
-
-	/**
-	 * 
-	 *
-	 * @see HibernateGenericDAO#createCriteria(Class,String,boolean,Criterion[])
-	 */
-	public Criteria createCriteria(String orderBy, boolean isAsc, Criterion... criterions) {
-		return createCriteria(getEntityClass(), orderBy, isAsc, criterions);
-	}
-
-	/**
-	 * 
-	 *
-	 * @return 
-	 * @see HibernateGenericDAO#findBy(Class,String,Object)
-	 */
-	public List<T> findBy(String propertyName, Object value) {
-		return findBy(getEntityClass(), propertyName, value);
-	}
-
-	/**
-	 * 
-	 *
-	 * @return 
-	 * @see HibernateGenericDAO#findBy(Class,String,Object,String,boolean)
-	 */
-	public List<T> findBy(String propertyName, Object value, String orderBy, boolean isAsc) {
-		return findBy(getEntityClass(), propertyName, value, orderBy, isAsc);
-	}
-
-	/**
-	 * 
-	 * @see HibernateGenericDAO#findUniqueBy(Class,String,Object)
-	 */
-	public T findUniqueBy(String propertyName, Object value) {
-		return findUniqueBy(getEntityClass(), propertyName, value);
+	public Criteria createCriteria(Class entityClass, Criterion... criterions) {
+		Criteria criteria = getSession().createCriteria(entityClass);
+		for (Criterion c : criterions) {
+			criteria.add(c);
+		}
+		return criteria;
 	}
 
 	/**
 	 *
-	 * @see HibernateGenericDAO#isUnique(Class,Object,String)
+	 * @see #createCriteria(Class,Criterion[])
 	 */
-	public boolean isUnique(Object entity, String uniquePropertyNames) {
-		return isUnique(getEntityClass(), entity, uniquePropertyNames);
+	public Criteria createCriteria(Class entityClass, String orderBy, boolean isAsc, Criterion... criterions) {
+		Assert.hasText(orderBy);
+
+		Criteria criteria = createCriteria(entityClass, criterions);
+
+		if (isAsc)
+			criteria.addOrder(Order.asc(orderBy));
+		else
+			criteria.addOrder(Order.desc(orderBy));
+
+		return criteria;
 	}
+	/**
+	 * search by hql
+	 * @param values valiable parameter
+	 */
+	public List find(String hql, Object... values) {
+		Assert.hasText(hql);
+		return getHibernateTemplate().find(hql, values);
+	}
+
+    /**
+     * Get object by id
+     */
+    public Object getObject(Class clazz, Serializable id) {
+        Object o = getHibernateTemplate().get(clazz, id);
+
+        if (o == null) {
+            throw new ObjectRetrievalFailureException(clazz, id);
+        }
+
+        return o;
+    }
+    /**
+     * Get unique Object
+     */
+    public Object getObject(Class clazz, String columnName, String clumnValue) {
+        Object o = getSession().createCriteria(clazz)
+        				.add(Restrictions.like(columnName, clumnValue))
+        				.uniqueResult();
+        if (o == null) {
+            throw new ObjectRetrievalFailureException(clazz, columnName);
+        }
+        return o;
+    }
+    /**
+     * Get objects
+     */
+    public List getObjects(Class clazz) {
+        return getHibernateTemplate().loadAll(clazz);
+    }
+    /**
+     * Save Object
+     */
+    public void saveObject(Object o) {
+        getHibernateTemplate().saveOrUpdate(o);
+        getHibernateTemplate().flush();
+    }
+    /**
+     * Remove object by id
+     */
+    public void removeObject(Class clazz, Serializable id) {
+        getHibernateTemplate().delete(getObject(clazz, id));
+        this.flush();
+    }
+    public void removeObject(Object obj) {
+    	getHibernateTemplate().delete(obj);
+    	this.flush();
+    }
 }
