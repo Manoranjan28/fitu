@@ -34,7 +34,7 @@ public class CommonSearch extends HibernateDaoSupport {
     //public List getCurrentPageList();
     //public String getPaginationTemplate();
     //public List getCurrentPageList(Map criterias);
-    private static Log log = LogFactory.getLog(CommonSearch.class);
+    private static Log logger = LogFactory.getLog(CommonSearch.class);
     private String className;
     private Map criterias;
     private Map sortCriterias = new HashMap();
@@ -68,12 +68,12 @@ public class CommonSearch extends HibernateDaoSupport {
             if (count == null) count = new Integer(0);
             return count.intValue();
         } catch (ClassNotFoundException cnfe) {
-            if (log.isInfoEnabled()) {
-                log.info(cnfe);
+            if (logger.isInfoEnabled()) {
+            	logger.info(cnfe);
             }
         } catch (HibernateException he) {
-            if (log.isInfoEnabled()) {
-                log.info(he);
+            if (logger.isInfoEnabled()) {
+            	logger.info(he);
             }
         }
         return 0;
@@ -93,12 +93,12 @@ public class CommonSearch extends HibernateDaoSupport {
             addOrder(criteria);
             return criteria.list();
         } catch (ClassNotFoundException cnfe) {
-            if (log.isInfoEnabled()) {
-                log.info(cnfe);
+            if (logger.isInfoEnabled()) {
+            	logger.info(cnfe);
             }
         } catch (HibernateException he) {
-            if (log.isInfoEnabled()) {
-                log.info(he);
+            if (logger.isInfoEnabled()) {
+            	logger.info(he);
             }
         }
 		return null;

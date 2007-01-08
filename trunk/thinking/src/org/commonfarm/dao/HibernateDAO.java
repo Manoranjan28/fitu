@@ -3,6 +3,9 @@ package org.commonfarm.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Criterion;
@@ -19,6 +22,8 @@ import org.springframework.util.Assert;
  */
 @SuppressWarnings("unchecked")
 public class HibernateDAO extends HibernateDaoSupport {
+	protected static Log logger = LogFactory.getLog(HibernateDAO.class);
+	
 	public HibernateDAO() {}
 	
 	public void flush() {
