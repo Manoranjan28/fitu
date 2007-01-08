@@ -5,6 +5,7 @@
 <struts>
 
     <include file="example.xml"/>
+    <include file="test.xml"/>
 
     <!-- Add packages here -->
 

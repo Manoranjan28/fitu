@@ -1,31 +1,22 @@
 package org.commonfarm.web;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.commonfarm.util.StringUtil;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class StrutsAction extends ActionSupport {
+	private static Log logger = LogFactory.getLog(StrutsAction.class);
+	
 	protected static final String LIST = "list";
 	protected static final String EDIT = "edit";
 	protected static final String VIEW = "view";
 	protected static final String CREATE = "create";
 	protected static final String DELETE = "delete";
 	
-	protected String action = "";
-	
 	public String execute() throws Exception {
 		String forward = SUCCESS;
-        if (StringUtil.isEmpty(action)) {
-        	forward = list();
-        } else if (action.equals(EDIT)) {
-        	forward = edit();
-        } else if (action.equals(VIEW)) {
-        	forward = view();
-        } else if (action.equals(CREATE)) {
-        	forward = create();
-        } else if (action.equals(DELETE)) {
-        	forward = delete();
-        }
         return forward;
     }
 	
