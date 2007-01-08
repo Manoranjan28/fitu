@@ -2,12 +2,11 @@ package org.commonfarm.web;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.commonfarm.util.StringUtil;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class StrutsAction extends ActionSupport {
-	private static Log logger = LogFactory.getLog(StrutsAction.class);
+	protected static Log logger = LogFactory.getLog(StrutsAction.class);
 	
 	protected static final String LIST = "list";
 	protected static final String EDIT = "edit";
