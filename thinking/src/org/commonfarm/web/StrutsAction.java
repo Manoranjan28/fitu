@@ -6,7 +6,7 @@ import org.apache.commons.logging.LogFactory;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class StrutsAction extends ActionSupport {
-	protected static Log logger = LogFactory.getLog(StrutsAction.class);
+	private static final Log logger = LogFactory.getLog(StrutsAction.class);
 	
 	protected static final String LIST = "list";
 	protected static final String EDIT = "edit";
@@ -23,7 +23,10 @@ public class StrutsAction extends ActionSupport {
 	 * List Data
 	 * @return
 	 */
-	public String list() {
+	public String list() throws Exception {
+		if (logger.isDebugEnabled()) {
+        	logger.debug("items found");
+        }
 		return LIST;
 	}
 	
@@ -31,7 +34,7 @@ public class StrutsAction extends ActionSupport {
 	 * Edit Data
 	 * @return
 	 */
-	public String edit() {
+	public String edit() throws Exception {
 		return EDIT;
 	}
 	
@@ -39,7 +42,7 @@ public class StrutsAction extends ActionSupport {
 	 * View Detail Data
 	 * @return
 	 */
-	public String view() {
+	public String view() throws Exception {
 		return VIEW;
 	}
 	
@@ -47,15 +50,31 @@ public class StrutsAction extends ActionSupport {
 	 * Create Operation
 	 * @return
 	 */
-	public String create() {
+	public String create() throws Exception {
 		return CREATE;
+	}
+	
+	/**
+	 * Save Operation
+	 * @return
+	 */
+	public String save() throws Exception {
+		return DELETE;
+	}
+	
+	/**
+	 * Update Operation
+	 * @return
+	 */
+	public String update() throws Exception {
+		return DELETE;
 	}
 	
 	/**
 	 * Delete Operation
 	 * @return
 	 */
-	public String delete() {
+	public String delete() throws Exception {
 		return DELETE;
 	}
 }

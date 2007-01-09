@@ -12,6 +12,12 @@ public class Test {
 	
 	public Test() {}
 	
+	public Test(Long id, String name, String remark) {
+		this.id = id;
+		this.name = name;
+		this.remark = remark;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
