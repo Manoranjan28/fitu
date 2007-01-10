@@ -39,7 +39,7 @@ public class TestService {
     }
     
     public Collection getObjects(Object obj) {
-    	return null;
+    	return people;
     }
     public int removeObject(Class clazz, Serializable id) {
     	return 1;
