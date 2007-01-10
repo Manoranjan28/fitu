@@ -19,6 +19,7 @@ public class TestAction extends StrutsAction {
 	private Test test;
 	
 	private TestService testService;
+	
 	public String list() throws Exception {
         this.items = getTestService().getObjects(test);
         if (logger.isDebugEnabled()) {
