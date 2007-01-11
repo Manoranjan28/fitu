@@ -7,20 +7,20 @@
 	<package name="test" namespace="/test" extends="thinking_default" >
         <default-interceptor-ref name="crudStack"/>
 
-        <action name="list" class="web.TestAction" method="list">
+        <action name="list" class="testAction" method="list">
             <result>/test/listTest.jsp</result>
             <interceptor-ref name="basicStack"/>
         </action>
-        <action name="edit-*" class="web.TestAction">
+        <action name="edit-*" class="testAction">
 			<param name="empId">{1}</param>
             <result>/test/editTest.jsp</result>
             <interceptor-ref name="crudStack"><param name="validation.excludeMethods">execute</param></interceptor-ref>
         </action>
-        <action name="save" class="web.TestAction" method="save">
+        <action name="save" class="testAction" method="save">
             <result name="input">/test/editTest.jsp</result>
             <result type="redirect">edit-${test.id}.action</result>
         </action>
-        <action name="delete" class="web.TestAction" method="delete">
+        <action name="delete" class="testAction" method="delete">
             <result name="error">/test/editTest.jsp</result>
             <result type="redirect">edit-${test.id}.action</result>
         </action>
