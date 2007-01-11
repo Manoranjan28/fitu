@@ -20,6 +20,10 @@ public class TestAction extends StrutsAction {
 	
 	private TestService testService;
 	
+	public TestAction(TestService testService) {
+		this.testService = testService;
+	}
+	
 	public String list() throws Exception {
         this.items = getTestService().getObjects(test);
         if (logger.isDebugEnabled()) {
