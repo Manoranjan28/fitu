@@ -10,6 +10,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.commonfarm.Constant;
 import org.commonfarm.util.BeanUtil;
 import org.commonfarm.util.StringUtil;
 
@@ -27,7 +30,7 @@ public class SearchUtil {
 			Map map = BeanUtil.describe(form);
 			for (Iterator it = map.keySet().iterator(); it.hasNext();) {
 				String key = it.next().toString();
-				if (key.startsWith(SearchConstants.FORM_PREFIX)) {
+				if (key.startsWith(SearchConstant.FORM_PREFIX)) {
 					String newString = key;
 					if (key.indexOf("$") != -1) {
 						newString = StringUtil.replace(key, "$", ".");
@@ -76,5 +79,33 @@ public class SearchUtil {
 	}
 	public static void main(String[] args) {
 		SearchUtil.convertSort("hello:asc, test, light");
+	}
+	/**
+	 * Get search name by HttpServletRequest
+	 * @param request
+	 * @return
+	 */
+	public static String getSearchName(HttpServletRequest request) {
+		Object searchName = request.getAttribute(SearchConstant.SEARCH_NAME);
+		if (searchName == null) return "";
+		return (String) searchName;
+	}
+	/**
+	 * Get search configuration information
+	 * @param request
+	 * @return
+	 */
+	public static Map getSearchMap(HttpServletRequest request) {
+		Object searchMap = request.getSession().getServletContext().getAttribute(Constant.CONFIG_SEARCH);
+		if (searchMap == null) return null;
+		return (Map) searchMap;
+	}
+	/**
+	 * Get search model with session. remember search criterias of user
+	 * @param request
+	 * @return
+	 */
+	public static Object getSearchModel(HttpServletRequest request) {
+		return request.getSession().getAttribute(SearchConstant.SEARCH_MODEL);
 	}
 }

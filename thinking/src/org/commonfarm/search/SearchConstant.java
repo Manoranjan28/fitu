@@ -8,13 +8,13 @@ package org.commonfarm.search;
  * @author David Yang
  *
  */
-public interface SearchConstants {
+public interface SearchConstant {
 	public static String FORWARD = "forward";
 	public static String MASTER = "master";
 	public static String FIXED_PARAMETERS = "fixed_params";
     public static String SEARCH_NAME="searchName";
     public static String COMPOSITE_ID = "compositeID";
-    public static String ACTION_FORM = "actionForm";
+    public static String SEARCH_MODEL = "searchModel";
     public static String FORM_PREFIX = "s_";
     public static String ID = "id";
     
