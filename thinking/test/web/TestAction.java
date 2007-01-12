@@ -1,7 +1,5 @@
 package web;
 
-import java.util.Collection;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.commonfarm.dao.Test;
@@ -11,10 +9,6 @@ import service.TestService;
 
 public class TestAction extends StrutsAction {
 	private static final Log logger = LogFactory.getLog(TestAction.class);
-	/** Available items */
-	private Collection items;
-	/** To delete items*/
-	private String[] delItems;
 	
 	private Test test;
 	
@@ -73,33 +67,5 @@ public class TestAction extends StrutsAction {
 	 */
 	public void setTestService(TestService testService) {
 		this.testService = testService;
-	}
-
-	/**
-	 * @return the delItems
-	 */
-	public String[] getDelItems() {
-		return delItems;
-	}
-
-	/**
-	 * @param delItems the delItems to set
-	 */
-	public void setDelItems(String[] delItems) {
-		this.delItems = delItems;
-	}
-
-	/**
-	 * @return the items
-	 */
-	public Collection getItems() {
-		return items;
-	}
-
-	/**
-	 * @param items the items to set
-	 */
-	public void setItems(Collection items) {
-		this.items = items;
 	}
 }
