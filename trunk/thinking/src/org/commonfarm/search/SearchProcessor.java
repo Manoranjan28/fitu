@@ -32,7 +32,7 @@ public class SearchProcessor {
 	    commonSearch.setRowsPerPage(ExtremeTableUtil.getCurrentRows(request));
 	    commonSearch.setSortCriterias(SearchUtil.convertSort(search.getSort()));
 	    commonSearch.addSortCriterias(sortCriterias);
-	    commonSearch.addSortCriterias((Map) request.getAttribute(SearchConstants.SORT_CRITERIAS));
+	    commonSearch.addSortCriterias((Map) request.getAttribute(SearchConstant.SORT_CRITERIAS));
 	    
 	    int totalRows = commonSearch.getTotalRows();
 	    if (logger.isInfoEnabled()) {

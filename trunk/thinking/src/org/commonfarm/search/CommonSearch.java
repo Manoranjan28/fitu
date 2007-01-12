@@ -114,7 +114,7 @@ public class CommonSearch extends HibernateDaoSupport {
             Object value = criterias.get(key);
             if ("".equals(value)) value = null;
             if (!BeanUtil.isNull(value) || !StringUtils.isEmpty((String) value)) {
-                if (key.equals(SearchConstants.ID)) {
+                if (key.equals(SearchConstant.ID)) {
                     criteria.add(Restrictions.eq(key, value));
                 } else {
 	                String association = search.getAssociation(key);
@@ -179,13 +179,13 @@ public class CommonSearch extends HibernateDaoSupport {
     	
     	String mode = search.getMode(key);
         String type = search.getType(key);
-    	if (type == null || type.equals(SearchConstants.SEARCH_TYPE_STRING)) {
+    	if (type == null || type.equals(SearchConstant.SEARCH_TYPE_STRING)) {
             value = (String) value;
-        } else if (type.equals(SearchConstants.SEARCH_TYPE_INTEGER)) {
+        } else if (type.equals(SearchConstant.SEARCH_TYPE_INTEGER)) {
             value = new Integer(value.toString());
-        } else if (type.equals(SearchConstants.SEARCH_TYPE_LONG)) {
+        } else if (type.equals(SearchConstant.SEARCH_TYPE_LONG)) {
             value = new Long(value.toString());
-        } else if (type.equals(SearchConstants.SEARCH_TYPE_DATE)) {
+        } else if (type.equals(SearchConstant.SEARCH_TYPE_DATE)) {
             value = DateUtil.convert(value.toString());
         }
     	String newKey = key;
@@ -198,14 +198,14 @@ public class CommonSearch extends HibernateDaoSupport {
     	if (newKey.indexOf(".") != -1) {
     		newKey = newKey.substring(newKey.indexOf(".") + 1);
     	}
-        if (mode == null || mode.equals(SearchConstants.SEARCH_MODE_LIKE)) {
+        if (mode == null || mode.equals(SearchConstant.SEARCH_MODE_LIKE)) {
             criteria.add(Restrictions.like(newKey, value));
-        } else if (mode.equals(SearchConstants.SEARCH_MODE_GT)) {
+        } else if (mode.equals(SearchConstant.SEARCH_MODE_GT)) {
             criteria.add(Restrictions.gt(newKey, value));
-        } else if (mode.equals(SearchConstants.SEARCH_MODE_EQ)) {
+        } else if (mode.equals(SearchConstant.SEARCH_MODE_EQ)) {
             criteria.add(Restrictions.eq(newKey, value));
-        } else if (mode.equals(SearchConstants.SEARCH_MODE_BETWEEN)) {
-            if (type.equals(SearchConstants.SEARCH_TYPE_DATE)) {
+        } else if (mode.equals(SearchConstant.SEARCH_MODE_BETWEEN)) {
+            if (type.equals(SearchConstant.SEARCH_TYPE_DATE)) {
                 value1 = DateUtil.convert(value1.toString());
                 value2 = DateUtil.convert(value2.toString());
             }
