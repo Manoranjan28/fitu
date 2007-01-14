@@ -1,13 +1,13 @@
 package service;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.commonfarm.dao.Test;
+import org.commonfarm.service.ThinkingService;
 
-public class TestService {
+public class TestService extends ThinkingService {
 	private static Set people = new HashSet(5);
     private static long COUNT = 5;
 
@@ -40,8 +40,5 @@ public class TestService {
     
     public Collection getObjects(Object obj) {
     	return people;
-    }
-    public int removeObject(Class clazz, Serializable id) {
-    	return 1;
     }
 }
