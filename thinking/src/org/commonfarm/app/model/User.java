@@ -4,11 +4,16 @@
 package org.commonfarm.app.model;
 
 import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.*;
 
 /**
  * @author david
  *
  */
+@Entity
+@Table (name = "SYS_O_USERS")
 public class User {
 	private Long id;
 	private String userId;
@@ -21,6 +26,8 @@ public class User {
 	private String email;
 	private String imid;
 	private Date bornDate;
+	
+	private Set groups;
 	
 	public User() {}
 
@@ -97,6 +104,8 @@ public class User {
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -176,5 +185,24 @@ public class User {
 	 */
 	public void setZcode(String zcode) {
 		this.zcode = zcode;
+	}
+
+	/**
+	 * @return the groups
+	 */
+	@ManyToMany(
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "users",
+		targetEntity = org.commonfarm.app.model.UserGroup.class
+	)
+	public Set getGroups() {
+		return groups;
+	}
+
+	/**
+	 * @param groups the groups to set
+	 */
+	public void setGroups(Set groups) {
+		this.groups = groups;
 	}
 }

@@ -5,15 +5,24 @@ package org.commonfarm.app.model;
 
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * @author david
  *
  */
+@Entity
+@Table (name = "SYS_O_ROLES")
 public class Role {
 	private Long id;
 	private String name;
 	private String desc;
-	private Set userGroups;
+	private Set groups;
 	
 	public Role() {}
 
@@ -34,6 +43,8 @@ public class Role {
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -60,16 +71,17 @@ public class Role {
 	}
 
 	/**
-	 * @return the userGroups
+	 * @return the groups
 	 */
-	public Set getUserGroups() {
-		return userGroups;
+	@OneToMany(mappedBy = "role")
+	public Set getGroups() {
+		return groups;
 	}
 
 	/**
-	 * @param userGroups the userGroups to set
+	 * @param groups the groups to set
 	 */
-	public void setUserGroups(Set userGroups) {
-		this.userGroups = userGroups;
+	public void setUserGroups(Set groups) {
+		this.groups = groups;
 	}
 }

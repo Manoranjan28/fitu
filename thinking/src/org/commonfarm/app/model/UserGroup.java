@@ -5,15 +5,26 @@ package org.commonfarm.app.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * @author david
  *
  */
+@Entity
+@Table (name = "SYS_O_USER-GROUPS")
 public class UserGroup {
 	private Long id;
 	private String name;
 	private String desc;
-	private Set users;
+	private Set users;	
+	private Role role;
 	
 	public UserGroup() {}
 
@@ -62,6 +73,15 @@ public class UserGroup {
 	/**
 	 * @return the users
 	 */
+	@ManyToMany(
+		targetEntity = org.commonfarm.app.model.User.class,
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+	)
+	@JoinTable(
+		name = "SYS_R_USER_GROUP",
+		joinColumns = {@JoinColumn(name = "GROUP_ID")},
+		inverseJoinColumns = {@JoinColumn(name = "USER_ID")}
+	)
 	public Set getUsers() {
 		return users;
 	}
@@ -71,5 +91,20 @@ public class UserGroup {
 	 */
 	public void setUsers(Set users) {
 		this.users = users;
+	}
+	/**
+	 * @return the role
+	 */
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "ROLE_ID")
+	public Role getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }
