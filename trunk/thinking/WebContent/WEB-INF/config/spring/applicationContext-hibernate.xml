@@ -2,15 +2,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans default-autowire="byName" default-lazy-init="true">
-
-	<!-- Datasource Apache DBCP connection pool -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:SECOND"/>
-		<property name="username" value="test"/>
-		<property name="password" value="test"/>
-	</bean>
-
 	<!--Hibernate SessionFatory-->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -19,19 +10,10 @@
 				<value>org.commonfarm.dao.Test</value>
 			</list>
 		</property>
-		<!-- 
-		<property name="mappingDirectoryLocations">
-			<list>
-				<value>
-					classpath*:/org/commonfarm/hbm/
-				</value>
-			</list>
-		</property>
-		 -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
 			</props>
@@ -43,11 +25,8 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<!-- Service Start --> 
-	<bean id="testService" class="service.TestService" />
-    <bean id="testAction" class="web.TestAction" singleton="true" lazy-init="false">    
-       	<constructor-arg index="0">
-            <ref local="testService" />
-        </constructor-arg>
+	<!-- Generic Dao - can be used when doing standard CRUD -->
+    <bean id="hibernateDAO" class="org.commonfarm.dao.HibernateDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>    
 </beans>
