@@ -23,11 +23,11 @@ public class TestAction extends StrutsAction {
         if (logger.isDebugEnabled()) {
         	logger.debug("AbstractCRUDAction - [list]: " + (items != null ? "" + items.size() : "no" ) + " items found");
         }
-        return execute();
+        return SUCCESS;
     }
 
     public String delete() throws Exception {
-        if (delItems != null) {
+        /*if (delItems != null) {
             int count=0;
             for (int i = 0, j = delItems.length; i < j; i++) {
                 count = count + getTestService().removeObject(Test.class, delItems[i]);
@@ -35,7 +35,7 @@ public class TestAction extends StrutsAction {
             if (logger.isDebugEnabled()) {
             	logger.debug("AbstractCRUDAction - [delete]: " + count + " items deleted.");
             }
-        }
+        }*/
         return SUCCESS;
     }
     public String save() throws Exception {
