@@ -88,7 +88,6 @@ public class StrutsAction extends ActionSupport
 		}
 		SearchProcessor.processExtreme(request, search, criterias);
 		////////////============================================/////////////////////	
-		//request.setAttribute("search", action);
 		String forward = (String) request.getAttribute(SearchConstant.FORWARD);
 		if (forward == null) {
 			forward = "list";
