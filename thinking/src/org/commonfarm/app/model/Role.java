@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author david
+ */
 @Entity
 @Table(name = "SYS_O_ROLES")
 public class Role {

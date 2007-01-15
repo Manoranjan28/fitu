@@ -9,8 +9,8 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
+ * 
  * @author david
- *
  */
 @Entity
 @Table (name = "SYS_O_USERS")
