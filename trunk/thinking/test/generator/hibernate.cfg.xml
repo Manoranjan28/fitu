@@ -6,25 +6,29 @@
 <!-- DO NOT EDIT: This is a generated file that is synchronized -->
 <!-- by MyEclipse Hibernate tool integration.                   -->
 <hibernate-configuration>
-
-<session-factory>
-	<!-- properties 
-	<property name="connection.username">test</property>
-	<property name="connection.url">jdbc:mysql://localhost/ivoapp?useUnicode=true&amp;characterEncoding=utf8</property>
-	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-	<property name="connection.password">test</property>
-	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
-	<!-- -->
-	<property name="connection.username">test</property>
-	<property name="connection.password">test</property>
-	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:SECOND</property>
-	<property name="dialect">org.hibernate.dialect.OracleDialect</property>
-	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-	
-	<!-- Print SQL to stdout. -->
-	<property name="show_sql">true</property>
-	<!-- Permission Models -->
-	<mapping class="org.commonfarm.dao.Test"/>
-</session-factory>
+	<session-factory>
+		<!-- properties 
+		<property name="connection.username">test</property>
+		<property name="connection.url">jdbc:mysql://localhost/ivoapp?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.password">test</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+		<!-- -->
+		<property name="connection.username">test</property>
+		<property name="connection.password">test</property>
+		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:SECOND</property>
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		
+		<!-- Print SQL to stdout. -->
+		<property name="show_sql">true</property>
+		<!-- Permission Models -->
+		<mapping class="org.commonfarm.dao.Test"/>
+		
+		<mapping class="org.commonfarm.app.model.UserGroup"/>
+		<mapping class="org.commonfarm.app.model.User"/>
+		<mapping class="org.commonfarm.app.model.Role"/>
+		
+	</session-factory>
 
 </hibernate-configuration>
