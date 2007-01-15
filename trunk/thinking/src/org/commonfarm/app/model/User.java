@@ -193,7 +193,7 @@ public class User {
 	@ManyToMany(
 		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
 		mappedBy = "users",
-		targetEntity = org.commonfarm.app.model.UserGroup.class
+		targetEntity = UserGroup.class
 	)
 	public Set getGroups() {
 		return groups;
