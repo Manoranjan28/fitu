@@ -13,6 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author david
+ */
 @Entity
 @Table(name = "SYS_O_USERGROUPS")
 public class UserGroup {
