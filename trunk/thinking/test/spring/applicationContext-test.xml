@@ -16,6 +16,9 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>org.commonfarm.dao.Test</value>
+				<value>org.commonfarm.app.model.UserGroup</value>
+				<value>org.commonfarm.app.model.User</value>
+				<value>org.commonfarm.app.model.Role</value>
 			</list>
 		</property>
 		<!-- 
