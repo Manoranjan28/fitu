@@ -1,5 +1,6 @@
 package org.commonfarm.app.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -28,6 +29,9 @@ public class UserGroup {
 	private Role role;
 	
 	public UserGroup() {}
+	public UserGroup(String name) {
+		this.name = name;
+	}
 
 	/**
 	 * @return the descn
@@ -110,5 +114,9 @@ public class UserGroup {
 	 */
 	public void setUsers(Set users) {
 		this.users = users;
+	}
+	public void addUser(User user) {
+		if (users == null) users = new HashSet();
+		users.add(user);
 	}
 }

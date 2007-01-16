@@ -1,5 +1,6 @@
 package org.commonfarm.app.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -23,6 +24,10 @@ public class Role {
 	private Set groups;
 	
 	public Role() {}
+	
+	public Role(String name) {
+		this.name = name;
+	}
 
 	/**
 	 * @return the id
@@ -84,6 +89,11 @@ public class Role {
 	 */
 	public void setGroups(Set groups) {
 		this.groups = groups;
+	}
+
+	public void addGroup(UserGroup group) {
+		if (groups == null) groups = new HashSet();
+		groups.add(group);
 	}
 	
 }

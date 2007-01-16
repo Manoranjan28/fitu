@@ -4,9 +4,16 @@
 package org.commonfarm.app.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  * 
@@ -17,6 +24,7 @@ import javax.persistence.*;
 public class User {
 	private Long id;
 	private String userId;
+	private String password;
 	private String name;
 	private String firstName;
 	private String address;
@@ -172,6 +180,20 @@ public class User {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	/**
 	 * @return the zcode
@@ -204,5 +226,10 @@ public class User {
 	 */
 	public void setGroups(Set groups) {
 		this.groups = groups;
+	}
+
+	public void addGroup(UserGroup group) {
+		if (groups == null) groups = new HashSet();
+		groups.add(group);
 	}
 }
