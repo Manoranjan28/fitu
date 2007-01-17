@@ -7,16 +7,16 @@
     <package name="example" namespace="/example" extends="struts-default">
 
         <action name="HelloWorld" class="example.HelloWorld">
-            <result>/example/HelloWorld.jsp</result>
+            <result>/pages/example/HelloWorld.jsp</result>
         </action>
 
         <action name="Login!*" method="{1}" class="example.Login">
-            <result name="input">/example/Login.jsp</result>
+            <result name="input">/pages/example/Login.jsp</result>
             <result type="redirect-action">Menu</result>
         </action>
 
         <action name="*" class="example.ExampleSupport">
-            <result>/example/{1}.jsp</result>
+            <result>/pages/example/{1}.jsp</result>
         </action>
 
         <!-- Add actions here -->
