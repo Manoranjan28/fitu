@@ -21,7 +21,7 @@
   	<script type="text/javascript" src="<c:url value="/scripts/main.js" />"></script>
 	
 	<div id="header" class="ylayout-inactive-content">
-		<div style="padding-top:3px;">FitU - Thinking</div>
+		<div style="padding-top:3px;">FitU - Thinking App Framework</div>
 	</div>
   
 	<div id="classes" class="ylayout-inactive-content">
@@ -31,11 +31,13 @@
 	<h3>App Management</h3>
 		<div class="pkg-body">
 			<div class="pkg">
-			<h3>commonfarm</h3>
+			<h3>User Management</h3>
 				<div class="pkg-body">
-					 <a href="output/YAHOO.ext.grid.AbstractColumnModel.html">AbstractColumnModel</a> 
-				 </div>                   
-				 <a href="output/YAHOO.ext.Actor.html">Actor</a> 
+					<a href="app/role.action">Role Management</a>
+					<a href="app/group.action">User Group Management</a>
+					<a href="app/user.action">User Management</a> 
+				</div>                  
+				<a href="output/YAHOO.ext.Actor.html">Actor</a> 
 			</div>
 		</div>        
 	</div>
