@@ -40,13 +40,13 @@ h3.collapser-collapsed {
 	font-size:12px;
 	height:18px;
 }
-#docs .ylayout-panel-north{
+#thinking .ylayout-panel-north{
    border:0px none;
    background:#0000aa url(../images/yui-ext/basic-dialog/hd-sprite.gif) repeat-x 0px -83px;
    padding-top:3px;
    padding-left:3px;
 }
-#docs .ylayout-collapsed-west{
+#thinking .ylayout-collapsed-west{
    background-image: url(../images/main/collapse-bg.gif);
    background-repeat:no-repeat;
    background-position:center;
