@@ -38,7 +38,7 @@ var Docs = function(){
                 },
                 center: {
                     titlebar: true,
-                    title: 'Login User',
+                    title: '<a href=#>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#>Yang Junhao</a>',
                     autoScroll:false,
                     tabPosition: 'top',
                     closeOnTab: true,
