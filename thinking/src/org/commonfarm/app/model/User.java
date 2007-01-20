@@ -6,6 +6,7 @@ package org.commonfarm.app.model;
 import java.security.Principal;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -39,6 +41,10 @@ public class User implements Principal{
 	private Set groups;
 	
 	public User() {}
+
+	public User(String userId) {
+		this.userId = userId;
+	}
 
 	/**
 	 * @return the address
@@ -236,7 +242,30 @@ public class User implements Principal{
 	/**
 	 * Implement Principal --> getName()
 	 */
+	@Transient
 	public String getName() {
 		return userId;
+	}
+	
+	/**
+    * Verify that the supplied password matches the stored password for the user.
+    */
+	public boolean authenticate(String password) {
+		if (password == null) {
+            return false;
+        }
+		if (this.password.equals(password)) return true;
+		return false;
+	}
+	/**
+	 * load user group and role
+	 */
+	public void init() {
+		if (groups != null) {
+			for (Iterator it = groups.iterator(); it.hasNext();) {
+				UserGroup userGroup = (UserGroup) it.next();
+				userGroup.getRole();
+			}
+		}
 	}
 }

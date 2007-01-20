@@ -41,8 +41,15 @@ public class SecurityFilter implements Filter {
 			configFileLocation = config.getInitParameter("config.file");
 			log.debug("Security config file location: " + configFileLocation);
 		}
-		securityConfig = SecurityConfigFactory.getInstance(configFileLocation);
-		config.getServletContext().setAttribute(SecurityConfig.STORAGE_KEY, securityConfig);
+		Object obj = config.getServletContext().getAttribute(SecurityConfig.STORAGE_KEY);
+		if (obj instanceof SecurityConfig) {
+			securityConfig = (SecurityConfig) obj;
+		} else {
+			securityConfig = SecurityConfigFactory.getInstance(configFileLocation);
+			config.getServletContext().setAttribute(SecurityConfig.STORAGE_KEY, securityConfig);
+		}
+		//securityConfig = SecurityConfigFactory.getInstance(configFileLocation);
+		//config.getServletContext().setAttribute(SecurityConfig.STORAGE_KEY, securityConfig);
 	}
 
 	public void destroy() {
@@ -77,7 +84,7 @@ public class SecurityFilter implements Filter {
 		// for pages to access it (ie login links)
 		request.setAttribute(SecurityFilter.ORIGINAL_URL, originalURL);
 		boolean needAuth = isNeedAuth(request, response, originalURL, ROLES_CURRENT);
-		if (needAuth) needAuth = isNeedAuth(request, response, originalURL, "");
+		//if (needAuth) needAuth = isNeedAuth(request, response, originalURL, "");//#####DB Auth
 		
 		Principal user = getSecurityConfig(request).getAuthenticator().getUser(request, response);
 		// if we need to authenticate, store current URL and forward

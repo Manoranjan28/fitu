@@ -108,4 +108,18 @@ public class SearchUtil {
 	public static Object getSearchModel(HttpServletRequest request) {
 		return request.getSession().getAttribute(SearchConstant.SEARCH_MODEL);
 	}
+	
+	
+	////////////////////////////////Common Search////////////////////////////////////////////
+	/**
+	 * Assemble criterias
+	 */
+	public static Map getCriterias(String[] keys, String[] values) {
+		Map criterias = new HashMap();
+		
+		for (int i = 0; i < keys.length; i++) {
+			criterias.put(keys[i], values[i]);
+		}
+		return criterias;
+	}
 }

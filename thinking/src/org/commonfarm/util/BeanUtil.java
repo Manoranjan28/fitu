@@ -331,6 +331,30 @@ public class BeanUtil extends BeanUtils {
     }
     
     /**
+     * get object from original object by property name
+     * @param object
+     * @param name
+     * @return
+     */
+    public static Object getPropertyValue(Object object, String name) {
+        try {
+            return PropertyUtils.getProperty(object, name);
+        } catch (IllegalAccessException e) {
+            if (logger.isErrorEnabled())
+            	logger.error(name + " : Class is not accessed.");
+            throw new InfrastructureException(name + " : Class is not accessed.");
+        } catch (InvocationTargetException e) {
+            if (logger.isErrorEnabled())
+            	logger.error(name + " : Invocation error.");
+            throw new InfrastructureException(name + " : Invocation error.");
+        } catch (NoSuchMethodException e) {
+            if (logger.isErrorEnabled())
+            	logger.error(name + " : Class has no such method.");
+            throw new InfrastructureException(" Class has no such method for property: "+name+".");
+        }
+    }
+    
+    /**
      * @param bean
      * @param propertyName
      * @return

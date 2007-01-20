@@ -76,8 +76,13 @@ public class LoginFilter implements Filter {
 			configFileLocation = config.getInitParameter("config.file");
 			log.debug("Security config file location: " + configFileLocation);
 		}
-		securityConfig = SecurityConfigFactory.getInstance(configFileLocation);
-		config.getServletContext().setAttribute(SecurityConfig.STORAGE_KEY, securityConfig);
+		Object obj = config.getServletContext().getAttribute(SecurityConfig.STORAGE_KEY);
+		if (obj instanceof SecurityConfig) {
+			securityConfig = (SecurityConfig) obj;
+		} else {
+			securityConfig = SecurityConfigFactory.getInstance(configFileLocation);
+			config.getServletContext().setAttribute(SecurityConfig.STORAGE_KEY, securityConfig);
+		}
 	}
 	
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {

@@ -1,25 +1,24 @@
 package org.commonfarm.security.auth;
 
-import org.commonfarm.security.config.SecurityConfig;
-import org.commonfarm.security.config.SecurityConfigFactory;
-import org.commonfarm.security.interceptor.LogoutInterceptor;
-import org.commonfarm.security.user.LoginUser;
-import org.commonfarm.security.user.UserManager;
-import org.commonfarm.security.util.CookieUtils;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import java.security.Principal;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.security.Principal;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.commonfarm.app.model.User;
+import org.commonfarm.security.config.SecurityConfig;
+import org.commonfarm.security.config.SecurityConfigFactory;
+import org.commonfarm.security.interceptor.LogoutInterceptor;
+import org.commonfarm.security.util.CookieUtils;
+import org.commonfarm.service.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
  * This authenticator stores the currently logged in user in the session as OSUser LoginUser objects.
@@ -64,10 +63,11 @@ public class DefaultAuthenticator extends AbstractAuthenticator {
     		appContext = WebApplicationContextUtils
 							.getRequiredWebApplicationContext(request.getSession().getServletContext());
 		}
-    	UserManager userManager = (UserManager) appContext.getBean("userManager");
+    	//UserManager userManager = (UserManager) appContext.getBean("userManager");
+    	UserService userService = (UserService) appContext.getBean("userService");
     	Principal user = null;
     	try {
-    		user = userManager.getUser(username);
+    		user = userService.getUser(username);
     	} catch (Exception e) {
             log.debug("Could not find user who tried to login: " + e);
         }
@@ -114,20 +114,10 @@ public class DefaultAuthenticator extends AbstractAuthenticator {
 
     // The following two methods are the only OSUser-specific parts of this class
 
-    /** Uses OSUser to retrieve a Principal for a given username. Returns null if no user exists. */
-    protected Principal getUser(String username) {
-    	UserManager userManager = UserManager.getInstance();
-        try {
-            return userManager.getUser(username);
-        } catch (Exception e) {
-            log.debug("Could not find user who tried to login: " + e);
-        }
-        return null;
-    }
-
     /** Uses OSUser's authenticate() to authenticate a user. */
     protected boolean authenticate(Principal user, String password) {
-        return ((LoginUser)user).authenticate(password);
+    	return ((User) user).authenticate(password);
+        //return ((LoginUser)user).authenticate(password);
     }
 
     public boolean logout(HttpServletRequest request, HttpServletResponse response) throws AuthenticatorException {

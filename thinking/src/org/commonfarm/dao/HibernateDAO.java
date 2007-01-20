@@ -1,11 +1,13 @@
 package org.commonfarm.dao;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
+import org.commonfarm.util.BeanUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Criterion;
@@ -136,5 +138,36 @@ public class HibernateDAO extends HibernateDaoSupport {
     public void removeObject(Object obj) {
     	getHibernateTemplate().delete(obj);
     	this.flush();
+    }
+    //////////////////// Look up object//////////////////////////////////
+    
+    public Object getObject(Object object, String... parameters) {
+        Criteria criteria = getSession().createCriteria(object.getClass());
+        for (int i = 0; i < parameters.length; i++) {
+            criteria.add(Restrictions.eq(parameters[i], BeanUtil.getPropertyValue(object, parameters[i])));
+        }
+        return criteria.uniqueResult();
+    }
+
+    public List getObjects(Object object, String... parameters) {
+        Criteria criteria = getSession().createCriteria(object.getClass());
+        for (int i = 0; i < parameters.length; i++) {
+            criteria.add(Restrictions.eq(parameters[i], BeanUtil.getPropertyValue(object, parameters[i])));
+        }
+        return criteria.list();
+    }
+    /**
+     * Get results by criterias
+     * @param clazz     Class
+     * @param criterias Map
+     * @return
+     */
+    public List getObjects(Class clazz, Map criterias) {
+        Criteria criteria = getSession().createCriteria(clazz);
+        for (Iterator iter = criterias.keySet().iterator(); iter.hasNext();) {
+			String key = (String) iter.next();
+			criteria.add(Restrictions.eq(key, criterias.get(key)));
+		}
+    	return criteria.list();
     }
 }

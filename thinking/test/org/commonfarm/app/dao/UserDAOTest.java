@@ -36,23 +36,26 @@ public class UserDAOTest extends DAOTest {
 		user.setTel("0512-50507127");
 		user.setImid("david4zhu@hotmail.com");
 		user.setZcode("215324");
-		user.setName("Xiumei");
+		user.setSecondName("Xiumei");
 		user.setFirstName("Zhu");
 
 		hibernateDAO.saveObject(user);
+		//setComplete();
 	}
 	
 	public void testGetObject() throws Exception {
-		Object role = hibernateDAO.getObject(Role.class, new Long(26));
+		Object user = hibernateDAO.getObject(new User("xiumei"), new String[] {"userId"});
+		/*Object role = hibernateDAO.getObject(Role.class, new Long(26));
 		assertNotNull(role);
 		Object group = hibernateDAO.getObject(UserGroup.class, new Long(27));
 		assertNotNull(group);
 		Object user = hibernateDAO.getObject(User.class, new Long(28));
+		assertNotNull(user);*/
 		assertNotNull(user);
 	}
 	
 	public void testUpdateObject() throws Exception {
-		Role role = (Role) hibernateDAO.getObject(Role.class, new Long(26));
+		/*Role role = (Role) hibernateDAO.getObject(Role.class, new Long(26));
 		UserGroup group = (UserGroup) hibernateDAO.getObject(UserGroup.class, new Long(27));
 		User user = (User) hibernateDAO.getObject(User.class, new Long(28));
 
@@ -60,7 +63,7 @@ public class UserDAOTest extends DAOTest {
 		//group.setRole(null);
 		group.addUser(user);
 		//user.addGroup(group);
-		hibernateDAO.saveObject(group);
+		hibernateDAO.saveObject(group);*/
 	}
 	
 }
