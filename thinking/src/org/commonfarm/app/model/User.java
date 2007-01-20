@@ -3,6 +3,7 @@
  */
 package org.commonfarm.app.model;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,11 +22,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table (name = "SYS_O_USERS")
-public class User {
+public class User implements Principal{
 	private Long id;
 	private String userId;
 	private String password;
-	private String name;
+	private String secondName;
 	private String firstName;
 	private String address;
 	private String tel;
@@ -142,15 +143,15 @@ public class User {
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getSecondName() {
+		return secondName;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setSecondName(String secondName) {
+		this.secondName = secondName;
 	}
 
 	/**
@@ -231,5 +232,11 @@ public class User {
 	public void addGroup(UserGroup group) {
 		if (groups == null) groups = new HashSet();
 		groups.add(group);
+	}
+	/**
+	 * Implement Principal --> getName()
+	 */
+	public String getName() {
+		return userId;
 	}
 }
