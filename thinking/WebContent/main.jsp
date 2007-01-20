@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>FitU - Thinking</title>
+<title>FitU - Thinking - Main~~</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/styles/main.css" />"></link>
 </head>
 <body scroll="no" id="thinking">

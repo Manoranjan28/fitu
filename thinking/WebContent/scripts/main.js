@@ -38,7 +38,7 @@ var Docs = function(){
                 },
                 center: {
                     titlebar: true,
-                    title: '<a href=#>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#>Yang Junhao</a>',
+                    title: '<a href=/thinking/logout.jsp>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#>Yang Junhao</a>',
                     autoScroll:false,
                     tabPosition: 'top',
                     closeOnTab: true,

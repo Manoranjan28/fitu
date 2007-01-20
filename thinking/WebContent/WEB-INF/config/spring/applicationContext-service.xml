@@ -22,6 +22,8 @@
     
     <bean id="testService" class="service.TestService" />
     <bean id="thinkingService" class="org.commonfarm.service.ThinkingService" />
+   	<!-- Thinking App Security service about User -->
+    <bean id="userService" class="org.commonfarm.service.UserService" />
 
     <!-- Add new Services here -->
 </beans>
