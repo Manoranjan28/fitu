@@ -2,6 +2,7 @@ package org.commonfarm.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.commonfarm.dao.HibernateDAO;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -93,5 +94,17 @@ public class ThinkingService {
     }
     public void removeObjects(Class clazz , Serializable[] ids) throws BusinessException {
     	
+    }
+    
+    //////////////////////////////////////////////////////
+    
+    public Object getObject(Object model, String... parameters) {
+    	return hibernateDAO.getObject(model, parameters);
+    }
+    public List getObjects(Object model, String... parameters) {
+    	return hibernateDAO.getObjects(model, parameters);
+    }
+    public List getObjects(Class clazz, Map criterias) {
+    	return hibernateDAO.getObjects(clazz, criterias);
     }
 }
