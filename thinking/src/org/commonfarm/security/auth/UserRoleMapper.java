@@ -1,12 +1,12 @@
 package org.commonfarm.security.auth;
 
+import java.security.Principal;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.commonfarm.app.model.User;
 import org.commonfarm.security.config.SecurityConfig;
-import org.commonfarm.security.user.LoginUser;
-
-import java.util.Map;
-import java.security.Principal;
 
 /**
  * A simple RoleMapper which maps directly between group names and role names.
@@ -21,7 +21,7 @@ public class UserRoleMapper implements RoleMapper {
      */
     public boolean hasRole(Principal user, HttpServletRequest request, String role) {
         if (user == null) return false;
-    	return ((LoginUser) user).contains(role);
+    	return ((User) user).contains(role);
     }
 
     /**
