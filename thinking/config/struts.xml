@@ -52,5 +52,6 @@
     
     <include file="example.xml"/>
     <include file="test.xml"/>
+    <include file="struts_app.xml"/>
     
 </struts>
