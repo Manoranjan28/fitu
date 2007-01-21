@@ -36,7 +36,7 @@
 				- If absolute (eg. SSO applications), Seraph calls Authenticator.logout() and redirects to the URL
 			-->
 			<param-name>logout.url</param-name>
-			<param-value>/secure/Logout!default.jspa</param-value>
+			<param-value>/logout.jsp</param-value>
 			<!-- <param-value>http://mycompany.com/SSOLogout</param-value>-->
 		</init-param>
 
