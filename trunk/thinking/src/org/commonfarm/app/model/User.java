@@ -268,4 +268,19 @@ public class User implements Principal{
 			}
 		}
 	}
+	/**
+	 * Judge role exist
+	 * @param roleName
+	 * @return
+	 */
+	public boolean contains(String roleName) {
+		if (groups != null) {
+			for (Iterator it = groups.iterator(); it.hasNext();) {
+				UserGroup userGroup = (UserGroup) it.next();
+				Role role = userGroup.getRole();
+				if (role.getName().equals(roleName)) return true;
+			}
+		}
+		return false;
+	}
 }

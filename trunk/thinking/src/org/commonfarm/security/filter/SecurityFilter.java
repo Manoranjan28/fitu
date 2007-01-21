@@ -14,6 +14,7 @@ import java.security.Principal;
 
 import org.commonfarm.security.SecurityService;
 import org.commonfarm.security.auth.AuthenticationContext;
+import org.commonfarm.security.auth.AuthenticatorException;
 import org.commonfarm.security.config.SecurityConfig;
 import org.commonfarm.security.config.SecurityConfigFactory;
 import org.commonfarm.security.util.RedirectUtils;
@@ -79,7 +80,7 @@ public class SecurityFilter implements Filter {
 				+ (request.getPathInfo() == null ? "" : request.getPathInfo())
 				+ (request.getQueryString() == null ? "" : "?"
 				+ request.getQueryString());
-
+		
 		// store the original URL as a request attribute anyway - often useful
 		// for pages to access it (ie login links)
 		request.setAttribute(SecurityFilter.ORIGINAL_URL, originalURL);
@@ -118,7 +119,7 @@ public class SecurityFilter implements Filter {
 	 */
 	private boolean isNeedAuth(HttpServletRequest request, HttpServletResponse response, String originalURL, String status) {
 		Set requiredRoles = new HashSet();
-
+		
 		// loop through loaded services and get required roles
 		for (Iterator iterator = getSecurityConfig(request).getServices().iterator(); iterator.hasNext();) {
 			SecurityService securityService = (SecurityService) iterator.next();
@@ -162,7 +163,7 @@ public class SecurityFilter implements Filter {
 				needAuth = false;
 				break;
 			} else {
-				log.info("LoginUser '" + user + "' needs (and lacks) role '" + role + "' to access " + originalURL);
+				log.info("Login User '" + user + "' needs (and lacks) role '" + role + "' to access " + originalURL);
 				needAuth = true;
 			}
 		}
@@ -170,6 +171,17 @@ public class SecurityFilter implements Filter {
 		// check if we're at the signon page, in which case do not auth
 		if (request.getServletPath() != null && request.getServletPath().equals(getSecurityConfig(request).getLoginURL())) {
 			needAuth = false;
+		}
+		// Logout
+		if (originalURL.indexOf("logout.jsp") != -1) {
+			try {
+				getSecurityConfig(request).getAuthenticator().logout(request, response);
+				needAuth = false;
+			} catch (AuthenticatorException e) {
+				log.debug("Logout was not successful, and exception was thrown - setting attribute to \"Error\"");
+				e.printStackTrace();
+				log.warn("Exception was thrown whilst logging in: " + e.getMessage(), e);
+			}
 		}
 		return needAuth;
 	}
