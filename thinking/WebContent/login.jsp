@@ -66,7 +66,7 @@
 
 			<div id="loginForm">
 				<div class="login_table_bg">
-					<form name="form1" method="post" action="<c:url value="/main.action" />">
+					<form name="form1" method="post" action="<c:url value="/app/main.action" />">
 						<table class="login_table" cellspacing=0 cellpadding=5 width="100%" border=0>
 							<tr>
 								<td align="right">帐&nbsp;号(Account)&nbsp;&nbsp;：</td>
