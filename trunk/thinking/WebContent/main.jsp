@@ -33,9 +33,9 @@
 			<div class="pkg">
 			<h3>User Management</h3>
 				<div class="pkg-body">
-					<a href="app/role.action">Role Management</a>
-					<a href="app/group.action">User Group Management</a>
-					<a href="app/user.action">User Management</a> 
+					<a href="role.action">Role Management</a>
+					<a href="group.action">User Group Management</a>
+					<a href="user.action">User Management</a> 
 				</div>                  
 				<a href="output/YAHOO.ext.Actor.html">Actor</a> 
 			</div>

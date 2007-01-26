@@ -67,7 +67,7 @@ var Docs = function(){
             });
             var page = window.location.href.split('#')[1];
             if(!page){
-                page = 'welcome.html';
+                page = '/thinking/welcome.html';
             }
             this.loadDoc(page);
         },
