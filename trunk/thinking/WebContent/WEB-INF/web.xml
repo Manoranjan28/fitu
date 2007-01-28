@@ -12,6 +12,26 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/config/spring/applicationContext-*.xml</param-value>
     </context-param>
+    <!-- Define the basename for a resource bundle for I18N -->
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>ApplicationResources</param-value>
+	</context-param>
+	<!-- Fallback locale if no bundles found for browser's preferred locale -->
+	<!-- Force a single locale using param-name 'javax.servlet.jsp.jstl.fmt.locale' -->
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+		<param-value>en</param-value>
+	</context-param>
+    <!-- ===== ExtremeComponent ===== -->
+    <context-param>
+  		<param-name>extremecomponentsMessagesLocation</param-name>
+  		<param-value>ApplicationResources</param-value>
+	</context-param>
+    <context-param>
+        <param-name>extremecomponentsPreferencesLocation</param-name>
+        <param-value>/extremetable.properties</param-value>
+    </context-param>
     <!-- ================== Filter ================== -->
     <!-- Struts2 filter -->
     <filter>
@@ -77,6 +97,9 @@
 	<!-- ================== Listener ================== -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.commonfarm.web.StartupListener</listener-class>
     </listener>
 
     <welcome-file-list>

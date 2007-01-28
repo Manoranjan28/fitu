@@ -15,7 +15,7 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
@@ -28,6 +28,11 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<!-- Generic Dao - can be used when doing standard CRUD -->
+    <bean id="commonSearch" class="org.commonfarm.search.CommonSearch">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
 	<!-- Generic Dao - can be used when doing standard CRUD -->
     <bean id="hibernateDAO" class="org.commonfarm.dao.HibernateDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
