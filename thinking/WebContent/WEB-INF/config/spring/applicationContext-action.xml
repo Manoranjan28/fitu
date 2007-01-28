@@ -8,7 +8,7 @@
             <ref local="testService" />
         </constructor-arg>
     </bean>
-    <bean id="userAction" class="org.commonfarm.web.StrutsAction" singleton="true" lazy-init="false">    
+    <bean id="userAction" class="org.commonfarm.app.web.UserAction" singleton="true" lazy-init="false">    
        	<constructor-arg index="0">
             <ref bean="thinkingService" />
         </constructor-arg>

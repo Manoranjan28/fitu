@@ -15,8 +15,8 @@
 	<script type="text/javascript" src="<c:url value="/scripts/yahoo/utilities_2.1.0.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/cssQuery.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/yui-ext/yui-ext.js" />"></script>
-	<link rel="stylesheet" type="text/css" href="<c:url value="/styles/reset-min.css" />" />
-	<link rel="stylesheet" type="text/css" href="<c:url value="/styles/layout.css" />"/>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/styles/yui-ext/reset-min.css" />" />
+	<link rel="stylesheet" type="text/css" href="<c:url value="/styles/yui-ext/layout.css" />"/>
   
   	<script type="text/javascript" src="<c:url value="/scripts/main.js" />"></script>
 	

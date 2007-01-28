@@ -6,7 +6,11 @@
 	<title>List User Infomation</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/extremecomponents.css"/>" type="text/css" rel=stylesheet>
+    <link href="<c:url value="/styles/yui-ext/yui-ext.css"/>" type="text/css" rel=stylesheet>
     <script src="<c:url value="/scripts/app/page.js"/>" type="text/javascript"></script>
+    <script type="text/javascript" src="<c:url value="/scripts/yahoo/utilities_2.1.0.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/yui-ext/yui-ext.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/scripts/app/searchDialog.js"/>"></script>
 </head>
 
 <body>
@@ -14,7 +18,7 @@
 	<td style="width: 350px;"><div id="pageTitle">List User Infomation</div></td>
 	<td><%@ include file="/pages/common/messages.jsp" %></td>
 </tr></table>
-<!-- Search Criteria -->
+<!-- Search Criteria 
 <s:form action="listUser">
 	<table class="searchBar">
 		<tr>
@@ -35,16 +39,84 @@
 	</table>
 	</div>
 </s:form>
-
+-->
 <div id="operation">
     <span class="operations">
-    	<button style="buttComm" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');">New</button>
+    	<button style="buttComm" width="100px" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');">New</button>
     	<button style="buttComm" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUser');">Edit</button>
     	<button style="buttComm" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/deleteUser', 'Workshift');">Delete</button>
+    	
+    	<input type="button" id="searchBtn" value="Hello World" />
     </span>
 </div>
+<div id="searchDialog" style="visibility: hidden;position: absolute;top: 500px; left: 300px">
+	<div class="ydlg-hd">Search Criterias</div>
+	<div class="ydlg-bd">
+		<s:form action="listUser">
+			<table class="searchBar">
+				<tr><td>
+					<input class="buttSearch" type="submit" value="Search" name="search">&nbsp;
+					<input class="buttSearch" type="reset" value="Reset" name="reset">
+				</td></tr>
+			</table>
+	        <table class="criteria">
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+				<tr>
+					<td class="label">User ID:</td><td><s:textfield name="s_userId"/></td>
+				</tr>
+			</table>
+		</s:form>
+	</div>
+</div>
+
 <!-- Search List (DETAIL) -->
 
+<ec:table items="list" var="user" retrieveRowsCallback="limit" sortRowsCallback="limit" autoIncludeParameters="false" action="${ctxPath}/app/listUser.action">
+    <ec:exportXls view="xls" fileName="Users.xls" tooltip="Export Excel"/>
+    <ec:row>
+        <ec:column property="userId" title="UserID"   style="width: 68px"/>
 
+        <ec:column property="edit" title="Edt" sortable="false" viewsAllowed="html" style="width: 20px">
+	        <a href="<c:url value="/ws/workshiftAction.do?method=edit&id=${workshift.id}"/>">
+	            <img src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
+	        </a>
+	    </ec:column>
+	    <ec:column property="checkbox" title="Slt" sortable="false" viewsAllowed="html" style="width: 20px;">
+	        <input type="checkbox" name="itemlist" value="${workshift.id}" style="border:0px"/>
+	    </ec:column>
+    </ec:row>
+</ec:table>
 </body>
 </html>

@@ -76,7 +76,7 @@
     background-color:#c3daf9;
 }
 .ylayout-panel-hd{
-    background-image: url(../images/yui-ext/layout/panel-title-light-bg.gif);
+    background-image: url(../../images/yui-ext/layout/panel-title-light-bg.gif);
     color: black;
     border-bottom:1px solid #98c0f4;
     position:relative;
@@ -115,30 +115,30 @@
     background-position:center;
 }
 .ylayout-close{
-    background-image:url(../images/yui-ext/layout/panel-close.gif);
+    background-image:url(../../images/yui-ext/layout/panel-close.gif);
 }
 .ylayout-collapse-west,.ylayout-expand-east{
-    background-image:url(../images/yui-ext/layout/collapse.gif);
+    background-image:url(../../images/yui-ext/layout/collapse.gif);
 }
 .ylayout-expand-west,.ylayout-collapse-east{
-    background-image:url(../images/yui-ext/layout/expand.gif);
+    background-image:url(../../images/yui-ext/layout/expand.gif);
 }
 .ylayout-collapse-north,.ylayout-expand-south{
-    background-image:url(../images/yui-ext/layout/ns-collapse.gif);
+    background-image:url(../../images/yui-ext/layout/ns-collapse.gif);
 }
 .ylayout-expand-north,.ylayout-collapse-south{
-    background-image:url(../images/yui-ext/layout/ns-expand.gif);
+    background-image:url(../../images/yui-ext/layout/ns-expand.gif);
 }
 .ylayout-split-h{
-    background-image:url(../images/yui-ext/sizer/e-handle.gif);
+    background-image:url(../../images/yui-ext/sizer/e-handle.gif);
     background-position: left;
 }
 .ylayout-split-v{
-    background-image:url(../images/yui-ext/sizer/s-handle.gif);
+    background-image:url(../../images/yui-ext/sizer/s-handle.gif);
     background-position: top;
 }
 .ylayout-panel .ytab-wrap{
-    background:url(../images/yui-ext/layout/gradient-bg.gif);
+    background:url(../../images/yui-ext/layout/gradient-bg.gif);
 }
 .ylayout-panel .yui-ext-tabbody {
     background-color:white;
@@ -174,7 +174,7 @@
 	border: 2px solid #6593cf;
 }
 .ylayout-panel-proxy {
-	background-image: url('../images/yui-ext/layout/gradient-bg.gif');
+	background-image: url('../../images/yui-ext/layout/gradient-bg.gif');
 	background-color:#c3daf9;
 	border:1px dashed #6593cf;
 	z-index:10001;
@@ -213,35 +213,35 @@
     background-color:#f3f2e7;
 }
 .ytheme-gray .ylayout-panel-hd{
-    background-image: url(../images/yui-ext/layout/gray/panel-title-light-bg.gif);
+    background-image: url(../../images/yui-ext/layout/gray/panel-title-light-bg.gif);
     border-bottom:1px solid #aca899;
 }
 .ytheme-gray .ylayout-tools-button-over{
     border:1px solid #aca899;
 }
 .ytheme-gray .ylayout-close{
-    background-image:url(../images/yui-ext/layout/gray/panel-close.gif);
+    background-image:url(../../images/yui-ext/layout/gray/panel-close.gif);
 }
 .ytheme-gray .ylayout-collapse-west,.ytheme-gray .ylayout-expand-east{
-    background-image:url(../images/yui-ext/layout/gray/collapse.gif);
+    background-image:url(../../images/yui-ext/layout/gray/collapse.gif);
 }
 .ytheme-gray .ylayout-expand-west,.ytheme-gray .ylayout-collapse-east{
-    background-image:url(../images/yui-ext/layout/gray/expand.gif);
+    background-image:url(../../images/yui-ext/layout/gray/expand.gif);
 }
 .ytheme-gray .ylayout-collapse-north,.ytheme-gray .ylayout-expand-south{
-    background-image:url(../images/yui-ext/layout/gray/ns-collapse.gif);
+    background-image:url(../../images/yui-ext/layout/gray/ns-collapse.gif);
 }
 .ytheme-gray .ylayout-expand-north,.ytheme-gray .ylayout-collapse-south{
-    background-image:url(../images/yui-ext/layout/gray/ns-expand.gif);
+    background-image:url(../../images/yui-ext/layout/gray/ns-expand.gif);
 }
 .ytheme-gray .ylayout-split-h{
-    background-image:url(../images/yui-ext/sizer/gray/e-handle-dark.gif);
+    background-image:url(../../images/yui-ext/sizer/gray/e-handle-dark.gif);
 }
 .ytheme-gray .ylayout-split-v{
-    background-image:url(../images/yui-ext/sizer/gray/s-handle-dark.gif);
+    background-image:url(../../images/yui-ext/sizer/gray/s-handle-dark.gif);
 }
 .ytheme-gray .ylayout-panel .ytab-wrap{
-    background:url(../images/yui-ext/layout/gray/gradient-bg.gif);
+    background:url(../../images/yui-ext/layout/gray/gradient-bg.gif);
 }
 .ytheme-gray .ylayout-nested-layout .ylayout-panel-north {
 	  border-bottom:1px solid #aca899;
@@ -259,7 +259,7 @@
 	border: 2px solid #aca899;
 }
 .ytheme-gray .ylayout-panel-proxy {
-	background-image: url('../images/yui-ext/layout/gray/gradient-bg.gif');
+	background-image: url('../../images/yui-ext/layout/gray/gradient-bg.gif');
 	background-color:#f3f2e7;
 	border:1px dashed #aca899;
 }
