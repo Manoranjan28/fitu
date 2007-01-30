@@ -5,11 +5,12 @@
 <struts>
 	
 	<package name="app" namespace="/app" extends="thinking_default" >
-        <action name="list" class="userAction" method="list">
+		<default-interceptor-ref name="defaultStack"/>
+		
+        <action name="listUser" class="userAction" method="list">
             <result>/pages/app/listUser.jsp</result>
-            <interceptor-ref name="basicStack"/>
         </action>
-        <action name="edit-*" class="userAction" method="edit">
+        <action name="editUser" class="userAction" method="edit">
 			<param name="userId">{1}</param>
             <result>/pages/app/editUser.jsp</result>
         </action>
