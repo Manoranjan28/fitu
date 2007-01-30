@@ -3,6 +3,9 @@
  */
 package org.commonfarm.search;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,7 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.commonfarm.Constant;
 import org.commonfarm.util.BeanUtil;
+import org.commonfarm.util.ResourceUtil;
 import org.commonfarm.util.StringUtil;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 public class SearchUtil {
 	
@@ -77,9 +85,6 @@ public class SearchUtil {
 		}
 		return set;
 	}
-	public static void main(String[] args) {
-		SearchUtil.convertSort("hello:asc, test, light");
-	}
 	/**
 	 * Get search name by HttpServletRequest
 	 * @param request
@@ -95,10 +100,10 @@ public class SearchUtil {
 	 * @param request
 	 * @return
 	 */
-	public static Map getSearchMap(HttpServletRequest request) {
-		Object searchMap = request.getSession().getServletContext().getAttribute(Constant.CONFIG_SEARCH);
-		if (searchMap == null) return null;
-		return (Map) searchMap;
+	public static Map getSearchInfo(HttpServletRequest request) {
+		Object searchInfo = request.getSession().getServletContext().getAttribute(Constant.CONFIG_SEARCH);
+		if (searchInfo == null) return null;
+		return (Map) searchInfo;
 	}
 	/**
 	 * Get search model with session. remember search criterias of user
@@ -121,5 +126,58 @@ public class SearchUtil {
 			criterias.put(keys[i], values[i]);
 		}
 		return criterias;
+	}
+	/**
+	 * get search information by xml config file
+	 * @param context
+	 * @return
+	 */
+	public static Map getSearchInfo() throws IOException, FileNotFoundException, DocumentException{
+		Map searchMap = new HashMap();
+		
+		InputStream inputStream = ResourceUtil.getResourceAsStream("classpath:search.xml");
+        SAXReader reader = new SAXReader();
+        Document document = reader.read(inputStream);
+        Iterator rootIt = document.getRootElement().elementIterator();
+        while(rootIt.hasNext()) {
+            Search search = new Search();
+            Element searchElement = (Element) rootIt.next();
+            String name = searchElement.attributeValue("name");
+            String clazz = searchElement.attributeValue("class");
+            String url = searchElement.attributeValue("url");
+            String countColumn = searchElement.attributeValue("countColumn");
+            String order = searchElement.attributeValue("order");
+            String group = searchElement.attributeValue("group");
+            search.setName(name);
+            search.setClazz(clazz);
+            search.setUrl(url);
+            search.setCountColumn(countColumn);
+            search.setSort(order);
+            search.setGroup(group);
+            Iterator searchIt = searchElement.elementIterator();
+            while(searchIt.hasNext()) {
+                SearchItem item = new SearchItem();
+                Element itemElement = (Element) searchIt.next();
+                item.setName(itemElement.attributeValue("name"));
+                item.setType(itemElement.attributeValue("type"));
+                item.setMode(itemElement.attributeValue("mode"));
+                item.setTitle(itemElement.attributeValue("title"));
+                item.setAssociation(itemElement.attributeValue("association"));
+                search.addItem(item);
+            }
+            searchMap.put(name, search);
+        }
+        if (inputStream != null) {
+	        inputStream.close();
+	        inputStream = null;
+        }
+        return searchMap;
+	}
+	public static void main(String[] args) {
+		try {
+			SearchUtil.getSearchInfo();
+		} catch(Exception ex) {
+			System.out.print(ex);
+		}
 	}
 }
