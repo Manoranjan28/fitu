@@ -7,12 +7,6 @@
 	<!-- Configuration for the default package. -->
 	<package name="thinking_default" extends="struts-default">
         <interceptors>
-            <interceptor-stack name="crudStack">
-            	<interceptor-ref name="checkbox" />
-                <interceptor-ref name="params" />
-				<interceptor-ref name="static-params" />
-                <interceptor-ref name="defaultStack" />
-            </interceptor-stack>
             <interceptor-stack name="defaultStack">
                 <interceptor-ref name="exception"/>
                 <interceptor-ref name="alias"/>
@@ -21,7 +15,6 @@
                 <interceptor-ref name="i18n"/>
                 <interceptor-ref name="chain"/>
                 <interceptor-ref name="model-driven"/>
-                <interceptor-ref name="fileUpload"/>
                 <interceptor-ref name="static-params"/>
                 <interceptor-ref name="params"/>
                 <interceptor-ref name="conversionError"/>
@@ -36,10 +29,16 @@
                 <interceptor-ref name="fileUpload"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
+            <interceptor-stack name="crudStack">
+            	<interceptor-ref name="checkbox" />
+                <interceptor-ref name="params" />
+				<interceptor-ref name="static-params" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
         </interceptors>
         
 		<global-results>
-            <result name="main" type="redirect">main.action</result>
+            <result name="main" type="redirect">app/main.action</result>
             <result name="dataAccessFailure">/pages/common/dataAccessFailure.jsp</result>
         </global-results>
         <global-exception-mappings>

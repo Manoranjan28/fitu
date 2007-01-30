@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<search-config>
+	<search name="user" class="org.commonfarm.app.model.User" url="app/listUser.action">
+		<item name="userId" type="string" mode="like" />
+		<item name="name"   type="string" mode="like"/>
+	</search>
+	<search name="role" class="org.commonfarm.app.model.Role" url="app/listRole.action">
+		<item name="name" type="string" mode="like" />
+	</search>
+</search-config>

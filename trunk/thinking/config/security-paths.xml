@@ -2,7 +2,7 @@
 <security-paths>
     <!-- You can configure any number of path elements -->
     <path name="main">
-        <url-pattern>/main.action</url-pattern>
+        <url-pattern>/app/main.action</url-pattern>
 		<role-name>all</role-name>
     </path>
     <!--<path name="security">
