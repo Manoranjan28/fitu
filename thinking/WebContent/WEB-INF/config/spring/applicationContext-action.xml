@@ -2,12 +2,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans default-autowire="byName" default-lazy-init="true">
-	<bean id="testService" class="service.TestService" />
-    <bean id="testAction" class="web.TestAction" singleton="true" lazy-init="false">    
-       	<constructor-arg index="0">
-            <ref local="testService" />
-        </constructor-arg>
-    </bean>
     <bean id="userAction" class="org.commonfarm.app.web.UserAction" singleton="true" lazy-init="false">    
        	<constructor-arg index="0">
             <ref bean="thinkingService" />
