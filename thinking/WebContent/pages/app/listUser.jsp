@@ -61,12 +61,12 @@
     <ec:row>
         <ec:column property="userId"     title="UserID" />
 		<ec:column property="secondName" title="Name" />
-        <ec:column property="edit" title="Edt" sortable="false" viewsAllowed="html" style="width: 20px">
+        <ec:column property="edit" title=" " sortable="false" viewsAllowed="html" style="width: 20px">
 	        <a href="<c:url value="/ws/workshiftAction.do?method=edit&id=${workshift.id}"/>">
-	            <img src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
+	            <img align="absmiddle" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
-	    <ec:column property="checkbox" title="Slt" sortable="false" viewsAllowed="html" style="width: 20px;">
+	    <ec:column property="checkbox" title=" " sortable="false" viewsAllowed="html" style="width: 20px;">
 	        <input type="checkbox" name="itemlist" value="${workshift.id}" style="border:0px"/>
 	    </ec:column>
     </ec:row>
