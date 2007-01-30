@@ -1,27 +1,19 @@
 package org.commonfarm.web;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts2.servlet.ServletRequestAware;
-import org.commonfarm.search.Search;
-import org.commonfarm.search.SearchConstant;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.commonfarm.search.SearchProcessor;
-import org.commonfarm.search.SearchUtil;
 import org.commonfarm.service.ThinkingService;
-import org.commonfarm.util.BeanUtil;
-import org.commonfarm.util.StringUtil;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class StrutsAction extends ActionSupport 
-		implements ModelDriven, ServletRequestAware {
+public class StrutsAction extends ActionSupport implements ServletRequestAware, ModelDriven  {
 	private static final Log logger = LogFactory.getLog(StrutsAction.class);
 	
 	protected static final String LIST = "list";
@@ -38,80 +30,26 @@ public class StrutsAction extends ActionSupport
 	protected Object model;
 	protected HttpServletRequest request;
 	
-	protected ThinkingService service;
+	protected ThinkingService thinkingService;
+	public StrutsAction() {}
+	public StrutsAction(ThinkingService thinkingService) {
+		this.thinkingService = thinkingService;
+	}
 	
-	public String execute() throws Exception {
-		String page = request.getParameter("page");
-		String searchName = SearchUtil.getSearchName(request);
-		Map searchMap = SearchUtil.getSearchMap(request);
+	public String search(String searchName) throws Exception {
+		logger.info("Execute search: " + searchName);
+		SearchProcessor.processExtreme(this.request, searchName, this);
 		
-		if (StringUtil.isEmpty(searchName)) {
-			if (logger.isInfoEnabled()) {
-				logger.info("forward to error page");
-			}
-		}
-		if (searchMap == null) {
-		    String exception = "search map is null";
-		    if (logger.isInfoEnabled()) {
-				logger.info(exception);
-			}
-		}
-		
-		Map criterias = null;
-		if (page == null) {
-			String method = request.getParameter("method");
-			if (method != null && method.equals("delete")) {
-				BeanUtil.copyProperties(model, SearchUtil.getSearchModel(request));
-			    criterias = SearchUtil.processCriterias(model);
-			}
-		    criterias = SearchUtil.processCriterias(model);
-		    request.getSession().setAttribute(SearchConstant.SEARCH_MODEL, model);
-		} else {
-		    BeanUtil.copyProperties(model, request.getSession().getAttribute(SearchConstant.SEARCH_MODEL));
-		    criterias = SearchUtil.processCriterias(model);
-		}
-		if (request.getAttribute(SearchConstant.COMPOSITE_ID) != null) {
-			criterias.put(SearchConstant.ID, request.getAttribute(SearchConstant.COMPOSITE_ID));
-		}
-		Search search = (Search) searchMap.get(searchName);
-		String fixedParams = (String) request.getAttribute(SearchConstant.FIXED_PARAMETERS);
-		if (fixedParams != null) {
-			search.setFixedParams(fixedParams);
-		}
-		
-		Map fixedCriterias = (Map) request.getAttribute(SearchConstant.FIXED_CRITERIAS);
-		if (fixedCriterias != null && !fixedCriterias.isEmpty()) {
-			for (Iterator it = fixedCriterias.keySet().iterator(); it.hasNext();) {
-				Object key = it.next();
-				criterias.put(key, fixedCriterias.get(key));
-			}
-		}
-		SearchProcessor.processExtreme(request, search, criterias);
 		////////////============================================/////////////////////	
-		String forward = (String) request.getAttribute(SearchConstant.FORWARD);
-		if (forward == null) {
-			forward = "list";
-		}
         return SUCCESS;
     }
-	
-	/**
-	 * List Data
-	 * @return
-	 */
-	public String list() throws Exception {
-		if (logger.isDebugEnabled()) {
-        	logger.debug("items found");
-        }
-		return LIST;
-	}
 	
 	/**
 	 * Edit Data
 	 * @return
 	 */
 	public String edit() throws Exception {
-		return EDIT;
+		return SUCCESS;
 	}
 	
 	/**
@@ -127,7 +65,7 @@ public class StrutsAction extends ActionSupport
 	 * @return
 	 */
 	public String create() throws Exception {
-		service.saveObject(model);
+		thinkingService.saveObject(model);
 		return CREATE;
 	}
 	
@@ -136,7 +74,7 @@ public class StrutsAction extends ActionSupport
 	 * @return
 	 */
 	public String save() throws Exception {
-		service.saveObject(model);
+		thinkingService.saveObject(model);
 		return DELETE;
 	}
 	
@@ -145,7 +83,7 @@ public class StrutsAction extends ActionSupport
 	 * @return
 	 */
 	public String update() throws Exception {
-		service.updateObject(model);
+		thinkingService.updateObject(model);
 		return DELETE;
 	}
 	

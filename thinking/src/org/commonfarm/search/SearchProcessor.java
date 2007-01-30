@@ -3,6 +3,7 @@
  */
 package org.commonfarm.search;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.commonfarm.util.BeanUtil;
 import org.commonfarm.util.ExtremeTableUtil;
 import org.commonfarm.util.SpringUtil;
 
@@ -44,4 +46,41 @@ public class SearchProcessor {
 		request.setAttribute("list", currentPageList);
 		request.setAttribute("totalRows", new Integer(totalRows));
     }
+
+	public static void processExtreme(HttpServletRequest request, String searchName, Object criteriaObject) {
+		String page = request.getParameter("page");
+		//String searchName = SearchUtil.getSearchName(request);
+		Map searchInfo = SearchUtil.getSearchInfo(request);
+		
+		Map criterias = null;
+		if (page == null) {
+			String method = request.getParameter("method");
+			if (method != null && method.equals("delete")) {
+				BeanUtil.copyProperties(criteriaObject, SearchUtil.getSearchModel(request));
+			    criterias = SearchUtil.processCriterias(criteriaObject);
+			}
+		    criterias = SearchUtil.processCriterias(criteriaObject);
+		    request.getSession().setAttribute(SearchConstant.CRITERIA_OBJECT, criteriaObject);
+		} else {
+		    BeanUtil.copyProperties(criteriaObject, request.getSession().getAttribute(SearchConstant.CRITERIA_OBJECT));
+		    criterias = SearchUtil.processCriterias(criteriaObject);
+		}
+		if (request.getAttribute(SearchConstant.COMPOSITE_ID) != null) {
+			criterias.put(SearchConstant.ID, request.getAttribute(SearchConstant.COMPOSITE_ID));
+		}
+		Search search = (Search) searchInfo.get(searchName);
+		String fixedParams = (String) request.getAttribute(SearchConstant.FIXED_PARAMETERS);
+		if (fixedParams != null) {
+			search.setFixedParams(fixedParams);
+		}
+		
+		Map fixedCriterias = (Map) request.getAttribute(SearchConstant.FIXED_CRITERIAS);
+		if (fixedCriterias != null && !fixedCriterias.isEmpty()) {
+			for (Iterator it = fixedCriterias.keySet().iterator(); it.hasNext();) {
+				Object key = it.next();
+				criterias.put(key, fixedCriterias.get(key));
+			}
+		}
+		processExtreme(request, search, criterias);
+	}
 }

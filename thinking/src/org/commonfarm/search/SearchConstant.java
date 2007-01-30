@@ -15,6 +15,7 @@ public interface SearchConstant {
     public static String SEARCH_NAME="searchName";
     public static String COMPOSITE_ID = "compositeID";
     public static String SEARCH_MODEL = "searchModel";
+    public static String CRITERIA_OBJECT = "criteriaObject";
     public static String FORM_PREFIX = "s_";
     public static String ID = "id";
     
