@@ -144,14 +144,52 @@ function deleteAction(form, urlPath, entityName, valid) {
         form.submit();
     }
 }
-function hideSearch(){
-	if ($("searchButt").style.display == 'none') {
-		$("searchButt").style.display = 'inline';
-		$("criteria").style.display = 'inline';
-		$("hideImg").src = '../../images/icon/16x16/less.gif';
+function hideSearch(ctxPath){
+	if (document.getElementById("searchButt").style.display == 'none') {
+		document.getElementById("searchButt").style.display = 'inline';
+		document.getElementById("criteria").style.display = 'inline';
+		document.getElementById("hideImg").src = ctxPath + '/images/icon/16x16/arrowdown.gif';
 	} else {
-		$("searchButt").style.display = 'none';
-		$("criteria").style.display = 'none';
-		$("hideImg").src = '../../images/icon/16x16/more.gif';
+		document.getElementById("searchButt").style.display = 'none';
+		document.getElementById("criteria").style.display = 'none';
+		document.getElementById("hideImg").src = ctxPath + '/images/icon/16x16/arrowright.gif';
 	}
+}
+function imageRoll(target, action) {
+	if (action == "over") {
+		if (target == 'new') {
+			document.getElementById('img_' + target).src = "../images/toolbar/new_2.jpg";
+		} else if (target == 'edit') {
+			document.getElementById('img_' + target).src = "../images/toolbar/edit_2.jpg";
+		} else if (target == 'delete') {
+			document.getElementById('img_' + target).src = "../images/toolbar/setting_2.jpg";
+		}
+	} else {
+		if (target == 'new') {
+			document.getElementById('img_' + target).src = "../images/toolbar/new_1.jpg";
+		} else if (target == 'edit') {
+			document.getElementById('img_' + target).src = "../images/toolbar/edit_1.jpg";
+		} else if (target == 'delete') {
+			document.getElementById('img_' + target).src = "../images/toolbar/setting_1.jpg";
+		}
+	}
+}
+function dateJudge(fromDate, toDate) {
+	fromDate = fromDate.replace(/-/g, "/");
+	toDate = toDate.replace(/-/g, "/");
+
+	fromDate = new Date(fromDate);
+	toDate = new Date(toDate);
+	var startDate = Date.parse(fromDate);
+	var endDate = Date.parse(toDate);
+	if (endDate - startDate < 0) {
+		alert("Start date must be more than end date!");
+		return false;
+	}
+	var internalDays = parseInt((endDate - startDate)/86400000);
+	if (internalDays > 31) {
+		alert("Interval days must not be more than 31!");
+		return false;
+	}
+	return true;
 }
