@@ -1,3 +1,4 @@
+
 input,textarea,select {
     font-size: 12px;
     color: #336699;
@@ -16,8 +17,8 @@ BUTTON, .submitButton, .butt {
     FILTER:  progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#C3DAF5)
 }
 .buttComm {
-    height: 20px;
-    width: 80px;
+    height: 22px;
+    width: 60px;
     font-size: 12px;
     border: 1px solid #2c59aa;
     padding: 0px;
@@ -49,8 +50,15 @@ BUTTON, .submitButton, .butt {
     FILTER:  progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#C3DAF5)
 }
 /*#267BB1 #07478E #0D5F9B*/
+#title {
+	margin: -10px 0px 0px 0px;
+}
 .headerTitle {
     width: 100%;
+    border: 0px solid #CADAE8;
+    padding:5px 0px 0px 5px;
+}
+.headerTitle td {
     border: 0px solid #CADAE8;
     padding:0px 0px 0px 0px;
 }
@@ -71,8 +79,67 @@ BUTTON, .submitButton, .butt {
     top: -6px;
     left: 238px;
 }
+
+#search {
+	margin: -10px 0px 0px 0px;
+}
+table.searchBar {
+	width: 100%;
+	background-color: #C7DFE2;
+	border: 0px solid #0D5F9B;
+	border-collapse: collapse;
+}
+table.searchBar td.label {
+	padding: 3px 10px 0px 0px;
+	font-family: arial;
+	font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+table.searchBar td {
+	padding: 1px 0px 1px 0px;
+}
+table.searchBar td.labelImg {
+	width: 18px;
+	height: 24px;
+	padding: 2px 0px 0px 2px;
+}
+table.searchBar td.labelSearch {
+	padding: 3px 0px 0px 2px;
+	border: 0px solid #CADAE8;
+	font-size: 13px;
+    font-weight: bold;
+    text-align: left;
+    color: #999999;
+}
+/* class="criteria" */
+table.criteria {
+	width: 100%;
+	border: 1px solid #CADAE8;
+	border-top: 0px;
+	border-collapse: collapse;
+}
+table.criteria td{
+	padding: 1px 0px 1px 0px;
+	border: 0px solid #CADAE8;
+	font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+}
+table.criteria td.label{
+	padding: 1px 0px 1px 2px;
+	border: 0px solid #CADAE8;
+	font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    color: #999999;
+}
+
 #operation {
-	float: right;    
+	margin: -10px 0px 0px 0px;
+	float: right;
+	height: 22px;
+	background-color: #C6C6C6;
 }
 .operations {
 	float: right;
@@ -84,81 +151,8 @@ BUTTON, .submitButton, .butt {
 	font-size: 12px;
     font-weight: normal;
 }
-#search {
-	margin: -16px 0px -10px 0px;
-}
-.s_text {
-	font-size: 12px;
-	color: #336699;
-	border-top: 0px;
-	border-left: 0px;
-	border-right: 0px;
-	border-bottom: 1px solid #cccccc;
-	background-color: #ffffff;
-	text-align: left;
-}
-#form {
+#result {
 	margin: -10px 0px 0px 0px;
-}
-table.searchBar {
-	width: 100%;
-	background-color: white;
-	border: 1px solid #0D5F9B;
-	border-collapse: collapse;
-	background-image: url( "../../images/app/tableTopbg.gif" );
-}
-table.searchBar td.label {
-	padding: 2px 0px 0px 0px;
-	font-size: 13px;
-    font-weight: bold;
-    text-align: right;
-    color: white;
-}
-table.searchBar td.labelImg {
-	width: 3px;
-	padding: 2px 0px 0px 0px;
-}
-table.searchBar td {
-	padding: 0px 0px 0px 0px;
-}
-table.actionBar {
-	width: 100%;
-	background-color: white;
-	border: 1px solid #0D5F9B;
-	border-collapse: collapse;
-	background-image: url( "../../images/app/tableTopbg.gif" );
-}
-table.actionBar td {
-	padding: 0px 0px 0px 0px;
-}
-/* class="criteria" */
-table.criteria {
-	width: 100%;
-	border: 1px solid #CADAE8;
-	border-top: 0px;
-	border-collapse: collapse;
-}
-table.criteria th{
-	padding: 0px 0px 0px 0px;
-	border: 0px solid #CADAE8;
-	font-size: 12px;
-    font-weight: normal;
-    text-align: left;
-}
-table.criteria td{
-	padding: 3px 2px 3px 2px;
-	border: 0px solid #CADAE8;
-	font-size: 12px;
-    font-weight: normal;
-    text-align: left;
-}
-table.criteria td.label{
-	padding: 2px 3px 0px 3px;
-	border: 0px solid #CADAE8;
-	font-size: 12px;
-    font-weight: bold;
-    text-align: left;
-    color: #999999;
 }
 /* class="simple" */
 table.simple thead tr {

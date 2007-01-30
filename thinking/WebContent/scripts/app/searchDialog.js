@@ -23,7 +23,7 @@ var SearchDialog = function(){
                 dialog = new YAHOO.ext.BasicDialog("searchDialog", { 
                         modal:true,
                         autoTabs:true,
-                        width:300,
+                        width:380,
                         height:500,
                         shadow:true,
                         minWidth:300,
