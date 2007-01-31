@@ -134,7 +134,7 @@ table.criteria td.label{
     text-align: left;
     color: #999999;
 }
-
+/* search page operation style */
 #operation {
 	margin: -10px 0px 0px 0px;
 	float: right;
@@ -144,6 +144,27 @@ table.criteria td.label{
 .operations {
 	float: right;
 	width: 100%;
+	text-align: right;
+	margin: 0px 0px 0px 0px;
+	height: 10px;
+	line-height:10px;
+	font-size: 12px;
+    font-weight: normal;
+}
+/* result block style */
+#result {
+	margin: -10px 0px 0px 0px;
+}
+/* edit page operation style */
+#editOper {
+	margin: 8px 0px 0px 0px;
+	float: right;
+	height: 22px;
+	background-color: #C7DFE2;
+}
+.editOpers {
+	float: right;
+	width: 100%;
 	text-align: left;
 	margin: 0px 0px 0px 0px;
 	height: 10px;
@@ -151,7 +172,9 @@ table.criteria td.label{
 	font-size: 12px;
     font-weight: normal;
 }
-#result {
+/* master Form style */
+#master {
+	background-color: #eee;
 	margin: -10px 0px 0px 0px;
 }
 /* class="simple" */
