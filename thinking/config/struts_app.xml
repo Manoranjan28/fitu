@@ -10,13 +10,15 @@
         <action name="listUser" class="userAction" method="list">
             <result>/pages/app/listUser.jsp</result>
         </action>
+        <action name="createUser" class="userAction" method="create">
+            <result>/pages/app/editUser.jsp</result>
+        </action>
         <action name="editUser" class="userAction" method="edit">
 			<param name="userId">{1}</param>
             <result>/pages/app/editUser.jsp</result>
         </action>
-        <action name="save" class="userAction" method="save">
-            <result name="input">/pages/app/editUser.jsp</result>
-            <result type="redirect">edit-${user.id}.action</result>
+        <action name="saveUser" class="userAction" method="save">
+            <result>/pages/app/editUser.jsp</result>
         </action>
     </package>
 </struts>
