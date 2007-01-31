@@ -96,14 +96,15 @@ function openwin(url, width, height, scroll)
     window.open(url, "newWindow", "height=" + height + ", width=" + width + ", toolbar =no, menubar=no, scrollbars=" + scroll + ", resizable=no, location=no, status=no, top=" + y + ", left=" + x + "") //????????????
 }
 /* Save Data */
-function saveAction(form, actionPath, valid) {
+function saveOrUpdateAction(formName, actionPath, valid) {
+	alert(formName);
 	var ok = true;
 	if (valid) {
 		ok = validate();
 	}
 	if (ok) {
-		form.action = actionPath + ".do?method=save";
-		form.submit();
+		window.document.forms[formName].action = actionPath + ".action";
+		window.document.forms[formName].submit();
 	}
 }
 function updateAction(form, actionPath, valid) {
@@ -112,12 +113,12 @@ function updateAction(form, actionPath, valid) {
 		ok = validate();
 	}
 	if (ok) {
-		form.action = actionPath + ".do?method=update";
+		form.action = actionPath + ".action";
 		form.submit();
 	}
 }
 function newAction(form, urlPath) {
-	form.action = urlPath + ".do?method=new";
+	form.action = urlPath + ".action";
 	form.submit();
 }
 function editAction(form, urlPath) {
