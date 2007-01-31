@@ -107,16 +107,7 @@ function saveOrUpdateAction(formName, actionPath, valid) {
 		window.document.forms[formName].submit();
 	}
 }
-function updateAction(form, actionPath, valid) {
-	var ok = true;
-	if (valid) {
-		ok = validate();
-	}
-	if (ok) {
-		form.action = actionPath + ".action";
-		form.submit();
-	}
-}
+
 function newAction(form, urlPath) {
 	form.action = urlPath + ".action";
 	form.submit();

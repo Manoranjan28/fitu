@@ -50,7 +50,7 @@
     <span class="operations">
     	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');" value="Create">
     	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUser');" value="Edit">
-    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/deleteUser', 'Workshift');" value="Remove">
+    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'Workshift');" value="Remove">
     </span>
 </div>
 
