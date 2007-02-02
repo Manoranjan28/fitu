@@ -6,20 +6,20 @@ import java.util.List;
 import org.commonfarm.dao.Test;
 import org.commonfarm.sap.JcoSource;
 import org.commonfarm.sap.Parameter;
-import org.commonfarm.sap.SapJCOCallback;
-import org.commonfarm.sap.SapJCOSupport;
-import org.commonfarm.sap.SapJCOTemplate;
+import org.commonfarm.sap.JcoCallback;
+import org.commonfarm.sap.JcoSupport;
+import org.commonfarm.sap.JcoTemplate;
 
 import com.sap.mw.jco.JCO.Client;
 import com.sap.mw.jco.JCO.Function;
 import com.sap.mw.jco.JCO.ParameterList;
 import com.sap.mw.jco.JCO.Table;
 
-public class TestJCODAO extends SapJCOSupport {
+public class TestJCODAO extends JcoSupport {
 	public List getObjects(String funName, Parameter paraObj) {
 		JcoSource jcoSource = new JcoSource("SAPJCO", "10.20.2.56", "ivoeif", "ivoeif", "EN", "00", "800");
-		SapJCOTemplate sapJCO = new SapJCOTemplate(jcoSource);
-        Object object = sapJCO.execute(funName, paraObj, new SapJCOCallback() {
+		JcoTemplate sapJCO = new JcoTemplate(jcoSource);
+        Object object = sapJCO.execute(funName, paraObj, new JcoCallback() {
         	public Object doInJCO(Client client, Function function, Object paraObj) {
         		ParameterList paraList = function.getImportParameterList();
         		paraList.setValue("20070202", "TODATE");
