@@ -25,7 +25,7 @@ import com.sap.mw.jco.JCO.Function;
  * @since 1.2
  * @see HibernateTemplate
  */
-public interface SapJCOCallback {
+public interface JcoCallback {
 
 	/**
 	 * Gets called by <code>HibernateTemplate.execute</code> with an active
