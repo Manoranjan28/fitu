@@ -16,12 +16,6 @@ import com.opensymphony.xwork2.ModelDriven;
 public class StrutsAction extends ActionSupport implements ServletRequestAware, ModelDriven  {
 	private static final Log logger = LogFactory.getLog(StrutsAction.class);
 	
-	protected static final String LIST = "list";
-	protected static final String EDIT = "edit";
-	protected static final String VIEW = "view";
-	protected static final String CREATE = "create";
-	protected static final String DELETE = "delete";
-	
 	/** Available items */
 	protected Collection items;
 	/** To delete items*/
@@ -57,7 +51,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 * @return
 	 */
 	public String view() throws Exception {
-		return VIEW;
+		return SUCCESS;
 	}
 	
 	/**
@@ -65,8 +59,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 * @return
 	 */
 	public String create() throws Exception {
-		thinkingService.saveObject(model);
-		return CREATE;
+		return SUCCESS;
 	}
 	
 	/**
@@ -75,7 +68,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 */
 	public String save() throws Exception {
 		thinkingService.saveObject(model);
-		return DELETE;
+		return SUCCESS;
 	}
 	
 	/**
@@ -84,7 +77,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 */
 	public String update() throws Exception {
 		thinkingService.updateObject(model);
-		return DELETE;
+		return SUCCESS;
 	}
 	
 	/**
@@ -92,7 +85,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 * @return
 	 */
 	public String delete() throws Exception {
-		return DELETE;
+		return SUCCESS;
 	}
 
 	/**
