@@ -6,9 +6,9 @@ package org.commonfarm.sap;
  *
  * @author David Yang
  */
-public class SapJCOSupport {
+public class JcoSupport {
 
-	private SapJCOTemplate sapJCOTemplate;
+	private JcoTemplate sapJCOTemplate;
 
 
 	/**
@@ -24,8 +24,8 @@ public class SapJCOSupport {
 	/**
 	 * Create a SapJCOTemplate for the given JCOSource.
 	 */
-	protected SapJCOTemplate createSapJCOTemplate(JcoSource jcoSource) {
-		return new SapJCOTemplate(jcoSource);
+	protected JcoTemplate createSapJCOTemplate(JcoSource jcoSource) {
+		return new JcoTemplate(jcoSource);
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class SapJCOSupport {
 	 * as an alternative to specifying a JCOSource.
 	 * @see #setJCOSource
 	 */
-	public final void setSapJCOTemplate(SapJCOTemplate sapJCOTemplate) {
+	public final void setSapJCOTemplate(JcoTemplate sapJCOTemplate) {
 		this.sapJCOTemplate = sapJCOTemplate;
 	}
 
@@ -48,7 +48,7 @@ public class SapJCOSupport {
 	 * Return the SapJCOTemplate for this DAO,
 	 * pre-initialized with the JCOSource or set explicitly.
 	 */
-	public final SapJCOTemplate getSapJCOTemplate() {
+	public final JcoTemplate getSapJCOTemplate() {
 	  return sapJCOTemplate;
 	}
 }

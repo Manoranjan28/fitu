@@ -11,7 +11,7 @@ import com.sap.mw.jco.JCO.Repository;
  *
  * @author David Yang
  */
-public class SapJCOTemplate {
+public class JcoTemplate {
 
 	private boolean alwaysUseNewSession = false;
 	
@@ -20,13 +20,13 @@ public class SapJCOTemplate {
 	/**
 	 * Create a new SapJCOTemplate instance.
 	 */
-	public SapJCOTemplate() {}
+	public JcoTemplate() {}
 
 	/**
 	 * Create a new SapJCOTemplate instance.
 	 * @param jcoSource JCOSource
 	 */
-	public SapJCOTemplate(JcoSource jcoSource) {
+	public JcoTemplate(JcoSource jcoSource) {
 		this.jcoSource = jcoSource;
 		afterPropertiesSet();
 	}
@@ -37,7 +37,7 @@ public class SapJCOTemplate {
 	 * @return
 	 * @throws DataAccessException
 	 */
-	public Object execute(String funName, Object paraObj, SapJCOCallback action) throws DataAccessException {
+	public Object execute(String funName, Object paraObj, JcoCallback action) throws DataAccessException {
 		Client client = getClient();
 		Repository repository = new Repository("SAPJCO", client);
 		Function function = repository.getFunctionTemplate(funName).getFunction();
@@ -61,7 +61,7 @@ public class SapJCOTemplate {
 	 * @return
 	 * @throws DataAccessException
 	 */
-	public Object find(String funName, Object paraObj, SapJCOCallback action) throws DataAccessException {
+	public Object find(String funName, Object paraObj, JcoCallback action) throws DataAccessException {
 		Client client = getClient();
 		Repository repository = new Repository(jcoSource.getRepository(), client);
 		Function function = repository.getFunctionTemplate(funName).getFunction();
