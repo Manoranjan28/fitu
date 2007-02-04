@@ -12,6 +12,10 @@ public class UserAction extends StrutsAction implements Preparable {
 	private static final Log logger = LogFactory.getLog(UserAction.class);
 	private long actionId;
 	
+	/** Request Parameters Start */
+	private Long userId;
+	/** Request Parameters End */
+	
 	/** Search Criterias Start **/
 	private String s_userId;
 	private String s_secondName;
@@ -62,5 +66,17 @@ public class UserAction extends StrutsAction implements Preparable {
 	 */
 	public void setS_secondName(String name) {
 		s_secondName = name;
+	}
+	/**
+	 * @return the userId
+	 */
+	public Long getUserId() {
+		return userId;
+	}
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 }
