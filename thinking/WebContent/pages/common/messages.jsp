@@ -1,9 +1,12 @@
 <%-- Error Messages --%>
- <div class="error">	
-     
- </div>
-
+<s:if test="%{messageChar == 'error'}">
+<div class="error">	
+    <s:property value="message" />
+</div>
+</s:if>
 <%-- Success Messages --%>
- <div class="message">	
-     <s:property value="messages" />
- </div>
+<s:if test="%{messageChar == 'message'}">
+<div class="message">	
+    <s:property value="message" />
+</div>
+</s:if>
