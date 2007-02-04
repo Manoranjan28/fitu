@@ -5,5 +5,5 @@
 
 <%-- Success Messages --%>
  <div class="message">	
-     
+     <s:property value="messages" />
  </div>
