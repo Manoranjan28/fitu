@@ -175,6 +175,7 @@ public class SecurityFilter implements Filter {
 		// Logout
 		if (originalURL.indexOf("logout.jsp") != -1) {
 			try {
+				log.info("Logout!!!!!!!!");
 				getSecurityConfig(request).getAuthenticator().logout(request, response);
 				needAuth = false;
 			} catch (AuthenticatorException e) {
