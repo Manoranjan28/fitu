@@ -49,18 +49,18 @@
 				<div class="qualityTitle">
 					<table class="login_table" cellspacing=0 cellpadding=5 width="100%" border=0>
 						<tr>
-							<td style="font-size: 14px; font-weight: bold; color: #336699k; text-align: center;">品质政策(Quality Policy)</td>
+							<td style="font-size: 14px; font-weight: bold; color: #336699k; text-align: center;">传递生活意见</td>
 						</tr>
 					</table>
 				</div>
 				<div class="hintTitle">
-					品质优先<br>Quality is the First Priority
+					灯都不亮
 				</div>
 				<div class="hintTitle">
-					持续改善<br>Continuous Improvement is Our Commitment
+					想象自由飞翔
 				</div>
 				<div class="hintTitle">
-					建立高效率的管理系统<br>Efficient Management System is the Key for Success
+					无法进行英文自我介绍
 				</div>
 			</div>
 
