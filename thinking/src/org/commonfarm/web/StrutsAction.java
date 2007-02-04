@@ -8,7 +8,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.commonfarm.search.SearchProcessor;
+import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
+import org.commonfarm.util.BeanUtil;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -25,10 +27,18 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	/** To delete items*/
 	protected String[] delItems;
 	
+	/** Domain Model **/
 	protected Object model;
+	
 	protected HttpServletRequest request;
 	
+	/** Business Logic Facade Object **/
 	protected ThinkingService thinkingService;
+	
+	/** Page I18N message **/
+	protected String message;
+	protected String messageChar;//message characteristic
+	
 	public StrutsAction() {}
 	public StrutsAction(ThinkingService thinkingService) {
 		this.thinkingService = thinkingService;
@@ -72,7 +82,19 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 * @return
 	 */
 	public String save() throws Exception {
-		thinkingService.saveObject(model);
+		Object id = BeanUtil.getPropertyValue(model, "id");
+		try {
+			thinkingService.saveObject(model);
+			if (id == null) {
+				BeanUtil.setProperty(model, "id", null);
+				setMessage(getText("saved"));
+			} else {
+				setMessage(getText("updated"));
+			}
+		} catch(BusinessException be) {
+			logger.info(be.getMessage());
+			setMessage(be.getMessage(), "error");
+		}
 		return SUCCESS;
 	}
 	
@@ -138,5 +160,26 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 */
 	public void setModelId(Long modelId) {
 		this.modelId = modelId;
+	}
+	
+	/**
+	 * @return the messages
+	 */
+	public String getMessage() {
+		return message;
+	}
+	/**
+	 * Default message characteristic is "message"
+	 * @param messages the messages to set
+	 */
+	public void setMessage(String message) {
+		this.setMessage(message, "message");
+	}
+	/**
+	 * @param messages the messages to set
+	 */
+	public void setMessage(String message, String messageChar) {
+		this.message = message;
+		this.messageChar = messageChar;
 	}
 }
