@@ -6,6 +6,7 @@
 	<title>List User Infomation</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/extremecomponents.css"/>" type="text/css" rel=stylesheet>
+    <link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
     <script src="<c:url value="/scripts/app/page.js"/>" type="text/javascript"></script>
 	<script type="text/javascript">
 	function validate() {
@@ -62,12 +63,12 @@
         <ec:column property="userId"     title="UserID" />
 		<ec:column property="secondName" title="Name" />
         <ec:column property="edit" title=" " sortable="false" viewsAllowed="html" style="width: 20px">
-	        <a href="<c:url value="/app/editUser.action&id=${user.id}"/>">
+	        <a href="<c:url value="/app/editUser.action?modelId=${user.id}"/>">
 	            <img align="absmiddle" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
 	    <ec:column property="checkbox" title=" " sortable="false" viewsAllowed="html" style="width: 20px;">
-	        <input type="checkbox" name="itemlist" value="${workshift.id}" style="border:0px"/>
+	        <input type="checkbox" name="itemlist" value="${user.id}" style="border:0px"/>
 	    </ec:column>
     </ec:row>
 </ec:table>

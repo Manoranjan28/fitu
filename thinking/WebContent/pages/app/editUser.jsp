@@ -26,20 +26,20 @@
 <div id="master">
 <s:form action="user">
 	<table class="simple">
-		<tr>
+		<tr><s:hidden name="model.id"/>
 			<td>UserID</td><td><s:textfield name="model.userId"/></td>
 			<td>UserName</td><td><s:textfield name="model.secondName"/></td>
-			<td>Password</td><td><s:password name="model.password" /></td>
+			<td>Password</td><td><s:textfield name="model.password" /></td>
 		</tr>
 		<tr>
 			<td>Adress</td><td><s:textfield name="model.address"/></td>
 			<td>ZipCode</td><td><s:textfield name="model.zcode"/></td>
-			<td>Email</td><td><s:password name="model.email" /></td>
+			<td>Email</td><td><s:textfield name="model.email" /></td>
 		</tr>
 		<tr>
 			<td>Fax</td><td><s:textfield name="model.fax"/></td>
 			<td>Tel</td><td><s:textfield name="model.tel"/></td>
-			<td>MSN</td><td><s:password name="model.imid" /></td>
+			<td>MSN</td><td><s:textfield name="model.imid" /></td>
 		</tr>
 	</table>
 </s:form>
