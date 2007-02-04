@@ -54,7 +54,7 @@
     </span>
 </div>
 
-<!-- Search List (DETAIL) -->
+<!-- Search List Start -->
 <div id="result">
 <ec:table items="list" var="user" retrieveRowsCallback="limit" sortRowsCallback="limit" autoIncludeParameters="false" action="${ctxPath}/app/listUser.action">
     <ec:exportXls view="xls" fileName="Users.xls" tooltip="Export Excel"/>
@@ -62,7 +62,7 @@
         <ec:column property="userId"     title="UserID" />
 		<ec:column property="secondName" title="Name" />
         <ec:column property="edit" title=" " sortable="false" viewsAllowed="html" style="width: 20px">
-	        <a href="<c:url value="/ws/workshiftAction.do?method=edit&id=${workshift.id}"/>">
+	        <a href="<c:url value="/app/editUser.action&id=${user.id}"/>">
 	            <img align="absmiddle" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
@@ -71,6 +71,15 @@
 	    </ec:column>
     </ec:row>
 </ec:table>
+</div>
+<!-- Search List End -->
+
+<div id="operation">
+    <span class="operations">
+    	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');" value="Create">
+    	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUser');" value="Edit">
+    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'Workshift');" value="Remove">
+    </span>
 </div>
 </body>
 </html>
