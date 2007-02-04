@@ -16,6 +16,10 @@ import com.opensymphony.xwork2.ModelDriven;
 public class StrutsAction extends ActionSupport implements ServletRequestAware, ModelDriven  {
 	private static final Log logger = LogFactory.getLog(StrutsAction.class);
 	
+	/** Request Common Parameters Start */
+	private Long modelId;
+	/** Request Common Parameters End */
+	
 	/** Available items */
 	protected Collection items;
 	/** To delete items*/
@@ -43,6 +47,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 * @return
 	 */
 	public String edit() throws Exception {
+		model = thinkingService.getObject(model.getClass(), modelId);
 		return SUCCESS;
 	}
 	
@@ -121,5 +126,17 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	}
 	public Object getModel() {
 		return model;     
+	}
+	/**
+	 * @return the modelId
+	 */
+	public Long getModelId() {
+		return modelId;
+	}
+	/**
+	 * @param modelId the modelId to set
+	 */
+	public void setModelId(Long modelId) {
+		this.modelId = modelId;
 	}
 }
