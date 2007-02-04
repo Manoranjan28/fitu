@@ -14,7 +14,6 @@
             <result>/pages/app/editUser.jsp</result>
         </action>
         <action name="editUser" class="userAction" method="edit">
-			<param name="userId">{1}</param>
             <result>/pages/app/editUser.jsp</result>
         </action>
         <action name="saveUser" class="userAction" method="save">
