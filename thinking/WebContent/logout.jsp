@@ -5,4 +5,4 @@
 	//session.invalidate();
 %>
 
-<c:redirect url="/main.action"/>
+<c:redirect url="/app/main.action"/>
