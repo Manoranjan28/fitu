@@ -97,7 +97,6 @@ function openwin(url, width, height, scroll)
 }
 /* Save Data */
 function saveOrUpdateAction(formName, actionPath, valid) {
-	alert(formName);
 	var ok = true;
 	if (valid) {
 		ok = validate();
