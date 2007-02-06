@@ -19,5 +19,8 @@
         <action name="saveUser" class="userAction" method="save">
             <result>/pages/app/editUser.jsp</result>
         </action>
+        <action name="removeUser" class="userAction" method="remove">
+            <result>/pages/app/listUser.jsp</result>
+        </action>
     </package>
 </struts>

@@ -1,15 +1,14 @@
 package org.commonfarm.app.web;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.commonfarm.app.model.User;
 import org.commonfarm.service.ThinkingService;
+import org.commonfarm.util.StringUtil;
 import org.commonfarm.web.StrutsAction;
 
 import com.opensymphony.xwork2.Preparable;
 
 public class UserAction extends StrutsAction implements Preparable {
-	private static final Log logger = LogFactory.getLog(UserAction.class);
+	//private static final Log logger = LogFactory.getLog(UserAction.class);
 	private long actionId;
 	
 	/** Request Parameters Start */
@@ -24,18 +23,9 @@ public class UserAction extends StrutsAction implements Preparable {
 	public UserAction(ThinkingService thinkingService) {
 		super(thinkingService);
 	}
-	/**
-	 * List Data
-	 * @return
-	 */
-	public String list() throws Exception {
-		if (logger.isDebugEnabled()) {
-        	logger.debug("items found");
-        }
-		
-		return search("user");
-	}
+	
 	public void prepare() throws Exception {
+		if (StringUtil.isEmpty(getSearchName())) setSearchName("user");
 		if(actionId == 0) {
             model = new User();
         } else {
