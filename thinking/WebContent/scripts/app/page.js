@@ -1,7 +1,7 @@
 //no less than one checkbox is seleted 
-function atleaseOneCheck()
+function atLeaseOneCheck()
 {
-    var items = document.all["itemlist"];
+    var items = document.all["items"];
     if(items.length>0){
 	    for (var i = 0; i < items.length; i++)
 	    {
@@ -18,7 +18,7 @@ function atleaseOneCheck()
     return false;
 }
 function moreThanOneCheck() {
-    var items = document.all["itemlist"];
+    var items = document.all["items"];
     var editFlag = false;
     if(items.length > 0) {
 	    for (var i = 0; i < items.length; i++) {
@@ -112,7 +112,7 @@ function newAction(form, urlPath) {
 	form.submit();
 }
 function editAction(form, urlPath) {
-	if (!atleaseOneCheck()) {
+	if (!atLeaseOneCheck()) {
     	alert("Please select only one!");
         return;
     }
@@ -120,18 +120,18 @@ function editAction(form, urlPath) {
     	alert("Please select only one!");
         return;
     }
-	form.action = urlPath + ".do?method=edit";
+	form.action = urlPath + ".action";
 	form.submit();
 }
 function deleteAction(form, urlPath, entityName, valid) {
 	if (confirm("Confirm to delete "+ entityName + "?")) {
-        if (!atleaseOneCheck()) {
+        if (!atLeaseOneCheck()) {
             alert("Please select more than one " + entityName + "!");
             return;
         }
         form.ec_ev.value = '';
         form.ec_efn.value = '';
-        form.action = urlPath + ".do?method=delete";
+        form.action = urlPath + ".action";
         form.submit();
     }
 }
