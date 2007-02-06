@@ -51,7 +51,7 @@
     <span class="operations">
     	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');" value="Create">
     	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUser');" value="Edit">
-    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'Workshift');" value="Remove">
+    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'User');" value="Remove">
     </span>
 </div>
 
@@ -68,7 +68,7 @@
 	        </a>
 	    </ec:column>
 	    <ec:column property="checkbox" title=" " sortable="false" viewsAllowed="html" style="width: 20px;">
-	        <input type="checkbox" name="itemlist" value="${user.id}" style="border:0px"/>
+	        <input type="checkbox" name="items" value="<c:out value="${user.id}" />" style="border:0px"/>
 	    </ec:column>
     </ec:row>
 </ec:table>
@@ -79,7 +79,7 @@
     <span class="operations">
     	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');" value="Create">
     	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUser');" value="Edit">
-    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'Workshift');" value="Remove">
+    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'User');" value="Remove">
     </span>
 </div>
 </body>
