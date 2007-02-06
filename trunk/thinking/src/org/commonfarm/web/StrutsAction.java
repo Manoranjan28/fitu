@@ -37,7 +37,10 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	
 	/** Page I18N message **/
 	protected String message;
-	protected String messageChar;//message characteristic
+	protected boolean messageChar;//message characteristic
+	
+	/** Search Name **/
+	private String searchName;
 	
 	public StrutsAction() {}
 	public StrutsAction(ThinkingService thinkingService) {
@@ -53,10 +56,24 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
     }
 	
 	/**
+	 * List Data
+	 * @return
+	 */
+	public String list() throws Exception {
+		if (logger.isDebugEnabled()) {
+        	logger.debug("items found");
+        }
+		
+		return search(searchName);
+	}
+	
+	/**
 	 * Edit Data
 	 * @return
 	 */
 	public String edit() throws Exception {
+		String[] ids = request.getParameterValues("items");
+		if (ids.length >= 1) modelId = new Long(ids[0]);
 		model = thinkingService.getObject(model.getClass(), modelId);
 		return SUCCESS;
 	}
@@ -93,7 +110,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 			}
 		} catch(BusinessException be) {
 			logger.info(be.getMessage());
-			setMessage(be.getMessage(), "error");
+			setMessage(be.getMessage(), false);
 		}
 		return SUCCESS;
 	}
@@ -108,11 +125,25 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	}
 	
 	/**
-	 * Delete Operation
+	 * Remove Operation
 	 * @return
 	 */
-	public String delete() throws Exception {
-		return SUCCESS;
+	public String remove() throws Exception {
+		String[] ids = request.getParameterValues("items");
+		int count = ids.length;
+		int delCount = 0;
+		for (int i = 0; i < count; i++) {
+			try {
+				thinkingService.removeObject(model.getClass(), new Long(ids[i]));
+				delCount++;
+			} catch(BusinessException be) {
+				setMessage(be.getMessage(), false);
+				logger.info("Delete " + delCount + " records!");
+				return search(searchName);
+			}
+		}
+		logger.info("Delete " + delCount + " records!");
+		return search(searchName);
 	}
 
 	/**
@@ -173,13 +204,25 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 * @param messages the messages to set
 	 */
 	public void setMessage(String message) {
-		this.setMessage(message, "message");
+		this.setMessage(message, true);
 	}
 	/**
 	 * @param messages the messages to set
 	 */
-	public void setMessage(String message, String messageChar) {
+	public void setMessage(String message, boolean messageChar) {
 		this.message = message;
 		this.messageChar = messageChar;
+	}
+	/**
+	 * @return the searchName
+	 */
+	public String getSearchName() {
+		return searchName;
+	}
+	/**
+	 * @param searchName the searchName to set
+	 */
+	public void setSearchName(String searchName) {
+		this.searchName = searchName;
 	}
 }
