@@ -34,10 +34,6 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	/** Business Logic Facade Object **/
 	protected ThinkingService thinkingService;
 	
-	/** Page I18N message **/
-	protected String message;
-	protected boolean messageChar;//message characteristic
-	
 	/** Search Name **/
 	private String searchName;
 	
@@ -72,7 +68,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 */
 	public String edit() throws Exception {
 		String[] ids = request.getParameterValues("items");
-		if (ids.length >= 1) modelId = new Long(ids[0]);
+		if (ids != null && ids.length >= 1) modelId = new Long(ids[0]);
 		model = thinkingService.getObject(model.getClass(), modelId);
 		return SUCCESS;
 	}
