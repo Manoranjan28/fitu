@@ -99,7 +99,7 @@ public class LoginFilter implements Filter {
 			req.setAttribute(ALREADY_FILTERED, Boolean.TRUE);
 		}
 
-		req.setAttribute(OS_AUTHSTATUS_KEY, LOGIN_NOATTEMPT);
+		//req.setAttribute(OS_AUTHSTATUS_KEY, LOGIN_NOATTEMPT);
 
 		// check for parameters
 		String username = request.getParameter("os_username");
