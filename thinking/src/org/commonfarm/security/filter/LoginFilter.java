@@ -62,8 +62,8 @@ public class LoginFilter implements Filter {
 	public static final String ALREADY_FILTERED = "loginfilter.already.filtered";
 
 	public static final String LOGIN_SUCCESS = "success";
-	public static final String LOGIN_FAILED = "failed";
-	public static final String LOGIN_ERROR = "error";
+	public static final String LOGIN_FAILED = "username or password is error!";
+	public static final String LOGIN_ERROR = "Login exception!";
 	public static final String LOGIN_NOATTEMPT = null;
 	public static final String OS_AUTHSTATUS_KEY = "os_authstatus";
 	
@@ -134,9 +134,8 @@ public class LoginFilter implements Filter {
 				e.printStackTrace();
 				log.warn("Exception was thrown whilst logging in: " + e.getMessage(), e);
 			}
-
-			for (Iterator iterator = interceptors.iterator(); iterator
-					.hasNext();) {
+			
+			for (Iterator iterator = interceptors.iterator(); iterator.hasNext();) {
 				LoginInterceptor loginInterceptor = (LoginInterceptor) iterator.next();
 				loginInterceptor.afterLogin(request, response, username, password, persistentLogin, (String) request.getAttribute(OS_AUTHSTATUS_KEY));
 			}
