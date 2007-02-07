@@ -98,7 +98,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan=2 height=10><c:out value="${requestScope.os_authstatus}"></c:out></td>
+								<td colspan=2 height=10></td>
 							</tr>
 						</table>
 					</form>
