@@ -2,7 +2,7 @@
 <s:if test="hasActionErrors()">
     <div class="error" id="errorMessages">    
 	    <s:iterator value="actionErrors">
-	    	<img src="<c:url value="/images/iconWarning.gif"/>" alt="Warnning" class="icon" />
+	    	<img src="<c:url value="/images/app/iconWarning.gif"/>" alt="Warnning" class="icon" />
 	    	<s:property escape="false"/><br />
 	    </s:iterator>
    </div>
@@ -13,7 +13,7 @@
     <div class="error" id="errorMessages">    
     	<s:iterator value="fieldErrors">
 	        <s:iterator value="value">
-	            <img src="<c:url value="/images/iconWarning.gif"/>" alt="Warnning" class="icon" />
+	            <img src="<c:url value="/images/app/iconWarning.gif"/>" alt="Warnning" class="icon" />
 	             <s:property escape="false"/><br />
 	        </s:iterator>
     	</s:iterator>
@@ -24,7 +24,7 @@
 <c:if test="hasActionMessages()">
     <div class="message" id="successMessages">
     	<s:iterator value="actionMessages">
-	    	<img src="<c:url value="/images/iconInformation.gif"/>" alt="Information" class="icon" />
+	    	<img src="<c:url value="/images/app/iconInformation.gif"/>" alt="Information" class="icon" />
 	    	<s:property escape="false"/><br />
 	    </s:iterator>    
     </div>
