@@ -6,7 +6,7 @@
 	    	<s:property escape="false"/><br />
 	    </s:iterator>
    </div>
-</ww:if>
+</s:if>
 
 <%-- FieldError Messages - usually set by validation rules --%>
 <s:if test="hasFieldErrors()">
