@@ -1,12 +1,31 @@
-<%-- Error Messages --%>
-<s:if test="messageChar">
-<div class="message">	
-    <s:property value="message" />
-</div>
+<%-- ActionError Messages - usually set in Actions --%>
+<s:if test="hasActionErrors()">
+    <div class="error" id="errorMessages">    
+	    <s:iterator value="actionErrors">
+	    	<img src="<c:url value="/images/iconWarning.gif"/>" alt="Warnning" class="icon" />
+	    	<s:property escape="false"/><br />
+	    </s:iterator>
+   </div>
+</ww:if>
+
+<%-- FieldError Messages - usually set by validation rules --%>
+<s:if test="hasFieldErrors()">
+    <div class="error" id="errorMessages">    
+    	<s:iterator value="fieldErrors">
+	        <s:iterator value="value">
+	            <img src="<c:url value="/images/iconWarning.gif"/>" alt="Warnning" class="icon" />
+	             <s:property escape="false"/><br />
+	        </s:iterator>
+    	</s:iterator>
+	</div>
 </s:if>
+
 <%-- Success Messages --%>
-<s:else>
-<div class="error">	
-    <s:property value="message" />
-</div>
-</s:else>
+<c:if test="hasActionMessages()">
+    <div class="message" id="successMessages">
+    	<s:iterator value="actionMessages">
+	    	<img src="<c:url value="/images/iconInformation.gif"/>" alt="Information" class="icon" />
+	    	<s:property escape="false"/><br />
+	    </s:iterator>    
+    </div>
+</c:if>
