@@ -1,8 +1,7 @@
 package org.commonfarm.web;
 
-import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,10 +21,10 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	private Long modelId;
 	/** Request Common Parameters End */
 	
-	/** Available items */
-	protected Collection items;
-	/** To delete items*/
-	protected String[] delItems;
+	/** Available items 
+	protected Collection items;*/
+	/** To delete items
+	protected String[] delItems;*/
 	
 	/** Domain Model **/
 	protected Object model;
@@ -104,13 +103,13 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 			thinkingService.saveObject(model);
 			if (id == null) {
 				BeanUtil.setProperty(model, "id", null);
-				setMessage(getText("saved"));
+				addActionMessage(getText("saved"));
 			} else {
-				setMessage(getText("updated"));
+				addActionMessage(getText("updated"));
 			}
 		} catch(BusinessException be) {
 			logger.info(be.getMessage());
-			setMessage(be.getMessage(), false);
+			addActionError(be.getMessage());
 		}
 		return SUCCESS;
 	}
@@ -137,7 +136,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 				thinkingService.removeObject(model.getClass(), new Long(ids[i]));
 				delCount++;
 			} catch(BusinessException be) {
-				setMessage(be.getMessage(), false);
+				addActionError(be.getMessage());
 				logger.info("Delete " + delCount + " records!");
 				return search(searchName);
 			}
@@ -145,38 +144,20 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 		logger.info("Delete " + delCount + " records!");
 		return search(searchName);
 	}
-
-	/**
-	 * @return the delItems
-	 */
-	public String[] getDelItems() {
-		return delItems;
-	}
-
-	/**
-	 * @param delItems the delItems to set
-	 */
-	public void setDelItems(String[] delItems) {
-		this.delItems = delItems;
-	}
-
-	/**
-	 * @return the items
-	 */
-	public Collection getItems() {
-		return items;
-	}
-
-	/**
-	 * @param items the items to set
-	 */
-	public void setItems(Collection items) {
-		this.items = items;
-	}
 	
+	/**
+	 * @see org.apache.struts2.interceptor.ServletRequestAware#setServletRequest(javax.servlet.http.HttpServletRequest)
+	 */
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
+	public HttpSession getSession() {
+		if (request == null) return null;
+		return request.getSession();
+	}
+	/**
+	 * Domain Model
+	 */
 	public Object getModel() {
 		return model;     
 	}
@@ -191,27 +172,6 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 */
 	public void setModelId(Long modelId) {
 		this.modelId = modelId;
-	}
-	
-	/**
-	 * @return the messages
-	 */
-	public String getMessage() {
-		return message;
-	}
-	/**
-	 * Default message characteristic is "message"
-	 * @param messages the messages to set
-	 */
-	public void setMessage(String message) {
-		this.setMessage(message, true);
-	}
-	/**
-	 * @param messages the messages to set
-	 */
-	public void setMessage(String message, boolean messageChar) {
-		this.message = message;
-		this.messageChar = messageChar;
 	}
 	/**
 	 * @return the searchName
