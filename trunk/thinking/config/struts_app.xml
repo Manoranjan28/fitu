@@ -6,7 +6,7 @@
 	
 	<package name="app" namespace="/app" extends="thinking_default" >
 		<default-interceptor-ref name="defaultStack"/>
-		
+		<!-- User Management Start -->
         <action name="listUser" class="userAction" method="list">
             <result>/pages/app/listUser.jsp</result>
         </action>
@@ -22,5 +22,24 @@
         <action name="removeUser" class="userAction" method="remove">
             <result>/pages/app/listUser.jsp</result>
         </action>
+        <!-- User Management End -->
+        
+        <!-- Role Management Start -->
+        <action name="listRole" class="roleAction" method="list">
+            <result>/pages/app/listRole.jsp</result>
+        </action>
+        <action name="createRole" class="roleAction" method="create">
+            <result>/pages/app/editRole.jsp</result>
+        </action>
+        <action name="editRole" class="roleAction" method="edit">
+            <result>/pages/app/editRole.jsp</result>
+        </action>
+        <action name="saveRole" class="roleAction" method="save">
+            <result>/pages/app/editRole.jsp</result>
+        </action>
+        <action name="removeRole" class="roleAction" method="remove">
+            <result>/pages/app/listRole.jsp</result>
+        </action>
+        <!-- Role Management End -->
     </package>
 </struts>
