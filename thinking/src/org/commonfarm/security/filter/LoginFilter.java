@@ -126,11 +126,11 @@ public class LoginFilter implements Filter {
 					request.setAttribute(OS_AUTHSTATUS_KEY, LOGIN_SUCCESS);
 				} else {
 					log.debug("Login was not successful - setting attribute to \"Failed\"");
-					request.setAttribute(OS_AUTHSTATUS_KEY, LOGIN_FAILED);
+					request.getSession().setAttribute(OS_AUTHSTATUS_KEY, LOGIN_FAILED);
 				}
 			} catch (AuthenticatorException e) {
 				log.debug("Login was not successful, and exception was thrown - setting attribute to \"Error\"");
-				request.setAttribute(OS_AUTHSTATUS_KEY, LOGIN_ERROR);
+				request.getSession().setAttribute(OS_AUTHSTATUS_KEY, LOGIN_ERROR);
 				e.printStackTrace();
 				log.warn("Exception was thrown whilst logging in: " + e.getMessage(), e);
 			}
