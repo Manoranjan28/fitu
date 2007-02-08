@@ -38,7 +38,7 @@
         </interceptors>
         
 		<global-results>
-            <result name="main" type="redirect">app/main.action</result>
+            <result name="main" type="redirect">main.action</result>
             <result name="dataAccessFailure">/pages/common/dataAccessFailure.jsp</result>
         </global-results>
         <global-exception-mappings>
