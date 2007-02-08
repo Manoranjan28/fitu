@@ -41,5 +41,23 @@
             <result>/pages/app/listRole.jsp</result>
         </action>
         <!-- Role Management End -->
+        
+        <!-- User Group Management Start -->
+        <action name="listUserGroup" class="userGroupAction" method="list">
+            <result>/pages/app/listUserGroup.jsp</result>
+        </action>
+        <action name="createUserGroup" class="userGroupAction" method="create">
+            <result>/pages/app/editUserGroup.jsp</result>
+        </action>
+        <action name="editUserGroup" class="userGroupAction" method="edit">
+            <result>/pages/app/editUserGroup.jsp</result>
+        </action>
+        <action name="saveUserGroup" class="userGroupAction" method="save">
+            <result>/pages/app/editUserGroup.jsp</result>
+        </action>
+        <action name="removeUserGroup" class="userGroupAction" method="remove">
+            <result>/pages/app/listUserGroup.jsp</result>
+        </action>
+        <!-- User Group Management End -->
     </package>
 </struts>
