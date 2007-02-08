@@ -8,10 +8,7 @@
 		<title>FitU - Thinking - Login~~</title>
 		<meta http-equiv=content-type content="text/html; charset=utf-8">
 		<link href="<c:url value="/styles/login.css" />" type=text/css rel=stylesheet>
-
-		<%
-			session.invalidate();
-		%>
+		<link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
 		<script language='javascript'>
         function efoc() {
             var elem = window.event.srcElement;
@@ -66,7 +63,7 @@
 
 			<div id="loginForm">
 				<div class="login_table_bg">
-					<form name="form1" method="post" action="<c:url value="/app/main.action" />">
+					<form name="form1" method="post" action="<c:url value="/main.action" />">
 						<table class="login_table" cellspacing=0 cellpadding=5 width="100%" border=0>
 							<tr>
 								<td align="right">帐&nbsp;号(Account)&nbsp;&nbsp;：</td>
@@ -98,7 +95,15 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan=2 height=10></td>
+								<td colspan=2 height=15>
+								<c:if test="${not empty os_authstatus}">
+								    <div class="message" id="successMessages">
+							            <img src="<c:url value="/images/app/iconInformation.gif"/>" alt="Information" class="icon" />
+							            <c:out value="${os_authstatus}" escapeXml="false"/>
+								    </div>
+								    <c:remove var="os_authstatus" scope="session"/>
+								</c:if>
+								</td>
 							</tr>
 						</table>
 					</form>

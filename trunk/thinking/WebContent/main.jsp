@@ -34,7 +34,7 @@
 			<h3>User Management</h3>
 				<div class="pkg-body">
 					<a href="<c:url value="/app/listRole.action" />">Role Management</a>
-					<a href="<c:url value="/app/listGroup.action" />">User Group Management</a>
+					<a href="<c:url value="/app/listUserGroup.action" />">User Group Management</a>
 					<a href="<c:url value="/app/listUser.action" />">User Management</a> 
 				</div>                  
 				<a href="<c:url value="/app/listUser.action" />">User Management</a> 
