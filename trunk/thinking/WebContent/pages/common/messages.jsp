@@ -21,11 +21,12 @@
 </s:if>
 
 <%-- Success Messages --%>
-<c:if test="hasActionMessages()">
+<c:if test="${not empty messages}">
     <div class="message" id="successMessages">
-    	<s:iterator value="actionMessages">
-	    	<img src="<c:url value="/images/app/iconInformation.gif"/>" alt="Information" class="icon" />
-	    	<s:property escape="false"/><br />
-	    </s:iterator>    
+    	<c:forEach var="msg" items="${messages}">
+            <img src="<c:url value="/images/app/iconInformation.gif"/>" alt="Information" class="icon" />
+            <c:out value="${msg}" escapeXml="false"/><br />
+        </c:forEach> 
     </div>
+    <c:remove var="messages" scope="session"/>
 </c:if>

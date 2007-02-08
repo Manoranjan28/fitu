@@ -18,13 +18,13 @@
 </div>
 <div id="editOper">
     <span class="editOpers">
-    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('user', '<c:out value="${ctxPath}"/>/app/saveRole');" value="Save">
+    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('role', '<c:out value="${ctxPath}"/>/app/saveRole');" value="Save">
     	<input class="buttComm" type="button" onclick="history.back();" value="Back">
     </span>
 </div>
 <!-- Form Start -->
 <div id="master">
-<s:form action="user">
+<s:form action="role">
 	<table class="simple">
 		<tr><s:hidden name="model.id"/>
 			<td>RoleName</td><td><s:textfield name="model.name"/></td>
