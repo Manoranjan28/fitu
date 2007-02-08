@@ -129,6 +129,8 @@ public class DefaultAuthenticator extends AbstractAuthenticator {
         }
 
         request.getSession().setAttribute(LOGGED_IN_KEY, null);
+        request.getSession().removeAttribute("LOGIN_USER");
+        request.getSession().invalidate();
         request.getSession().setAttribute(LOGGED_OUT_KEY, Boolean.TRUE);
 
         try {

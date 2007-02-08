@@ -1,5 +1,8 @@
 package org.commonfarm.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -41,6 +44,15 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	public StrutsAction(ThinkingService thinkingService) {
 		this.thinkingService = thinkingService;
 	}
+	
+	protected void saveMessage(String msg) {
+        List messages = (List) getSession().getAttribute("messages");
+        if (messages == null) {
+            messages = new ArrayList();
+        }
+        messages.add(msg);
+        getSession().setAttribute("messages", messages);
+    }
 	
 	public String search(String searchName) throws Exception {
 		logger.info("Execute search: " + searchName);
@@ -99,9 +111,9 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 			thinkingService.saveObject(model);
 			if (id == null) {
 				BeanUtil.setProperty(model, "id", null);
-				addActionMessage(getText("saved"));
+				saveMessage(getText("saved"));
 			} else {
-				addActionMessage(getText("updated"));
+				saveMessage(getText("updated"));
 			}
 		} catch(BusinessException be) {
 			logger.info(be.getMessage());
@@ -137,6 +149,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 				return search(searchName);
 			}
 		}
+		saveMessage("Delete " + delCount + " records!");
 		logger.info("Delete " + delCount + " records!");
 		return search(searchName);
 	}

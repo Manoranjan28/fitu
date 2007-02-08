@@ -88,6 +88,11 @@ public class SecurityFilter implements Filter {
 		//if (needAuth) needAuth = isNeedAuth(request, response, originalURL, "");//#####DB Auth
 		
 		Principal user = getSecurityConfig(request).getAuthenticator().getUser(request, response);
+		//Exception after logout, input context path for address and "Enter". We can address main page
+		if (user == null && originalURL.indexOf("index.jsp") != -1
+				&& originalURL.indexOf("login.jsp") == -1) {
+			needAuth = true;
+		}
 		// if we need to authenticate, store current URL and forward
 		if (needAuth) {
 			if (user != null) {
