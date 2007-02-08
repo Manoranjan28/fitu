@@ -31,6 +31,37 @@
 			<td>Desc</td><td><s:textfield name="model.descn"/></td>
 		</tr>
 	</table>
+	<br>
+	<table>
+		<tr>
+			<td>
+				<table class="simple">
+					<tr>
+						<td></td><td>UserID</td><td>UserName</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td><td>Hello</td><td>hello</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td><td>junhao</td><td>hello</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table class="simple">
+					<tr>
+						<td></td><td>RoleName</td><td>RoleDesc</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td><td>Hello</td><td>hello</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td><td>junhao</td><td>hello</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 </s:form>
 </div>
 <!-- Form End -->

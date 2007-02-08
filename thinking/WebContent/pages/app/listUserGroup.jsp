@@ -63,7 +63,7 @@
         <ec:column property="name"  title="GroupName" />
 		<ec:column property="descn" title="Desc" />
         <ec:column property="edit" title=" " sortable="false" viewsAllowed="html" style="width: 20px">
-	        <a href="<c:url value="/app/editRole.action?modelId=${userGroup.id}"/>">
+	        <a href="<c:url value="/app/editUserGroup.action?modelId=${userGroup.id}"/>">
 	            <img align="absmiddle" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
