@@ -12,4 +12,9 @@
             <ref bean="thinkingService" />
         </constructor-arg>
     </bean>
+    <bean id="userGroupAction" class="org.commonfarm.app.web.UserGroupAction" singleton="true" lazy-init="false">    
+       	<constructor-arg index="0">
+            <ref bean="thinkingService" />
+        </constructor-arg>
+    </bean>
 </beans>
