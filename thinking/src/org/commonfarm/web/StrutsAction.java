@@ -21,7 +21,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	private static final Log logger = LogFactory.getLog(StrutsAction.class);
 	
 	/** Request Common Parameters Start */
-	private Long modelId;
+	protected Long modelId;
 	/** Request Common Parameters End */
 	
 	/** Available items 
