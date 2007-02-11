@@ -64,7 +64,12 @@
 		<ec:column property="descn" title="Desc" />
         <ec:column property="edit" title=" " sortable="false" viewsAllowed="html" style="width: 20px">
 	        <a href="<c:url value="/app/editUserGroup.action?modelId=${userGroup.id}"/>">
-	            <img align="absmiddle" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
+	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
+	        </a>
+	    </ec:column>
+	    <ec:column property="users" title="User" sortable="false" viewsAllowed="html" style="width: 20px">
+	        <a href="<c:url value="/app/selectUser.action?modelId=${userGroup.id}"/>">
+	            <img align="absmiddle" alt="Select User" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
 	    <ec:column property="checkbox" title=" " sortable="false" viewsAllowed="html" style="width: 20px;">
