@@ -66,19 +66,6 @@ function batch_do(form, entityName, action)
         form.submit();
     }
 }
-function batch_auth(form, entityName, action)
-{
-    if (confirm("Confirm to authorize "+ entityName + "?"))
-    {
-        if (!atleaseOneCheck())
-        {
-            alert("Please select more than one " + entityName + "!");
-            return;
-        }
-        form.action = action;
-        form.submit();
-    }
-}
 
 function openwin(url, width, height, scroll)
 {
@@ -131,6 +118,16 @@ function deleteAction(form, urlPath, entityName, valid) {
         }
         form.ec_ev.value = '';
         form.ec_efn.value = '';
+        form.action = urlPath + ".action";
+        form.submit();
+    }
+}
+function selectAction(form, urlPath, entityName, valid) {
+	if (confirm("Confirm to select "+ entityName + "?")) {
+        if (!atLeaseOneCheck()) {
+            alert("Please select more than one " + entityName + "!");
+            return;
+        }
         form.action = urlPath + ".action";
         form.submit();
     }
