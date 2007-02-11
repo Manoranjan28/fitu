@@ -1,6 +1,9 @@
 package org.commonfarm.app.model;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -98,7 +101,7 @@ public class UserGroup {
 	 */
 	@ManyToMany(
 		targetEntity = User.class,
-		cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+		cascade = {CascadeType.ALL}
 	)
 	@JoinTable(
 		name = "SYS_R_USER_GROUP",
@@ -118,5 +121,22 @@ public class UserGroup {
 	public void addUser(User user) {
 		if (users == null) users = new HashSet();
 		users.add(user);
+	}
+	
+	/**
+	 * select or repeal users
+	 * @param selectUsers
+	 * @param cancelUsers
+	 */
+	public void selectUsers(List selectUsers, List cancelUsers) {
+		Collection users = this.getUsers();
+    	for (Iterator it = selectUsers.iterator(); it.hasNext();) {
+			User user = (User) it.next();
+			if (!users.contains(user)) users.add(user);
+		}
+    	for (Iterator it = cancelUsers.iterator(); it.hasNext();) {
+			User user = (User) it.next();
+			if (users.contains(user)) users.remove(user);
+		}
 	}
 }

@@ -1,6 +1,8 @@
 package org.commonfarm.service;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -107,4 +109,22 @@ public class ThinkingService {
     public List getObjects(Class clazz, Map criterias) {
     	return hibernateDAO.getObjects(clazz, criterias);
     }
+    
+    /**
+     * implement one-to-many or many-to-many method
+     * @param models   one side object
+     * @param selectModels many side object
+     * @param cancelModels many side object
+     */
+	public void selectObjects(Collection models, List selectModels, List cancelModels) {
+		//Collection users = this.getUsers();
+    	for (Iterator it = selectModels.iterator(); it.hasNext();) {
+			Object selectModel = it.next();
+			if (!models.contains(selectModel)) models.add(selectModel);
+		}
+    	for (Iterator it = cancelModels.iterator(); it.hasNext();) {
+			Object cancelModel = it.next();
+			if (models.contains(cancelModel)) models.remove(cancelModel);
+		}
+	}
 }

@@ -38,6 +38,8 @@ public class User implements Principal{
 	private String imid;
 	private Date bornDate;
 	
+	private boolean selected = false;
+	
 	private Set groups;
 	
 	public User() {}
@@ -282,5 +284,20 @@ public class User implements Principal{
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * @return the selected
+	 */
+	@Transient
+	public boolean isSelected() {
+		return selected;
+	}
+
+	/**
+	 * @param selected the selected to set
+	 */
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 }

@@ -1,6 +1,11 @@
 package org.commonfarm.app.web;
 
-import org.commonfarm.app.model.Role;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.commonfarm.app.model.User;
 import org.commonfarm.app.model.UserGroup;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
@@ -22,13 +27,50 @@ public class UserGroupAction extends StrutsAction implements Preparable {
 	public UserGroupAction(ThinkingService thinkingService) {
 		super(thinkingService);
 	}
+	/**
+	 * Select users for user group
+	 * @return
+	 */
+	public String select() throws Exception {
+		UserGroup group = (UserGroup) thinkingService.getObject(UserGroup.class, new Long(modelId));
+		
+		String[] ids = request.getParameterValues("items");
+		if (ids != null) {
+			List selectUsers = new ArrayList();
+			List cancelUsers = new ArrayList();
+            for (int i = 0; i < ids.length; i++) {
+                User user = (User) thinkingService.getObject(User.class, new Long(ids[i].split("_")[0]));
+                if (ids[i].split("_")[1].equals("false")) {
+                	selectUsers.add(user);
+                } else {
+                	cancelUsers.add(user);
+                }
+            }
+            thinkingService.selectObjects(group.getUsers(), selectUsers, cancelUsers);
+		}
+		
+		request.setAttribute("GROUP", group);
+		
+		search("user");
+		List users = (List) request.getAttribute("list");
+        Set selectedUsers = group.getUsers();
+        for (Iterator iter = users.iterator(); iter.hasNext();) {
+			User user = (User) iter.next();
+			if (selectedUsers.contains(user)) user.setSelected(true);
+		}
+		return SUCCESS;
+	}
 	
+	/**
+	 * init: set search name and initialize model object
+	 * @see com.opensymphony.xwork2.Preparable#prepare()
+	 */
 	public void prepare() throws Exception {
 		if (StringUtil.isEmpty(getSearchName())) setSearchName("userGroup");
 		if(actionId == 0) {
             model = new UserGroup();
         } else {
-            model = thinkingService.getObject(Role.class, new Long(actionId));
+            model = thinkingService.getObject(UserGroup.class, new Long(actionId));
         }
 
 	}
