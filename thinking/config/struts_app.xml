@@ -58,6 +58,9 @@
         <action name="removeUserGroup" class="userGroupAction" method="remove">
             <result>/pages/app/listUserGroup.jsp</result>
         </action>
+        <action name="selectUser" class="userGroupAction" method="select">
+            <result>/pages/app/selectUser.jsp</result>
+        </action>
         <!-- User Group Management End -->
     </package>
 </struts>
