@@ -101,7 +101,7 @@ public class UserGroup {
 	 */
 	@ManyToMany(
 		targetEntity = User.class,
-		cascade = {CascadeType.ALL}
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE}
 	)
 	@JoinTable(
 		name = "SYS_R_USER_GROUP",

@@ -1,6 +1,7 @@
 package org.commonfarm.app.web;
 
 import org.commonfarm.app.model.Role;
+import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
 import org.commonfarm.web.StrutsAction;
@@ -22,6 +23,9 @@ public class RoleAction extends StrutsAction implements Preparable {
 		super(thinkingService);
 	}
 	
+	public void remove(String id) throws BusinessException {
+		thinkingService.removeObject(model, new Long(id), new String[] {"groups", "role"});
+	}
 	public void prepare() throws Exception {
 		if (StringUtil.isEmpty(getSearchName())) setSearchName("role");
 		if(actionId == 0) {

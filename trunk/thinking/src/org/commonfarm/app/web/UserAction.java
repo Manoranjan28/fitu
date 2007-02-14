@@ -1,6 +1,7 @@
 package org.commonfarm.app.web;
 
 import org.commonfarm.app.model.User;
+import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
 import org.commonfarm.web.StrutsAction;
@@ -22,6 +23,12 @@ public class UserAction extends StrutsAction implements Preparable {
 	
 	public UserAction(ThinkingService thinkingService) {
 		super(thinkingService);
+	}
+	/**
+	 * if you master this framework, you must not implement this method and you can use invention
+	 */
+	public void remove(String id) throws BusinessException {
+		thinkingService.removeObject(model, new Long(id), new String[] {"groups", "users"});
 	}
 	
 	public void prepare() throws Exception {
