@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.commonfarm.dao.HibernateDAO;
+import org.commonfarm.util.BeanUtil;
 import org.springframework.dao.DataIntegrityViolationException;
 
 public class ThinkingService {
@@ -94,6 +95,18 @@ public class ThinkingService {
 	    	throw new BusinessException("A certain object associats this " + clazz.getName() + "!" );
 	    }
     }
+    
+    public void removeObject(Object model, Serializable id, String[] cascadeNames) throws BusinessException {
+		Collection collection = (Collection) BeanUtil.getPropertyValue(getObject(model.getClass(), id), cascadeNames[0]);
+		for (Iterator it = collection.iterator(); it.hasNext();) {
+			BeanUtil.setProperty(it.next(), cascadeNames[1], null);
+		}
+		removeObject(model.getClass(), id);
+    }
+    public void removeOneToMany(Class clazz, Serializable id, String oneName) {
+		//Object model = getObject(clazz, id);
+		
+	}
     public void removeObjects(Class clazz , Serializable[] ids) throws BusinessException {
     	
     }
@@ -117,7 +130,6 @@ public class ThinkingService {
      * @param cancelModels many side object
      */
 	public void selectObjects(Collection models, List selectModels, List cancelModels) {
-		//Collection users = this.getUsers();
     	for (Iterator it = selectModels.iterator(); it.hasNext();) {
 			Object selectModel = it.next();
 			if (!models.contains(selectModel)) models.add(selectModel);
@@ -127,4 +139,5 @@ public class ThinkingService {
 			if (models.contains(cancelModel)) models.remove(cancelModel);
 		}
 	}
+
 }

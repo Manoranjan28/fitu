@@ -141,7 +141,7 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 		int delCount = 0;
 		for (int i = 0; i < count; i++) {
 			try {
-				thinkingService.removeObject(model.getClass(), new Long(ids[i]));
+				this.remove(ids[i]);//thinkingService.removeObject(model.getClass(), new Long(ids[i]));
 				delCount++;
 			} catch(BusinessException be) {
 				addActionError(be.getMessage());
@@ -153,7 +153,16 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 		logger.info("Delete " + delCount + " records!");
 		return search(searchName);
 	}
-	
+	/**
+	 * When to happen cascade delete problem in many-to-many or one-to-many, we need re-implement this method
+	 * We need cut relation between A(Object) and B(Object), then remove object
+	 * Example: thinkingService.removeObject(model, new Long(id), new String[] {"groups", "users"});
+	 * @param id
+	 * @throws BusinessException
+	 */
+	public void remove(String id) throws BusinessException {
+		thinkingService.removeObject(model.getClass(), new Long(id));
+	}
 	/**
 	 * @see org.apache.struts2.interceptor.ServletRequestAware#setServletRequest(javax.servlet.http.HttpServletRequest)
 	 */
