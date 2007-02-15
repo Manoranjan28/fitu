@@ -31,7 +31,7 @@
 			<td>Desc</td><td><s:textfield name="model.descn"/></td>
 		</tr>
 		<tr>
-			<td>Role</td><td colspan="3"><s:textfield name="model.role.name"/></td>
+			<td>Role</td><td colspan="3"><s:textfield name="model.role.id"/></td>
 		</tr>
 	</table>
 </s:form>
