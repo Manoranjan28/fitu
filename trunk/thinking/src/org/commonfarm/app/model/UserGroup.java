@@ -108,6 +108,9 @@ public class UserGroup {
 		joinColumns = {@JoinColumn(name = "GROUP_ID")},
 		inverseJoinColumns = {@JoinColumn(name = "USER_ID")}
 	)
+	/*@org.hibernate.annotations.Cascade(
+		value = org.hibernate.annotations.CascadeType.SAVE_UPDATE
+	)*/
 	public Set getUsers() {
 		return users;
 	}

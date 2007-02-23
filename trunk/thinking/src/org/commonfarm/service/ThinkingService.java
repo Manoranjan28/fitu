@@ -77,7 +77,7 @@ public class ThinkingService {
      */
     public void updateObject(Object o) throws BusinessException {
     	try {
-    		hibernateDAO.saveObject(o);
+    		hibernateDAO.updateObject(o);
 	    } catch (DataIntegrityViolationException e) {
 	    	throw new BusinessException("Update failure!");
 	    }
@@ -103,10 +103,7 @@ public class ThinkingService {
 		}
 		removeObject(model.getClass(), id);
     }
-    public void removeOneToMany(Class clazz, Serializable id, String oneName) {
-		//Object model = getObject(clazz, id);
-		
-	}
+   
     public void removeObjects(Class clazz , Serializable[] ids) throws BusinessException {
     	
     }

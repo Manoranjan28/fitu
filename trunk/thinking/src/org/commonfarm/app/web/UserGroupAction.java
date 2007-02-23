@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.commonfarm.app.model.User;
 import org.commonfarm.app.model.UserGroup;
+import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
 import org.commonfarm.web.StrutsAction;
@@ -61,6 +62,24 @@ public class UserGroupAction extends StrutsAction implements Preparable {
 		return SUCCESS;
 	}
 	
+	/**
+	 * Process Update Operation
+	 * @return
+	 */
+	protected boolean processUpdate(Object model) throws BusinessException {
+		UserGroup group = (UserGroup) model;
+		UserGroup oldGroup = (UserGroup) thinkingService.getObject(UserGroup.class, group.getId());
+		oldGroup.setName(group.getName());
+		oldGroup.setDescn(group.getDescn());
+		oldGroup.setRole(group.getRole());
+		try {
+			thinkingService.updateObject(oldGroup);
+		} catch (Exception e) {
+			addActionError("Update failure! " + e.getMessage());
+			return false;
+		}
+		return true;
+	}
 	/**
 	 * init: set search name and initialize model object
 	 * @see com.opensymphony.xwork2.Preparable#prepare()

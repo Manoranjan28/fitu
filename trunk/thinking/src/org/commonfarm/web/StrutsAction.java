@@ -105,15 +105,18 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	 * Save Operation
 	 * @return
 	 */
-	public String save() throws Exception {
+	public String saveOrUpdate() throws Exception {
 		Object id = BeanUtil.getPropertyValue(model, "id");
 		try {
-			thinkingService.saveObject(model);
 			if (id == null) {
-				BeanUtil.setProperty(model, "id", null);
-				saveMessage(getText("saved"));
+				if (processSave(model)) {
+					BeanUtil.setProperty(model, "id", null);
+					saveMessage(getText("saved"));
+				}
 			} else {
-				saveMessage(getText("updated"));
+				if (processUpdate(model)) {
+					saveMessage(getText("updated"));
+				}
 			}
 		} catch(BusinessException be) {
 			logger.info(be.getMessage());
@@ -123,12 +126,31 @@ public class StrutsAction extends ActionSupport implements ServletRequestAware, 
 	}
 	
 	/**
-	 * Update Operation
+	 * Process Save Operation
 	 * @return
 	 */
-	public String update() throws Exception {
-		thinkingService.updateObject(model);
-		return SUCCESS;
+	protected boolean processSave(Object model) throws BusinessException {
+		try {
+			thinkingService.saveObject(model);
+		} catch (Exception e) {
+			addActionError("Save failure! " + e.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Process Update Operation
+	 * @return
+	 */
+	protected boolean processUpdate(Object model) throws BusinessException {
+		try {
+			thinkingService.updateObject(model);
+		} catch (Exception e) {
+			addActionError("Update failure! " + e.getMessage());
+			return false;
+		}
+		return true;
 	}
 	
 	/**
