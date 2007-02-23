@@ -129,6 +129,13 @@ public class HibernateDAO extends HibernateDaoSupport {
         getHibernateTemplate().flush();
     }
     /**
+     * Only update Object
+     */
+    public void updateObject(Object o) {
+        getHibernateTemplate().update(o);
+        getHibernateTemplate().flush();
+    }
+    /**
      * Remove object by id
      */
     public void removeObject(Class clazz, Serializable id) {
