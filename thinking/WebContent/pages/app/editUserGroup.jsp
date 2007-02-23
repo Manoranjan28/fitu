@@ -6,6 +6,7 @@
 	<title>Edit UserGroup Infomation</title>
 	<link href="<c:url value="/styles/app/page.css"/>" type=text/css rel=stylesheet>
 	<link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
+	<link href="<c:url value="/styles/app/extremecomponents.css"/>" type="text/css" rel=stylesheet>
 	<script type="text/javascript" src="<c:url value="/scripts/app/page.js"/>"></script>
 </head>
 
@@ -28,10 +29,12 @@
 	<table class="simple">
 		<tr><s:hidden name="model.id"/>
 			<td>GroupName</td><td><s:textfield name="model.name"/></td>
+		</tr>
+		<tr>
 			<td>Desc</td><td><s:textfield name="model.descn"/></td>
 		</tr>
 		<tr>
-			<td>Role</td><td colspan="3"><s:textfield name="model.role.id"/></td>
+			<td>Role</td><td><s:textfield name="model.role.id"/></td>
 		</tr>
 	</table>
 </s:form>
