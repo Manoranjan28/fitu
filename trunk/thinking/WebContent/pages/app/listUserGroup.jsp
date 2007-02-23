@@ -28,16 +28,16 @@
 <s:form action="listRole" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
-			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/arrowdown.gif"/>" border="0" /></td>
+			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/down.png"/>" border="0" /></td>
 			<td class="labelSearch">Search Criterias</td>
-			<td style="text-align: right;"><div id="searchButt">
+			<td style="text-align: right;"><div id="searchButt" style="display: none;">
 				<input class="buttSearch" type="submit" value="<fmt:message key='butt.search'/>" name="search">&nbsp;
 				<input class="buttSearch" type="reset" value="<fmt:message key='butt.reset'/>" name="reset">
 			</div></td>
 		</tr>
 	</table>
-	<div id="criteria">
-	<table class="criteria">
+	<div id="criteria" style="display: none;">
+	<table class="criteria" >
 		<tr>
 			<td class="label">Group Name:</td><td><s:textfield name="s_name" size="12"/></td>
 		</tr>

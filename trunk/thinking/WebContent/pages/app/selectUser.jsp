@@ -31,7 +31,7 @@
 </table>
 <!-- Search Criterias START -->
 <div id="search">
-<s:form action="listUser" onsubmit="return validate();">
+<s:form action="selectUser" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
 			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/arrowright.gif"/>" border="0" /></td>

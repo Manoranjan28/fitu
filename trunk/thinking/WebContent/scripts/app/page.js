@@ -136,11 +136,11 @@ function hideSearch(ctxPath){
 	if (document.getElementById("searchButt").style.display == 'none') {
 		document.getElementById("searchButt").style.display = 'inline';
 		document.getElementById("criteria").style.display = 'inline';
-		document.getElementById("hideImg").src = ctxPath + '/images/icon/16x16/arrowdown.gif';
+		document.getElementById("hideImg").src = ctxPath + '/images/icon/16x16/up.png';
 	} else {
 		document.getElementById("searchButt").style.display = 'none';
 		document.getElementById("criteria").style.display = 'none';
-		document.getElementById("hideImg").src = ctxPath + '/images/icon/16x16/arrowright.gif';
+		document.getElementById("hideImg").src = ctxPath + '/images/icon/16x16/down.png';
 	}
 }
 function imageRoll(target, action) {
