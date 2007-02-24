@@ -7,18 +7,19 @@
 <!-- by MyEclipse Hibernate tool integration.                   -->
 <hibernate-configuration>
 	<session-factory>
-		<!-- properties 
+		<!-- properties -->
 		<property name="connection.username">test</property>
-		<property name="connection.url">jdbc:mysql://localhost/ivoapp?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="connection.url">jdbc:mysql://localhost/second?useUnicode=true&amp;characterEncoding=utf8</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="connection.password">test</property>
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
-		<!-- -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- 
 		<property name="connection.username">test</property>
 		<property name="connection.password">test</property>
 		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:SECOND</property>
 		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
-		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>-->
+		
 		<!-- 
 		<property name="connection.username">sa</property>
 	    <property name="connection.password"></property>

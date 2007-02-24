@@ -44,10 +44,13 @@ public class HibernateUtil {
         try {
             Configuration cfg = new AnnotationConfiguration().configure(ResourceUtil.getURL("classpath:generator/hibernate.cfg.xml"));
             sessionFactory = cfg.buildSessionFactory();
-            SchemaExport se = null;//new SchemaExport(cfg);
-            SchemaUpdate su = new SchemaUpdate(cfg);
+            SchemaExport se = new SchemaExport(cfg);
+            SchemaUpdate su = null;//new SchemaUpdate(cfg);
             if (su != null) su.execute(true, true);
-            if (se != null) se.create(true, true);
+            if (se != null) {
+            	se.drop(true, true); 
+            	se.create(true, true);
+            }
         } catch (Throwable ex) {
             // We have to catch Throwable, otherwise we will miss
             // NoClassDefFoundError and other subclasses of Error
