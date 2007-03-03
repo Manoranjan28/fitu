@@ -125,4 +125,6 @@ public interface Constant {
 	public static final String ACTION_MESSAGES = "actionMessages";
 	public static final String CONFIG_VALIDATE = "validateRule";
 	public static final int DEFAULT_PAGE_SIZE = 1000;
+
+	public static final String DEFAULT_ENCODING = "UTF-8";
 }

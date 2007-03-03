@@ -136,5 +136,4 @@ public class ThinkingService {
 			if (models.contains(cancelModel)) models.remove(cancelModel);
 		}
 	}
-
 }
