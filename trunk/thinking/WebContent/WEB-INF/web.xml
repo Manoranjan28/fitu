@@ -23,15 +23,6 @@
 		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
 		<param-value>en</param-value>
 	</context-param>
-    <!-- ===== ExtremeComponent ===== -->
-    <context-param>
-  		<param-name>extremecomponentsMessagesLocation</param-name>
-  		<param-value>ApplicationResources</param-value>
-	</context-param>
-    <context-param>
-        <param-name>extremecomponentsPreferencesLocation</param-name>
-        <param-value>/extremetable.properties</param-value>
-    </context-param>
     <!-- ================== Filter ================== -->
     <!-- Struts2 filter -->
     <filter>
@@ -73,6 +64,11 @@
             <param-value>classpath:security-config.xml</param-value>
         </init-param>
 	</filter>
+	<!-- ECSide Export Filter -->
+	<filter>
+		<filter-name>ecsideFilter</filter-name>
+		<filter-class>org.commonfarm.web.ECSideFilter</filter-class>
+	</filter>
     <!-- ================== Filter Mapping ================== -->
     <filter-mapping>
         <filter-name>encodingFilter</filter-name><!-- Must be placed before loginFilter and securityFilter -->
@@ -82,6 +78,10 @@
         <filter-name>hibernateFilter</filter-name><!-- Must be placed before loginFilter and securityFilter -->
         <url-pattern>*.action</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+		<filter-name>ecsideFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
     <filter-mapping>
 		<filter-name>loginFilter</filter-name>
 		<url-pattern>/*</url-pattern>
