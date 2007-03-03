@@ -5,18 +5,24 @@
     <%@ include file="/pages/common/meta.jsp"%>
 	<title>List UserGroup Infomation</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
-    <link href="<c:url value="/styles/app/extremecomponents.css"/>" type="text/css" rel=stylesheet>
+    <link href="<c:url value="/styles/ecside/ecside_ec.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
     <script src="<c:url value="/scripts/app/page.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/scripts/ecside/ecside.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/scripts/ecside/prototypeajax.js"/>" type="text/javascript"></script>
 	<script type="text/javascript">
 	function validate() {
 		var valid = true;
 		return valid;
 	}
+	function init(){
+		var ecside=new ECSide(); 
+		ecside.init();
+	}
 	</script>
 </head>
 
-<body>
+<body onload="init()">
 <div id="title">
 	<table class="headerTitle"><tr>
 		<td style="width: 350px;"><div id="pageTitle">List UserGroup Infomation</div></td>
@@ -25,7 +31,7 @@
 </div>
 <!-- Search Criterias START -->
 <div id="search">
-<s:form action="listRole" onsubmit="return validate();">
+<s:form action="listUserGroup" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
 			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/down.png"/>" border="0" /></td>
@@ -56,36 +62,35 @@
 
 <!-- Search List Start -->
 <div id="result">
-<ec:table items="list" var="userGroup" retrieveRowsCallback="limit" 
-	sortRowsCallback="limit" autoIncludeParameters="false" action="${ctxPath}/app/listUserGroup.action">
-    <ec:exportXls view="xls" fileName="Roles.xls" tooltip="Export Excel"/>
-    <ec:row>
-        <ec:column property="name"  title="GroupName" />
-		<ec:column property="descn" title="Desc" />
-        <ec:column property="edit" title=" " sortable="false" viewsAllowed="html" style="width: 20px">
+<ec:table items="list" var="userGroup" action="${ctxPath}/app/listUserGroup.action"
+	xlsFileName="UserGroup.xls"
+	showPrint="true"
+	minColWidth="80"
+	resizeColWidth="true"
+	maxRowsExported="10000000"
+	pageSizeList="10,100,1000,all"
+	sortable="true"
+	nearPageNum="0"
+	width="100%" listHeight="100%"
+>
+	<ec:row>
+		<ec:column width="38" property="_0" title="No."  value="${GLOBALROWCOUNT}" />
+		<ec:column property="name" title="Group Name"/>
+		<ec:column property="descn" title="Desc"/>
+		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
 	        <a href="<c:url value="/app/editUserGroup.action?modelId=${userGroup.id}"/>">
 	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
-	    <ec:column property="users" title="User" sortable="false" viewsAllowed="html" style="width: 20px">
+	    <ec:column width="40" property="users" title="User" viewsAllowed="html">
 	        <a href="<c:url value="/app/selectUser.action?modelId=${userGroup.id}"/>">
 	            <img align="absmiddle" alt="Select User" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
-	    <ec:column property="checkbox" title=" " sortable="false" viewsAllowed="html" style="width: 20px;">
-	        <input type="checkbox" name="items" value="<c:out value="${userGroup.id}" />" style="border:0px"/>
-	    </ec:column>
-    </ec:row>
+		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${userGroup.id}" viewsAllowed="html" />
+	</ec:row>
 </ec:table>
 </div>
 <!-- Search List End -->
-
-<div id="operation">
-    <span class="operations">
-    	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUserGroup');" value="Create">
-    	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUserGroup');" value="Edit">
-    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUserGroup', 'UserGroup');" value="Remove">
-    </span>
-</div>
 </body>
 </html>
