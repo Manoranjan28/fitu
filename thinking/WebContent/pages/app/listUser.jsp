@@ -53,16 +53,13 @@
 </s:form>
 </div>
 <!-- Search Criterias END -->
-<div id="operation">
-    <span class="operations">
-    	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');" value="Create">
-    	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUser');" value="Edit">
-    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'User');" value="Remove">
-    </span>
-</div>
-
+<div id="operation"><table class="operation"><tr><td>
+	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUser');" value="Create">
+	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUser');" value="Edit">
+	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUser', 'User');" value="Remove">
+</td></tr></table></div>
 <!-- Search List Start -->
-<div id="result">
+<div id="result"><table class="result"><tr><td>
 <ec:table items="list" var="user" action="${ctxPath}/app/listUser.action"
 	xlsFileName="User.xls"
 	showPrint="true"
@@ -91,7 +88,7 @@
 		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${user.id}" viewsAllowed="html" />
 	</ec:row>
 </ec:table>
-</div>
+</td></tr></table></div>
 <!-- Search List End -->
 </body>
 </html>

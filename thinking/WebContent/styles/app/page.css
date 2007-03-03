@@ -7,6 +7,10 @@ body {
 	scrollbar-darkshadow-color:#666666;
 	scrollbar-track-color:#EEEEEE;
 }
+form {
+	margin: 0;
+	padding: 0;
+}
 input,textarea,select {
     font-size: 12px;
     color: #336699;
@@ -62,12 +66,12 @@ BUTTON, .submitButton, .butt {
 }
 /*#267BB1 #07478E #0D5F9B*/
 #title {
-	margin: -10px 0px 0px 0px;
+	margin: -5px 0px 0px 0px;
 }
 .headerTitle {
     width: 100%;
     border: 0px solid #CADAE8;
-    padding:5px 0px 0px 5px;
+    padding:0px 0px 0px 0px;
 }
 .headerTitle td {
     border: 0px solid #CADAE8;
@@ -92,7 +96,7 @@ BUTTON, .submitButton, .butt {
 }
 
 #search {
-	margin: -10px 0px 0px 0px;
+	margin: 5px 0px 0px 0px;
 }
 table.searchBar {
 	width: 100%;
@@ -147,24 +151,29 @@ table.criteria td.label{
 }
 /* search page operation style */
 #operation {
-	margin: -10px 0px 0px 0px;
+	margin: 5px 0px 0px 0px;
 	float: right;
 	height: 22px;
-	background-color: #C6C6C6;
 }
-.operations {
-	float: right;
+table.operation {
 	width: 100%;
+	float: right;
 	text-align: right;
-	margin: 0px 0px 0px 0px;
-	height: 10px;
-	line-height:10px;
-	font-size: 12px;
-    font-weight: normal;
+	padding: 0px 0px 0px 0px;
+	border-collapse: collapse;;
+	border-spacing: 0;
+	background-color: #C6C6C6;
 }
 /* result block style */
 #result {
-	margin: -10px 0px 0px 0px;
+	margin: 5px 0px 0px 0px;
+	float: right;
+}
+table.result {
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+	border-collapse: collapse;;
+	border-spacing: 0;
 }
 /* edit page operation style */
 #editOper {

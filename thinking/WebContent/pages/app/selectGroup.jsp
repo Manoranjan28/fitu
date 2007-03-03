@@ -58,13 +58,11 @@
 </s:form>
 </div>
 <!-- Search Criterias END -->
-<div id="operation">
-    <span class="operations">
-    	<input class="buttComm" type="button" onclick="selectAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/selectGroup', 'group');" value="Select">
-    </span>
-</div>
+<div id="operation"><table class="operation"><tr><td>
+   	<input class="buttComm" type="button" onclick="selectAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/selectGroup', 'group');" value="Select">
+</td></tr></table></div>
 <!-- Search List Start -->
-<div id="result">
+<div id="result"><table class="result"><tr><td>
 <ec:table items="list" var="group" action="${ctxPath}/app/selectGroup.action"
 	minColWidth="80"
 	resizeColWidth="true"
@@ -91,7 +89,7 @@
 		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${group.id}_${group.selected}" viewsAllowed="html" />
 	</ec:row>
 </ec:table>
-</div>
+</td></tr></table></div>
 <!-- Search List End -->
 
 </body>
