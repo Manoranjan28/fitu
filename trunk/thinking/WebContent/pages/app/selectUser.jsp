@@ -5,18 +5,24 @@
     <%@ include file="/pages/common/meta.jsp"%>
 	<title>Select User</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
-    <link href="<c:url value="/styles/app/extremecomponents.css"/>" type="text/css" rel=stylesheet>
+    <link href="<c:url value="/styles/ecside/ecside_ec.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
     <script src="<c:url value="/scripts/app/page.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/scripts/ecside/ecside.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/scripts/ecside/prototypeajax.js"/>" type="text/javascript"></script>
 	<script type="text/javascript">
 	function validate() {
 		var valid = true;
 		return valid;
 	}
+	function init(){
+		var ecside=new ECSide(); 
+		ecside.init();
+	}
 	</script>
 </head>
 
-<body>
+<body onload="init()">
 <div id="title">
 	<table class="headerTitle"><tr>
 		<td style="width: 350px;"><div id="pageTitle">Select User</div></td>
@@ -34,7 +40,7 @@
 <s:form action="selectUser" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
-			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/arrowright.gif"/>" border="0" /></td>
+			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/down.png"/>" border="0" /></td>
 			<td class="labelSearch">Search Criterias</td>
 			<td style="text-align: right;"><div id="searchButt" style="display: none;">
 				<input class="buttSearch" type="submit" value="<fmt:message key='butt.search'/>" name="search">&nbsp;
@@ -60,11 +66,20 @@
 </div>
 <!-- Search List Start -->
 <div id="result">
-<ec:table items="list" var="user" retrieveRowsCallback="limit" sortRowsCallback="limit" autoIncludeParameters="false" action="${ctxPath}/app/selectUser.action">
-    <ec:row>
-        <ec:column property="userId"     title="UserID" />
+<ec:table items="list" var="user" action="${ctxPath}/app/selectUser.action"
+	minColWidth="80"
+	resizeColWidth="true"
+	maxRowsExported="10000000"
+	pageSizeList="10,100,1000,all"
+	sortable="true"
+	nearPageNum="0"
+	width="100%" listHeight="100%"
+>
+	<ec:row>
+		<ec:column width="38" property="_0" title="No."  value="${GLOBALROWCOUNT}" />
+		<ec:column property="userId"     title="UserID" />
 		<ec:column property="secondName" title="Name" />
-		<ec:column property="selected" title=" " style="width: 26px;text-align: center">
+		<ec:column property="selected" title=" " width="25">
 			<c:choose>
 				<c:when test="${user.selected}">
 					<img align="absmiddle" src="<c:url value="/images/icon/16x16/box_checked.gif"/>" border="0" />
@@ -74,18 +89,11 @@
 				</c:otherwise>
 			</c:choose>
 		</ec:column>
-	    <ec:column property="checkbox" title=" " sortable="false" viewsAllowed="html" style="width: 20px;">
-	        <input type="checkbox" name="items" value="${user.id}_${user.selected}" style="border:0px"/>
-	    </ec:column>
-    </ec:row>
+		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${user.id}_${user.selected}" viewsAllowed="html" />
+	</ec:row>
 </ec:table>
 </div>
 <!-- Search List End -->
 
-<div id="operation">
-    <span class="operations">
-    	<input class="buttComm" type="button" onclick="selectAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/selectUser', 'user');" value="Select">
-    </span>
-</div>
 </body>
 </html>

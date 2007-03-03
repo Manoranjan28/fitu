@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="/pages/common/meta.jsp"%>
-	<title>List Role Infomation</title>
+	<title>Select User Group</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/ecside/ecside_ec.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
@@ -25,27 +25,33 @@
 <body onload="init()">
 <div id="title">
 	<table class="headerTitle"><tr>
-		<td style="width: 350px;"><div id="pageTitle">List Role Infomation</div></td>
+		<td style="width: 350px;"><div id="pageTitle">Select User Group</div></td>
 		<td><%@ include file="/pages/common/messages.jsp" %></td>
 	</tr></table>
 </div>
+<table class="master">
+	<tr>
+		<th style="width: 100px;">UserID</th><td><c:out value="${USER.userId}" /></td>
+		<th style="width: 100px;">Name</th><td><c:out value="${USER.secondName}" /></td>
+	</tr>
+</table>
 <!-- Search Criterias START -->
 <div id="search">
-<s:form action="listRole" onsubmit="return validate();">
+<s:form action="selectGroup" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
-			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/up.png"/>" border="0" /></td>
+			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/down.png"/>" border="0" /></td>
 			<td class="labelSearch">Search Criterias</td>
-			<td style="text-align: right;"><div id="searchButt">
+			<td style="text-align: right;"><div id="searchButt" style="display: none;">
 				<input class="buttSearch" type="submit" value="<fmt:message key='butt.search'/>" name="search">&nbsp;
 				<input class="buttSearch" type="reset" value="<fmt:message key='butt.reset'/>" name="reset">
 			</div></td>
 		</tr>
 	</table>
-	<div id="criteria">
+	<div id="criteria" style="display: none;">
 	<table class="criteria">
 		<tr>
-			<td class="label">Role Name:</td><td><s:textfield name="s_name" size="10"/></td>
+			<td class="label">Group Name:</td><td><s:textfield name="s_name" size="10"/></td>
 		</tr>
 	</table>
 	</div>
@@ -54,17 +60,12 @@
 <!-- Search Criterias END -->
 <div id="operation">
     <span class="operations">
-    	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createRole');" value="Create">
-    	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editRole');" value="Edit">
-    	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeRole', 'Role');" value="Remove">
+    	<input class="buttComm" type="button" onclick="selectAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/selectGroup', 'group');" value="Select">
     </span>
 </div>
-
 <!-- Search List Start -->
 <div id="result">
-<ec:table items="list" var="role" action="${ctxPath}/app/listRole.action"
-	xlsFileName="Role.xls"
-	showPrint="true"
+<ec:table items="list" var="group" action="${ctxPath}/app/selectGroup.action"
 	minColWidth="80"
 	resizeColWidth="true"
 	maxRowsExported="10000000"
@@ -75,17 +76,23 @@
 >
 	<ec:row>
 		<ec:column width="38" property="_0" title="No."  value="${GLOBALROWCOUNT}" />
-		<ec:column property="name" title="Group Name"/>
-		<ec:column property="descn" title="Desc"/>
-		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
-	        <a href="<c:url value="/app/editRole.action?modelId=${role.id}"/>">
-	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
-	        </a>
-	    </ec:column>
-		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${role.id}" viewsAllowed="html" />
+		<ec:column property="name"     title="Group Name" />
+		<ec:column property="descn" title="Desc" />
+		<ec:column property="selected" title=" " width="25">
+			<c:choose>
+				<c:when test="${group.selected}">
+					<img align="absmiddle" src="<c:url value="/images/icon/16x16/box_checked.gif"/>" border="0" />
+				</c:when>
+				<c:otherwise>
+					<img align="absmiddle" src="<c:url value="/images/icon/16x16/box_unchecked.gif"/>" border="0" />
+				</c:otherwise>
+			</c:choose>
+		</ec:column>
+		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${group.id}_${group.selected}" viewsAllowed="html" />
 	</ec:row>
 </ec:table>
 </div>
 <!-- Search List End -->
+
 </body>
 </html>

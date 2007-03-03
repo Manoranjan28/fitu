@@ -1,0 +1,63 @@
+.tableTitle3{
+background-image:url(../../images/ecside/button1.gif);
+border:0px #cccccc solid;
+border-bottom: 1px solid #cccccc;
+border-top: 1px solid  #cccccc;
+border-left: 1px solid  #cccccc;
+border-right: 1px solid  #cccccc;
+color:#3A3A3A;
+font-weight:bolder;
+height:22px;
+padding:3px 0px 1px 8px;
+text-align:left;
+vertical-align:middle;
+width:100%;
+white-space:nowrap;word-break:keep-all;word-wrap:normal;
+}
+
+.formButton{
+background-color:transparent;
+background-image:url(../../images/ecside/button1.gif);
+background-repeat: repeat-x;
+border: outset 1px  #bbbbbb;
+border-collapse:  separate;
+vertical-align: bottom;
+color:#333333;
+cursor:pointer;
+height:22px;
+width:80px;
+margin:3px 4px 3px 4px;
+padding: 3px 3px 0px 3px;
+}
+
+.simpleFormTable{
+border:1px solid #CCCCCC;
+ border-collapse: collapse; 
+border-top:0px solid #CCCCCC;
+padding:0px;
+margin:5px 0px 5px 0px;
+}
+
+.formTableCore {
+margin:0px;
+width: 100%;
+}
+
+.formTableC {
+	padding-top: 5px; 
+	width:100%;
+}
+
+.simpleFormTableC {
+	border :1px solid #cccccc;
+	border-top: 0px;
+}
+
+.formButtonTD{
+text-align: center;
+}
+
+@media print {
+	.notPrint {display:none;}
+
+}
