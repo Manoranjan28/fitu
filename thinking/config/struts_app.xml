@@ -22,6 +22,9 @@
         <action name="removeUser" class="userAction" method="remove">
             <result>/pages/app/listUser.jsp</result>
         </action>
+        <action name="selectGroup" class="userAction" method="select">
+            <result>/pages/app/selectGroup.jsp</result>
+        </action>
         <!-- User Management End -->
         
         <!-- Role Management Start -->
