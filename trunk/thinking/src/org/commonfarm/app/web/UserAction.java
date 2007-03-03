@@ -1,6 +1,11 @@
 package org.commonfarm.app.web;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
 import org.commonfarm.app.model.User;
+import org.commonfarm.app.model.UserGroup;
 import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
@@ -19,11 +24,46 @@ public class UserAction extends StrutsAction implements Preparable {
 	/** Search Criterias Start **/
 	private String s_userId;
 	private String s_secondName;
+	//select group criterias
+	private String s_name;
 	/** Search Criterias End **/
 	
 	public UserAction(ThinkingService thinkingService) {
 		super(thinkingService);
 	}
+	
+	/**
+	 * Select groups for user
+	 * @return
+	 */
+	public String select() throws Exception {
+		User user = (User) thinkingService.getObject(User.class, new Long(modelId));
+		
+		String[] ids = request.getParameterValues("items");
+		if (ids != null) {
+            for (int i = 0; i < ids.length; i++) {
+                UserGroup group = (UserGroup) thinkingService.getObject(UserGroup.class, new Long(ids[i].split("_")[0]));
+                if (ids[i].split("_")[1].equals("false")) {
+                	group.addUser(user);
+                } else {
+                	group.removeUser(user);
+                }
+                thinkingService.updateObject(group);
+            }
+		}
+		
+		request.setAttribute("USER", user);
+		
+		search("userGroup");
+		List groups = (List) request.getAttribute("list");
+        Set selectedGroups = user.getGroups();
+        for (Iterator iter = groups.iterator(); iter.hasNext();) {
+			UserGroup group = (UserGroup) iter.next();
+			if (selectedGroups.contains(group)) group.setSelected(true);
+		}
+		return SUCCESS;
+	}
+	
 	/**
 	 * if you master this framework, you must not implement this method and you can use invention
 	 */
@@ -75,5 +115,19 @@ public class UserAction extends StrutsAction implements Preparable {
 	 */
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	/**
+	 * @return the s_name
+	 */
+	public String getS_name() {
+		return s_name;
+	}
+
+	/**
+	 * @param s_name the s_name to set
+	 */
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
 	}
 }

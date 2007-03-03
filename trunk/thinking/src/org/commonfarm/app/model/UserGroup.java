@@ -16,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -30,6 +31,8 @@ public class UserGroup {
 	
 	private Set users;
 	private Role role;
+	
+	private boolean selected = false;
 	
 	public UserGroup() {}
 	public UserGroup(String name) {
@@ -125,7 +128,11 @@ public class UserGroup {
 		if (users == null) users = new HashSet();
 		users.add(user);
 	}
-	
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+		}
+	}
 	/**
 	 * select or repeal users
 	 * @param selectUsers
@@ -141,5 +148,18 @@ public class UserGroup {
 			User user = (User) it.next();
 			if (users.contains(user)) users.remove(user);
 		}
+	}
+	/**
+	 * @return the selected
+	 */
+	@Transient
+	public boolean isSelected() {
+		return selected;
+	}
+	/**
+	 * @param selected the selected to set
+	 */
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 }

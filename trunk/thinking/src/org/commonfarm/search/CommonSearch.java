@@ -83,6 +83,9 @@ public class CommonSearch extends HibernateDaoSupport {
      * @return
      */
     public List getCurrentPageList(int currentPage) {
+    	if (logger.isInfoEnabled()) {
+	    	logger.info("Page Num:" + new Integer(currentPage));
+		}
         Session session = this.getSession();
         try {
             Class domainClass = Class.forName(className);  
