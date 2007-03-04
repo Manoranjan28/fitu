@@ -15,6 +15,7 @@ public class Article {
 	private Boolean goodFlg;//aissign by administrator
 	private Boolean stickyFlg;
 	private Integer readCnt;
+	private Set attachments;
 	private Set comments;
 	private String createUser;
 	private Date createDate;
@@ -173,5 +174,19 @@ public class Article {
 	 */
 	public void setStickyFlg(Boolean stickyFlg) {
 		this.stickyFlg = stickyFlg;
+	}
+
+	/**
+	 * @return the attachs
+	 */
+	public Set getAttachments() {
+		return attachments;
+	}
+
+	/**
+	 * @param attachs the attachs to set
+	 */
+	public void setAttachments(Set attachs) {
+		this.attachments = attachs;
 	}
 }
