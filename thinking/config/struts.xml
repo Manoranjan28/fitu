@@ -10,7 +10,7 @@
     <constant name="struts.objectFactory" value="spring" />
 	<!-- Configuration for the default package. -->
     
-    <include file="app-default.xml"/>
-    <include file="app-support.xml"/>
+    <include file="struts/app-default.xml"/>
+    <include file="struts/app-support.xml"/>
     
 </struts>
