@@ -4,7 +4,7 @@
 
 <struts>
 	
-	<package name="app" namespace="/app" extends="thinking_default" >
+	<package name="app" namespace="/app" extends="app_default" >
 		<default-interceptor-ref name="defaultStack"/>
 		<!-- User Management Start -->
         <action name="listUser" class="userAction" method="list">
