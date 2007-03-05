@@ -19,22 +19,22 @@ public class Space {
 	private String owner;
 	private String createUser;
 	private Date createDate;
-	private Set category;
+	private Set topics;
 	
 	public Space() {}
 
 	/**
 	 * @return the category
 	 */
-	public Set getCategory() {
-		return category;
+	public Set getTopics() {
+		return topics;
 	}
 
 	/**
 	 * @param category the category to set
 	 */
-	public void setCategory(Set category) {
-		this.category = category;
+	public void setTopics(Set category) {
+		this.topics = category;
 	}
 
 	/**
