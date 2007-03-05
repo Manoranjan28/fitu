@@ -29,12 +29,7 @@
 		<td><%@ include file="/pages/common/messages.jsp" %></td>
 	</tr></table>
 </div>
-<table class="master">
-	<tr>
-		<th style="width: 100px;">Group Name</th><td><c:out value="${GROUP.name}" /></td>
-		<th style="width: 100px;">Desc</th><td><c:out value="${GROUP.descn}" /></td>
-	</tr>
-</table>
+
 <!-- Search Criterias START -->
 <div id="search">
 <s:form action="selectUser" onsubmit="return validate();">
@@ -59,9 +54,20 @@
 </s:form>
 </div>
 <!-- Search Criterias END -->
-<div id="operation"><table class="operation"><tr><td>
+<div id="operation">
+<table class="operation"><tr><td>
    	<input class="buttComm" type="button" onclick="selectAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/selectUser', 'user');" value="Select">
-</td></tr></table></div>
+</td></tr></table>
+</div>
+<div id="master">
+<table class="master">
+	<tr>
+		<th style="width: 100px;">Group Name</th><td><c:out value="${GROUP.name}" /></td>
+		<th style="width: 100px;">Desc</th><td><c:out value="${GROUP.descn}" /></td>
+	</tr>
+</table>
+</div>
+
 <!-- Search List Start -->
 <div id="result"><table class="result"><tr><td>
 <ec:table items="list" var="user" action="${ctxPath}/app/selectUser.action"
