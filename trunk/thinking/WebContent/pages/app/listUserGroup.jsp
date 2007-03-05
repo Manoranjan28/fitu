@@ -80,9 +80,9 @@
 	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
-	    <ec:column width="40" property="users" title="User" viewsAllowed="html">
+	    <ec:column width="25" property="users" title=" " viewsAllowed="html">
 	        <a href="<c:url value="/app/selectUser.action?modelId=${userGroup.id}"/>">
-	            <img align="absmiddle" alt="Select User" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
+	            <img align="absmiddle" alt="Select User" src="<c:url value="/images/icon/16x16/user.jpg"/>" border="0"/>
 	        </a>
 	    </ec:column>
 		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${userGroup.id}" viewsAllowed="html" />
