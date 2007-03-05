@@ -100,7 +100,7 @@ BUTTON, .submitButton, .butt {
 }
 table.searchBar {
 	width: 100%;
-	background-color: #C7DFE2;
+	background-color: #c3daf9;
 	border: 0px solid #0D5F9B;
 	border-collapse: collapse;
 }
@@ -153,7 +153,6 @@ table.criteria td.label{
 #operation {
 	margin: 5px 0px 0px 0px;
 	float: right;
-	height: 22px;
 }
 table.operation {
 	width: 100%;
@@ -162,7 +161,36 @@ table.operation {
 	padding: 0px 0px 0px 0px;
 	border-collapse: collapse;;
 	border-spacing: 0;
-	background-color: #C6C6C6;
+	background-color: #c3daf9;
+}
+/* master data */
+#master {
+	margin: 0px 0px 0px 0px;
+	float: right;
+}
+table.master {
+	width: 100%;
+	float: right;
+	text-align: right;
+	padding: 0px 0px 0px 0px;
+	border-collapse: collapse;;
+	border-spacing: 0;
+}
+table.master th{
+	padding: 3px 2px 3px 2px;
+	background: eee;
+	border: 1px solid #CADAE8;
+	font-size: 13px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+}
+table.master td{
+	padding: 3px 2px 3px 2px;
+	border: 1px solid #CADAE8;
+	font-size: 13px;
+    font-weight: normal;
+    text-align: left;
 }
 /* result block style */
 #result {
@@ -192,11 +220,7 @@ table.result {
 	font-size: 12px;
     font-weight: normal;
 }
-/* master Form style */
-#master {
-	background-color: #eee;
-	margin: -10px 0px 0px 0px;
-}
+
 /* class="simple" */
 table.simple thead tr {
   background-color: #eee;
@@ -235,26 +259,4 @@ table.simple td a:hover {
 	color: #000000;
 	font-weight: normal;
 	text-decoration: none;
-}
-/* TABLE master*/
-table.master {
-	width: 100%;
-	border: 0px solid #CADAE8;
-	border-collapse: collapse;
-}
-table.master th{
-	padding: 3px 2px 3px 2px;
-	background: url( "../../images/app/tableTopbg.gif" );
-	border: 1px solid #CADAE8;
-	font-size: 12px;
-    font-weight: bold;
-    text-align: left;
-    color: white;
-}
-table.master td{
-	padding: 3px 2px 3px 2px;
-	border: 1px solid #CADAE8;
-	font-size: 12px;
-    font-weight: normal;
-    text-align: left;
 }
