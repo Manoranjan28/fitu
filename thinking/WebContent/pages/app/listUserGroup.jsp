@@ -5,7 +5,7 @@
     <%@ include file="/pages/common/meta.jsp"%>
 	<title>List UserGroup Infomation</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
-    <link href="<c:url value="/styles/ecside/ecside_ec.css"/>" type="text/css" rel=stylesheet>
+    <link href="<c:url value="/styles/app/ecside_ec.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
     <script src="<c:url value="/scripts/app/page.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/scripts/ecside/ecside.js"/>" type="text/javascript"></script>
