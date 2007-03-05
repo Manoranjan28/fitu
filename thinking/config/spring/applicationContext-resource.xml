@@ -5,7 +5,7 @@
 	<!-- JNDI DataSource for J2EE environments -->
     <!--<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/appfuse"/>-->
 	<!-- Datasource Apache DBCP connection pool -->
-	<!-- MySQL DB -->
+	<!-- MySQL DB-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost/second?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
@@ -18,6 +18,7 @@
         <property name="removeAbandoned" value="true"/>
         <property name="removeAbandonedTimeout" value="60"/>
     </bean>
+    
 	<!-- Oracle DB 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
@@ -31,5 +32,19 @@
         <property name="removeAbandoned" value="true"/>
         <property name="removeAbandonedTimeout" value="60"/>
 	</bean>-->
+	<!-- SQL Server DB
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>
+        <property name="url" value="jdbc:jtds:sqlserver://10.20.48.225/thinking"/>
+        <property name="username" value="sa"/>
+        <property name="password" value="IVO.com.cn"/>
+        <property name="maxActive" value="100"/>
+        <property name="maxIdle" value="30"/>
+        <property name="maxWait" value="1000"/>
+        <property name="defaultAutoCommit" value="true"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="60"/>
+        <property name="logAbandoned" value="true"/>
+    </bean> -->
 
 </beans>
