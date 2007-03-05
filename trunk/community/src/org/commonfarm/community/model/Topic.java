@@ -9,7 +9,7 @@ import java.util.Set;
  * @author david
  *
  */
-public class Category {
+public class Topic {
 	private Long id;
 	private String name;
 	private String label;
@@ -19,7 +19,7 @@ public class Category {
 	private Space space;
 	private Set articles;
 	
-	public Category() {}
+	public Topic() {}
 
 	/**
 	 * @return the articles
