@@ -3,10 +3,13 @@
  */
 package org.commonfarm.community.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +25,8 @@ public class Attachment {
 	private String descn;
 	private String location;
 	private String size;
+	
+	private Article article;
 	
 	public Attachment() {}
 
@@ -109,5 +114,21 @@ public class Attachment {
 	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+
+	/**
+	 * @return the article
+	 */
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "ARTICLE_ID")
+	public Article getArticle() {
+		return article;
+	}
+
+	/**
+	 * @param article the article to set
+	 */
+	public void setArticle(Article article) {
+		this.article = article;
 	}
 }
