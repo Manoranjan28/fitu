@@ -2,6 +2,18 @@ package org.commonfarm.community.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * @author david
+ *
+ */
+@Entity
+@Table(name = "CM_O_ATTACHMENTS")
 public class Comment {
 	private Long id;
 	private String content;
@@ -55,6 +67,8 @@ public class Comment {
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
