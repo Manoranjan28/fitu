@@ -13,7 +13,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "CM_O_ATTACHMENTS")
+@Table(name = "CM_O_COMMENTS")
 public class Comment {
 	private Long id;
 	private String content;
