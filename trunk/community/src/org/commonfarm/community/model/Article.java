@@ -127,8 +127,8 @@ public class Article {
 	 */
 	@OneToMany(
 		targetEntity = Comment.class,
-		cascade = {CascadeType.PERSIST, CascadeType.MERGE}
-		//mappedBy = "article"
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "article"
 	)
 	public Set getComments() {
 		return comments;
@@ -202,8 +202,8 @@ public class Article {
 	 */
 	@OneToMany(
 		targetEntity = Attachment.class,
-		cascade = {CascadeType.PERSIST, CascadeType.MERGE}
-		//mappedBy = "article"
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "article"
 	)
 	public Set getAttachments() {
 		return attachments;

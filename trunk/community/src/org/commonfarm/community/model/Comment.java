@@ -2,10 +2,13 @@ package org.commonfarm.community.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,8 +20,11 @@ import javax.persistence.Table;
 public class Comment {
 	private Long id;
 	private String content;
+	private String email;
 	private String createUser;
 	private Date createDate;
+	
+	private Article article;
 	
 	public Comment() {}
 
@@ -78,5 +84,35 @@ public class Comment {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the article
+	 */
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "ARTICLE_ID")
+	public Article getArticle() {
+		return article;
+	}
+
+	/**
+	 * @param article the article to set
+	 */
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
