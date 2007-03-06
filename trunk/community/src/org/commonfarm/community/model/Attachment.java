@@ -3,10 +3,15 @@
  */
 package org.commonfarm.community.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * @author david
  *
  */
+@Entity
+@Table(name = "CM_O_ATTACHMENTS")
 public class Attachment {
 	private Long id;
 	private String name;

@@ -5,10 +5,23 @@ package org.commonfarm.community.model;
 
 import java.util.Date;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 /**
  * @author david
  *
  */
+@Entity
+@Table(name = "CM_O_TOPICS")
 public class Topic {
 	private Long id;
 	private String name;
@@ -16,6 +29,7 @@ public class Topic {
 	private String descn;
 	private String type;//normal; special
 	private String createUser;
+	private Date updateDate;
 	private Date createDate;
 	private Space space;
 	private Set articles;
@@ -25,6 +39,15 @@ public class Topic {
 	/**
 	 * @return the articles
 	 */
+	@ManyToMany(
+		targetEntity = Article.class,
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+	)
+	@JoinTable(
+		name = "CM_R_TOPIC_ARTICLE",
+		joinColumns = {@JoinColumn(name = "TOPIC_ID")},
+		inverseJoinColumns = {@JoinColumn(name = "ARTICLE_ID")}
+	)
 	public Set getArticles() {
 		return articles;
 	}
@@ -81,6 +104,8 @@ public class Topic {
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -109,6 +134,8 @@ public class Topic {
 	/**
 	 * @return the space
 	 */
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "SPACE_ID")
 	public Space getSpace() {
 		return space;
 	}
@@ -134,11 +161,31 @@ public class Topic {
 		this.label = label;
 	}
 
+	/**
+	 * @return the type
+	 */
 	public String getType() {
 		return type;
 	}
 
+	/**
+	 * @param type the type to set
+	 */
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	/**
+	 * @return the updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * @param updateDate the updateDate to set
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

@@ -6,10 +6,20 @@ package org.commonfarm.community.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * @author david
  *
  */
+@Entity
+@Table(name = "CM_O_SPACES")
 public class Space {
 	private Long id;
 	private String name;
@@ -26,6 +36,11 @@ public class Space {
 	/**
 	 * @return the category
 	 */
+	@OneToMany(
+		targetEntity = Topic.class,
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "space"
+	)
 	public Set getTopics() {
 		return topics;
 	}
@@ -82,6 +97,8 @@ public class Space {
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
