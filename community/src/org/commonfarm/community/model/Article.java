@@ -2,10 +2,21 @@ package org.commonfarm.community.model;
 
 import java.util.Date;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 /**
  * @author david
  *
  */
+@Entity
+@Table(name = "CM_O_ARTICLES")
 public class Article {
 	private Long id;
 	private String title;
@@ -14,11 +25,14 @@ public class Article {
 	private String level;//5 star gived by reader
 	private Boolean goodFlg;//aissign by administrator
 	private Boolean stickyFlg;
-	private Integer readCnt;
+	private Integer viewCnt;
 	private Set attachments;
 	private Set comments;
 	private String createUser;
 	private Date createDate;
+	private Date updateDate;
+	
+	private Set topics;
 	
 	public Article() {}
 
@@ -53,6 +67,8 @@ public class Article {
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -109,6 +125,11 @@ public class Article {
 	/**
 	 * @return the comments
 	 */
+	@OneToMany(
+		targetEntity = Comment.class,
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "article"
+	)
 	public Set getComments() {
 		return comments;
 	}
@@ -137,15 +158,15 @@ public class Article {
 	/**
 	 * @return the readCnt
 	 */
-	public Integer getReadCnt() {
-		return readCnt;
+	public Integer getViewCnt() {
+		return viewCnt;
 	}
 
 	/**
 	 * @param readCnt the readCnt to set
 	 */
-	public void setReadCnt(Integer readCnt) {
-		this.readCnt = readCnt;
+	public void setViewCnt(Integer readCnt) {
+		this.viewCnt = readCnt;
 	}
 
 	/**
@@ -179,6 +200,11 @@ public class Article {
 	/**
 	 * @return the attachs
 	 */
+	@OneToMany(
+		targetEntity = Attachment.class,
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "article"
+	)
 	public Set getAttachments() {
 		return attachments;
 	}
@@ -188,5 +214,38 @@ public class Article {
 	 */
 	public void setAttachments(Set attachs) {
 		this.attachments = attachs;
+	}
+
+	/**
+	 * @return the topics
+	 */
+	@ManyToMany(
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "articles",
+		targetEntity = Topic.class
+	)
+	public Set getTopics() {
+		return topics;
+	}
+
+	/**
+	 * @param topics the topics to set
+	 */
+	public void setTopics(Set topics) {
+		this.topics = topics;
+	}
+
+	/**
+	 * @return the updateDate
+	 */
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	/**
+	 * @param updateDate the updateDate to set
+	 */
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }
