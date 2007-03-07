@@ -26,7 +26,7 @@ public class Article {
 	private Boolean goodFlg;//aissign by administrator
 	private Boolean stickyFlg;
 	private Integer viewCnt;
-	private Set attachments;
+	private Set attachments; 
 	private Set comments;
 	private String createUser;
 	private Date createDate;
