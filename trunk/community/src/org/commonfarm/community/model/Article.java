@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
@@ -221,11 +222,8 @@ public class Article {
 	/**
 	 * @return the topics
 	 */
-	@ManyToMany(
-		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-		mappedBy = "articles",
-		targetEntity = Topic.class
-	)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "TOPIC_ID")
 	public Set getTopics() {
 		return topics;
 	}
