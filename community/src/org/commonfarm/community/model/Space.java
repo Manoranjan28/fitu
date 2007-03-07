@@ -25,7 +25,7 @@ public class Space {
 	private String name;
 	private String subject;
 	private String descn;
-	private String type;//Blog, Article category
+	private String type;//Blog; Article category;
 	private String owner;
 	private String createUser;
 	private Date createDate;
