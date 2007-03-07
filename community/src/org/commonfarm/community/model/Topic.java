@@ -12,9 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
  * @author david
@@ -39,14 +38,10 @@ public class Topic {
 	/**
 	 * @return the articles
 	 */
-	@ManyToMany(
+	@OneToMany(
 		targetEntity = Article.class,
-		cascade = {CascadeType.PERSIST, CascadeType.MERGE}
-	)
-	@JoinTable(
-		name = "CM_R_TOPIC_ARTICLE",
-		joinColumns = {@JoinColumn(name = "TOPIC_ID")},
-		inverseJoinColumns = {@JoinColumn(name = "ARTICLE_ID")}
+		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+		mappedBy = "topic"
 	)
 	public Set getArticles() {
 		return articles;
