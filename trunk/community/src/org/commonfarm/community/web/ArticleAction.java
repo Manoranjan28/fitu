@@ -14,7 +14,7 @@ import org.commonfarm.web.StrutsAction;
 import com.opensymphony.xwork2.Preparable;
 
 public class ArticleAction extends StrutsAction implements Preparable {
-	//private static final Log logger = LogFactory.getLog(UserAction.class);
+//	private static final Log logger = LogFactory.getLog(UserAction.class);
 	private long actionId;
 	
 	/** Request Parameters Start */
