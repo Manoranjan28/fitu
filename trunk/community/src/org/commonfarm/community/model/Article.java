@@ -33,7 +33,8 @@ public class Article {
 	private Date createDate;
 	private Date updateDate;
 	
-	private Set topics;
+	private Topic topic;
+	private SpecialTopic specialTopic;
 	
 	private boolean selected = false;
 	
@@ -220,19 +221,35 @@ public class Article {
 	}
 
 	/**
-	 * @return the topics
+	 * @return the topic
 	 */
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "TOPIC_ID")
-	public Set getTopics() {
-		return topics;
+	public Topic getTopic() {
+		return topic;
 	}
 
 	/**
-	 * @param topics the topics to set
+	 * @param topic the topic to set
 	 */
-	public void setTopics(Set topics) {
-		this.topics = topics;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
+	}
+	
+	/**
+	 * @return the specialTopic
+	 */
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "SPECIAL_TOPIC_ID")
+	public SpecialTopic getSpecialTopic() {
+		return specialTopic;
+	}
+
+	/**
+	 * @param specialTopic the specialTopic to set
+	 */
+	public void setSpecialTopic(SpecialTopic specialTopic) {
+		this.specialTopic = specialTopic;
 	}
 
 	/**
