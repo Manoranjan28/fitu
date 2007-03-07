@@ -23,6 +23,7 @@ public class Attachment {
 	private String name;
 	private String subject;
 	private String descn;
+	private String type;
 	private String location;
 	private String size;
 	
@@ -130,5 +131,19 @@ public class Attachment {
 	 */
 	public void setArticle(Article article) {
 		this.article = article;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 }
