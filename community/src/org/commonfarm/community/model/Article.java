@@ -34,6 +34,8 @@ public class Article {
 	
 	private Set topics;
 	
+	private boolean selected = false;
+	
 	public Article() {}
 
 	/**
@@ -247,5 +249,19 @@ public class Article {
 	 */
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	/**
+	 * @return the selected
+	 */
+	public boolean isSelected() {
+		return selected;
+	}
+
+	/**
+	 * @param selected the selected to set
+	 */
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 }
