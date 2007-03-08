@@ -26,6 +26,7 @@ public class Space {
 	private String subject;
 	private String descn;
 	private String type;//Blog; Article category;
+	private String categroy;//tech, lift, science....
 	private String owner;
 	private String createUser;
 	private Date createDate;
@@ -164,5 +165,19 @@ public class Space {
 	 */
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+
+	/**
+	 * @return the categroy
+	 */
+	public String getCategroy() {
+		return categroy;
+	}
+
+	/**
+	 * @param categroy the categroy to set
+	 */
+	public void setCategroy(String categroy) {
+		this.categroy = categroy;
 	}
 }
