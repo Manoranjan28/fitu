@@ -2,6 +2,7 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans default-autowire="byName" default-lazy-init="true">
+	<!-- App Module Start -->
     <bean id="userAction" class="org.commonfarm.app.web.UserAction" singleton="true" lazy-init="false">    
        	<constructor-arg index="0">
             <ref bean="thinkingService" />
@@ -17,4 +18,28 @@
             <ref bean="thinkingService" />
         </constructor-arg>
     </bean>
+    <!-- App Module End -->
+    
+    <!-- Community Module Start -->
+    <bean id="spaceAction" class="org.commonfarm.community.web.SpaceAction" singleton="true" lazy-init="false">    
+       	<constructor-arg index="0">
+            <ref bean="thinkingService" />
+        </constructor-arg>
+    </bean>
+    <bean id="topicAction" class="org.commonfarm.community.web.TopicAction" singleton="true" lazy-init="false">    
+       	<constructor-arg index="0">
+            <ref bean="thinkingService" />
+        </constructor-arg>
+    </bean>
+    <bean id="specialTopicAction" class="org.commonfarm.community.web.SpecialTopicAction" singleton="true" lazy-init="false">    
+       	<constructor-arg index="0">
+            <ref bean="thinkingService" />
+        </constructor-arg>
+    </bean>
+    <bean id="articleAction" class="org.commonfarm.community.web.ArticleAction" singleton="true" lazy-init="false">    
+       	<constructor-arg index="0">
+            <ref bean="thinkingService" />
+        </constructor-arg>
+    </bean>
+    <!-- Community Module End -->
 </beans>

@@ -11,11 +11,19 @@
 				<value>org.commonfarm.app.model.UserGroup</value>
 				<value>org.commonfarm.app.model.User</value>
 				<value>org.commonfarm.app.model.Role</value>
+				
+				<value>org.commonfarm.community.model.Space</value>
+				<value>org.commonfarm.community.model.Topic</value>
+				<value>org.commonfarm.community.model.SpecialTopic</value>
+				<value>org.commonfarm.community.model.Article</value>
+				<value>org.commonfarm.community.model.Comment</value>
+				<value>org.commonfarm.community.model.Attachment</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>-->
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
