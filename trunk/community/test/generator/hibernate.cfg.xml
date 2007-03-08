@@ -48,6 +48,7 @@
 		<mapping class="org.commonfarm.community.model.Comment"/>
 		<mapping class="org.commonfarm.community.model.Space"/>
 		<mapping class="org.commonfarm.community.model.Topic"/>
+		<mapping class="org.commonfarm.community.model.SpecialTopic"/>
 		
 	</session-factory>
 
