@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="/pages/common/meta.jsp"%>
-	<title>List Topic Infomation</title>
+	<title>List Special Topic Infomation</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/ecside_ec.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
@@ -25,13 +25,13 @@
 <body onload="init()">
 <div id="title">
 	<table class="headerTitle"><tr>
-		<td style="width: 350px;"><div id="pageTitle">List Topic Infomation</div></td>
+		<td style="width: 350px;"><div id="pageTitle">List Special Topic Infomation</div></td>
 		<td><%@ include file="/pages/common/messages.jsp" %></td>
 	</tr></table>
 </div>
 <!-- Search Criterias START -->
 <div id="search">
-<s:form action="listTopic" onsubmit="return validate();">
+<s:form action="listSpecialTopic" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
 			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/down.png"/>" border="0" /></td>
@@ -53,15 +53,15 @@
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>
-   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUserGroup');" value="Create">
-   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUserGroup');" value="Edit">
-   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUserGroup', 'UserGroup');" value="Remove">
+   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/createSpecialTopic');" value="Create">
+   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/editSpecialTopic');" value="Edit">
+   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/removeSpecialTopic', 'SpecialTopic');" value="Remove">
 </td></tr></table></div>
 
 <!-- Search List Start -->
 <div id="result"><table class="result"><tr><td>
-<ec:table items="list" var="topic" action="${ctxPath}/listTopic.action"
-	xlsFileName="Topic.xls"
+<ec:table items="list" var="specialTopic" action="${ctxPath}/listSpecialTopic.action"
+	xlsFileName="SpecialTopic.xls"
 	showPrint="true"
 	minColWidth="80"
 	resizeColWidth="true"
@@ -75,19 +75,18 @@
 		<ec:column width="38" property="_0" title="No."  value="${GLOBALROWCOUNT}" />
 		<ec:column property="name" title="Name"/>
 		<ec:column property="descn" title="Desc"/>
-		<ec:column property="space.name" title="Space"/>
 		<ec:column property="createUser" title="Creator"/>
 		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
-	        <a href="<c:url value="/editTopic.action?modelId=${topic.id}"/>">
+	        <a href="<c:url value="/editSpecialTopic.action?modelId=${specialTopic.id}"/>">
 	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
-	    <ec:column width="40" property="users" title="User" viewsAllowed="html">
-	        <a href="<c:url value="/selectArticle.action?modelId=${topic.id}"/>">
+	    <ec:column width="40" property="articles" title="Arti" viewsAllowed="html">
+	        <a href="<c:url value="/selectArticle.action?modelId=${specialTopic.id}"/>">
 	            <img align="absmiddle" alt="Select Article" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
-		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${topic.id}" viewsAllowed="html" />
+		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${specialTopic.id}" viewsAllowed="html" />
 	</ec:row>
 </ec:table>
 </td></tr></table></div>

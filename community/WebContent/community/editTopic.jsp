@@ -3,7 +3,7 @@
 <html>
 <head>
 	<%@ include file="/pages/common/meta.jsp"%>
-	<title>Edit UserGroup Infomation</title>
+	<title>Edit Topic Infomation</title>
 	<link href="<c:url value="/styles/app/page.css"/>" type=text/css rel=stylesheet>
 	<link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
 	<link href="<c:url value="/styles/app/extremecomponents.css"/>" type="text/css" rel=stylesheet>
@@ -13,13 +13,13 @@
 <body>
 <div id="title">
 	<table class="headerTitle"><tr>
-		<td style="width: 350px;"><div id="pageTitle">Edit UserGroup Infomation</div></td>
+		<td style="width: 350px;"><div id="pageTitle">Edit Topic Infomation</div></td>
 		<td><%@ include file="/pages/common/messages.jsp" %></td>
 	</tr></table>
 </div>
 <div id="editOper">
     <span class="editOpers">
-    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('userGroup', '<c:out value="${ctxPath}"/>/app/saveUserGroup');" value="Save">
+    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('topic', '<c:out value="${ctxPath}"/>/saveTopic');" value="Save">
     	<input class="buttComm" type="button" onclick="history.back();" value="Back">
     </span>
 </div>
@@ -28,13 +28,13 @@
 <s:form action="userGroup">
 	<table class="simple">
 		<tr><s:hidden name="model.id"/>
-			<td>GroupName</td><td><s:textfield name="model.name"/></td>
+			<td>Name</td><td><s:textfield name="model.name"/></td>
 		</tr>
 		<tr>
 			<td>Desc</td><td><s:textfield name="model.descn"/></td>
 		</tr>
 		<tr>
-			<td>Role</td><td><s:textfield name="model.role.id"/></td>
+			<td>Space</td><td><s:textfield name="model.space.id"/></td>
 		</tr>
 	</table>
 </s:form>

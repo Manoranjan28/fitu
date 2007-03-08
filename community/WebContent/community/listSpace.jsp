@@ -3,9 +3,9 @@
 <html>
 <head>
     <%@ include file="/pages/common/meta.jsp"%>
-	<title>List Role Infomation</title>
+	<title>List Space Infomation</title>
     <link href="<c:url value="/styles/app/page.css"/>" type="text/css" rel=stylesheet>
-    <link href="<c:url value="/styles/ecside/ecside_ec.css"/>" type="text/css" rel=stylesheet>
+    <link href="<c:url value="/styles/app/ecside_ec.css"/>" type="text/css" rel=stylesheet>
     <link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
     <script src="<c:url value="/scripts/app/page.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/scripts/ecside/ecside.js"/>" type="text/javascript"></script>
@@ -25,13 +25,13 @@
 <body onload="init()">
 <div id="title">
 	<table class="headerTitle"><tr>
-		<td style="width: 350px;"><div id="pageTitle">List Role Infomation</div></td>
+		<td style="width: 350px;"><div id="pageTitle">List Space Infomation</div></td>
 		<td><%@ include file="/pages/common/messages.jsp" %></td>
 	</tr></table>
 </div>
 <!-- Search Criterias START -->
 <div id="search">
-<s:form action="listRole" onsubmit="return validate();">
+<s:form action="listSpace" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
 			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/up.png"/>" border="0" /></td>
@@ -45,7 +45,8 @@
 	<div id="criteria">
 	<table class="criteria">
 		<tr>
-			<td class="label">Role Name:</td><td><s:textfield name="s_name" size="10"/></td>
+			<td class="label">Name:</td><td><s:textfield name="s_name" size="10"/></td>
+			<td class="label">Type:</td><td><s:textfield name="s_type" size="10"/></td>
 		</tr>
 	</table>
 	</div>
@@ -53,15 +54,15 @@
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>
-   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createRole');" value="Create">
-   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editRole');" value="Edit">
-   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeRole', 'Role');" value="Remove">
+   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/createSpace');" value="Create">
+   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/editSpace');" value="Edit">
+   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/removeSpace', 'Space');" value="Remove">
 </td></tr></table></div>
 
 <!-- Search List Start -->
 <div id="result"><table class="result"><tr><td>
-<ec:table items="list" var="role" action="${ctxPath}/app/listRole.action"
-	xlsFileName="Role.xls"
+<ec:table items="list" var="space" action="${ctxPath}/listSpace.action"
+	xlsFileName="Space.xls"
 	showPrint="true"
 	minColWidth="80"
 	resizeColWidth="true"
@@ -73,14 +74,18 @@
 >
 	<ec:row>
 		<ec:column width="38" property="_0" title="No."  value="${GLOBALROWCOUNT}" />
-		<ec:column property="name" title="Group Name"/>
-		<ec:column property="descn" title="Desc"/>
+		<ec:column property="name"/>
+		<ec:column property="subject"/>
+		<ec:column property="type"/>
+		<ec:column property="category"/>
+		<ec:column property="owner"/>
+		<ec:column property="descn" title="Desc" />
 		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
-	        <a href="<c:url value="/app/editRole.action?modelId=${role.id}"/>">
+	        <a href="<c:url value="/app/editSpace.action?modelId=${space.id}"/>">
 	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
-		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${role.id}" viewsAllowed="html" />
+		<ec:column width="25" cell="checkbox" headerCell="checkbox" alias="items" value="${space.id}" viewsAllowed="html" />
 	</ec:row>
 </ec:table>
 </td></tr></table></div>
