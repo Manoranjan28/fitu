@@ -181,6 +181,10 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <taglib>
+		<taglib-uri>/FCKeditor</taglib-uri>
+		<taglib-location>/WEB-INF/FCKeditor.tld</taglib-location>
+	</taglib>
 
     <!--
         This typically isn't required, as the taglib is included in struts-core.jar.
