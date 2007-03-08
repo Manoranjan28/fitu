@@ -1,5 +1,5 @@
 <%@ include file="/pages/common/taglibs.jsp" %>
-
+<%@ taglib uri="/FCKeditor" prefix="FCK"%>
 <html>
 <head>
 	<%@ include file="/pages/common/meta.jsp"%>
@@ -37,7 +37,20 @@
 			</td>
 		</tr>
 		<tr>
-			<td>Content</td><td><s:textarea name="model.content" cols="80" rows="20"/></td>
+			<td>Content</td>
+			<td><FCK:editor id="content" width="80%" height="320"
+				fontNames="Arial;Comic Sans MS;Courier New;Tahoma;Times New Roman;Verdana"
+				imageBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=connectors/jsp/connector"
+				linkBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Connector=connectors/jsp/connector"
+				flashBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Flash&Connector=connectors/jsp/connector"
+				imageUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Image"
+				linkUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=File"
+				flashUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Flash">
+			</FCK:editor></td>
+		</tr>
+		<tr>
+			<td>Content</td>
+			<td><s:textarea name="model.content" /></td>
 		</tr>
 	</table>
 </s:form>
