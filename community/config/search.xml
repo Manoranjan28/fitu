@@ -12,4 +12,23 @@
 		<item name="name" type="string" mode="like" />
 	</search>
 	<!-- App End -->
+	<!-- Community Start -->
+	<search name="space" class="org.commonfarm.community.model.Space" url="listSpace.action">
+		<item name="name" type="string" mode="like" />
+		<item name="type" type="string" mode="like"/>
+	</search>
+	<search name="topic" class="org.commonfarm.community.model.Topic" url="listTopic.action">
+		<item name="name" type="string" mode="like" />
+	</search>
+	<search name="specialTopic" class="org.commonfarm.community.model.SpecialTopic" url="listSpecialTopic.action">
+		<item name="name" type="string" mode="like" />
+	</search>
+	<search name="article" class="org.commonfarm.community.model.SpecialTopic" url="listSpecialTopic.action">
+		<item name="title"   type="string" mode="like" />
+		<item name="summary" type="string" mode="like" />
+		<item name="level"   type="string" mode="eq" />
+		<item name="topic$name" type="string" mode="like" />
+		<item name="goodFlg" type="string" mode="eq" />
+	</search>
+	<!-- App End -->
 </search-config>
