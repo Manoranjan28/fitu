@@ -53,9 +53,9 @@
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>
-   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/createUserGroup');" value="Create">
-   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/editUserGroup');" value="Edit">
-   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/app/removeUserGroup', 'UserGroup');" value="Remove">
+   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/createTopic');" value="Create">
+   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/editTopic');" value="Edit">
+   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/removeTopic', 'Topic');" value="Remove">
 </td></tr></table></div>
 
 <!-- Search List Start -->
