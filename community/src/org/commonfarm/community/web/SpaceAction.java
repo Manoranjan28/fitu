@@ -17,6 +17,7 @@ public class SpaceAction extends StrutsAction implements Preparable {
 	
 	/** Search Criterias Start **/
 	private String s_name;
+	private String s_type;
 	/** Search Criterias End **/
 	
 	public SpaceAction(ThinkingService thinkingService) {
@@ -48,5 +49,19 @@ public class SpaceAction extends StrutsAction implements Preparable {
 	 */
 	public void setS_name(String s_name) {
 		this.s_name = s_name;
+	}
+
+	/**
+	 * @return the s_type
+	 */
+	public String getS_type() {
+		return s_type;
+	}
+
+	/**
+	 * @param s_type the s_type to set
+	 */
+	public void setS_type(String s_type) {
+		this.s_type = s_type;
 	}
 }
