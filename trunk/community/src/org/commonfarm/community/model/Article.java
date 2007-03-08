@@ -22,6 +22,7 @@ public class Article {
 	private Long id;
 	private String title;
 	private String summary;
+	private String content;
 	private String label;
 	private String level;//5 star gived by reader
 	private Boolean goodFlg;//aissign by administrator
@@ -278,5 +279,19 @@ public class Article {
 	 */
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
