@@ -3,41 +3,35 @@
 <html>
 <head>
 	<%@ include file="/pages/common/meta.jsp"%>
-	<title>Edit Article Infomation</title>
+	<title>Edit Special Topic Infomation</title>
 	<link href="<c:url value="/styles/app/page.css"/>" type=text/css rel=stylesheet>
 	<link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
+	<link href="<c:url value="/styles/app/extremecomponents.css"/>" type="text/css" rel=stylesheet>
 	<script type="text/javascript" src="<c:url value="/scripts/app/page.js"/>"></script>
 </head>
 
 <body>
 <div id="title">
 	<table class="headerTitle"><tr>
-		<td style="width: 350px;"><div id="pageTitle">Edit Article Infomation</div></td>
+		<td style="width: 350px;"><div id="pageTitle">Edit Special Topic Infomation</div></td>
 		<td><%@ include file="/pages/common/messages.jsp" %></td>
 	</tr></table>
 </div>
 <div id="editOper">
     <span class="editOpers">
-    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('article', '<c:out value="${ctxPath}"/>/saveArticle');" value="Save">
+    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('specialTopic', '<c:out value="${ctxPath}"/>/saveSpecialTopic');" value="Save">
     	<input class="buttComm" type="button" onclick="history.back();" value="Back">
     </span>
 </div>
 <!-- Form Start -->
 <div id="master">
-<s:form action="user">
+<s:form action="userGroup">
 	<table class="simple">
 		<tr><s:hidden name="model.id"/>
-			<td>Title</td><td><s:textfield name="model.title" size="80"/></td>
+			<td>Name</td><td><s:textfield name="model.name"/></td>
 		</tr>
 		<tr>
-			<td>Topic/Label</td>
-			<td>
-				<s:textfield name="model.topic.id" size="8"/>
-				<s:textfield name="model.label" size="50"/>
-			</td>
-		</tr>
-		<tr>
-			<td>Content</td><td><s:textarea name="model.content" cols="80" rows="20"/></td>
+			<td>Desc</td><td><s:textfield name="model.descn"/></td>
 		</tr>
 	</table>
 </s:form>
