@@ -24,7 +24,7 @@
 </div>
 <!-- Form Start -->
 <div id="master">
-<s:form action="user">
+<s:form action="article">
 	<table class="simple">
 		<tr><s:hidden name="model.id"/>
 			<td>Title</td><td><s:textfield name="model.title" size="80"/></td>
@@ -38,7 +38,7 @@
 		</tr>
 		<tr>
 			<td>Content</td>
-			<td><FCK:editor id="content" width="80%" height="320"
+			<td><FCK:editor id="content" width="80%" height="320" toolbarSet="Simple" 
 				fontNames="Arial;Comic Sans MS;Courier New;Tahoma;Times New Roman;Verdana"
 				imageBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=connectors/jsp/connector"
 				linkBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Connector=connectors/jsp/connector"
@@ -47,10 +47,6 @@
 				linkUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=File"
 				flashUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Flash">
 			</FCK:editor></td>
-		</tr>
-		<tr>
-			<td>Content</td>
-			<td><s:textarea name="model.content" /></td>
 		</tr>
 	</table>
 </s:form>
