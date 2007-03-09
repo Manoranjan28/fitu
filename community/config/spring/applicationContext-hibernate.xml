@@ -11,7 +11,6 @@
 				<value>org.commonfarm.app.model.UserGroup</value>
 				<value>org.commonfarm.app.model.User</value>
 				<value>org.commonfarm.app.model.Role</value>
-				
 				<value>org.commonfarm.community.model.Space</value>
 				<value>org.commonfarm.community.model.Topic</value>
 				<value>org.commonfarm.community.model.SpecialTopic</value>
