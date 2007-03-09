@@ -25,7 +25,7 @@
 </div>
 <!-- Form Start -->
 <div id="master">
-<s:form action="userGroup">
+<s:form action="topic">
 	<table class="simple">
 		<tr><s:hidden name="model.id"/>
 			<td>Name</td><td><s:textfield name="model.name"/></td>
