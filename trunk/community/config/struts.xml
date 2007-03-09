@@ -13,7 +13,6 @@
     <include file="struts/app-default.xml"/>
     <include file="struts/app-support.xml"/>
     
-    <include file="struts/community-default.xml"/>
     <include file="struts/community-support.xml"/>
     
 </struts>
