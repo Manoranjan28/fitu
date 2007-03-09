@@ -24,9 +24,6 @@ public class TopicAction extends StrutsAction implements Preparable {
 	
 	/** Search Criterias Start **/
 	private String s_name;
-	//select article criterias
-	private String s_userId;
-	private String s_secondName;
 	/** Search Criterias End **/
 	
 	public TopicAction(ThinkingService thinkingService) {
@@ -110,29 +107,5 @@ public class TopicAction extends StrutsAction implements Preparable {
 	 */
 	public void setS_name(String s_name) {
 		this.s_name = s_name;
-	}
-	/**
-	 * @return the s_secondName
-	 */
-	public String getS_secondName() {
-		return s_secondName;
-	}
-	/**
-	 * @param name the s_secondName to set
-	 */
-	public void setS_secondName(String name) {
-		s_secondName = name;
-	}
-	/**
-	 * @return the s_userId
-	 */
-	public String getS_userId() {
-		return s_userId;
-	}
-	/**
-	 * @param id the s_userId to set
-	 */
-	public void setS_userId(String id) {
-		s_userId = id;
 	}
 }

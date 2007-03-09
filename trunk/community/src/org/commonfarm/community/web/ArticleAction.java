@@ -1,11 +1,6 @@
 package org.commonfarm.community.web;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import org.commonfarm.app.model.User;
-import org.commonfarm.app.model.UserGroup;
+import org.commonfarm.community.model.Article;
 import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
@@ -18,50 +13,20 @@ public class ArticleAction extends StrutsAction implements Preparable {
 	private long actionId;
 	
 	/** Request Parameters Start */
-	private Long userId;
+	private Long content;
 	/** Request Parameters End */
 	
 	/** Search Criterias Start **/
-	private String s_userId;
-	private String s_secondName;
+	private String s_title;
+	private String s_summary;
+	private String s_level;
+	private String s_topic$name;
+	private String s_goodFlg;
 	//select group criterias
-	private String s_name;
 	/** Search Criterias End **/
 	
 	public ArticleAction(ThinkingService thinkingService) {
 		super(thinkingService);
-	}
-	
-	/**
-	 * Select groups for user
-	 * @return
-	 */
-	public String select() throws Exception {
-		User user = (User) thinkingService.getObject(User.class, new Long(modelId));
-		
-		String[] ids = request.getParameterValues("items");
-		if (ids != null) {
-            for (int i = 0; i < ids.length; i++) {
-                UserGroup group = (UserGroup) thinkingService.getObject(UserGroup.class, new Long(ids[i].split("_")[0]));
-                if (ids[i].split("_")[1].equals("false")) {
-                	group.addUser(user);
-                } else {
-                	group.removeUser(user);
-                }
-                thinkingService.updateObject(group);
-            }
-		}
-		
-		request.setAttribute("USER", user);
-		
-		search("userGroup");
-		List groups = (List) request.getAttribute("list");
-        Set selectedGroups = user.getGroups();
-        for (Iterator iter = groups.iterator(); iter.hasNext();) {
-			UserGroup group = (UserGroup) iter.next();
-			if (selectedGroups.contains(group)) group.setSelected(true);
-		}
-		return SUCCESS;
 	}
 	
 	/**
@@ -72,62 +37,60 @@ public class ArticleAction extends StrutsAction implements Preparable {
 	}
 	
 	public void prepare() throws Exception {
-		if (StringUtil.isEmpty(getSearchName())) setSearchName("user");
+		if (StringUtil.isEmpty(getSearchName())) setSearchName("article");
 		if(actionId == 0) {
-            model = new User();
+            model = new Article();
         } else {
-            model = thinkingService.getObject(User.class, new Long(actionId));
+            model = thinkingService.getObject(Article.class, new Long(actionId));
         }
 
 	}
-	/**
-	 * @return the s_userId
-	 */
-	public String getS_userId() {
-		return s_userId;
-	}
-	/**
-	 * @param id the s_userId to set
-	 */
-	public void setS_userId(String id) {
-		s_userId = id;
-	}
-	/**
-	 * @return the s_secondName
-	 */
-	public String getS_secondName() {
-		return s_secondName;
-	}
-	/**
-	 * @param name the s_secondName to set
-	 */
-	public void setS_secondName(String name) {
-		s_secondName = name;
-	}
-	/**
-	 * @return the userId
-	 */
-	public Long getUserId() {
-		return userId;
-	}
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setUserId(Long userId) {
-		this.userId = userId;
+
+	public Long getContent() {
+		return content;
 	}
 
-	/**
-	 * @return the s_name
-	 */
-	public String getS_name() {
-		return s_name;
+	public void setContent(Long content) {
+		this.content = content;
 	}
 
-	/**
-	 * @param s_name the s_name to set
-	 */
-	public void setS_name(String s_name) {
-		this.s_name = s_name;
+	public String getS_goodFlg() {
+		return s_goodFlg;
+	}
+
+	public void setS_goodFlg(String flg) {
+		s_goodFlg = flg;
+	}
+
+	public String getS_level() {
+		return s_level;
+	}
+
+	public void setS_level(String s_level) {
+		this.s_level = s_level;
+	}
+
+	public String getS_summary() {
+		return s_summary;
+	}
+
+	public void setS_summary(String s_summary) {
+		this.s_summary = s_summary;
+	}
+
+	public String getS_title() {
+		return s_title;
+	}
+
+	public void setS_title(String s_title) {
+		this.s_title = s_title;
+	}
+
+	public String getS_topic$name() {
+		return s_topic$name;
+	}
+
+	public void setS_topic$name(String s_topic$name) {
+		this.s_topic$name = s_topic$name;
 	}
 }
