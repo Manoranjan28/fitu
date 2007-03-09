@@ -7,20 +7,20 @@
 <!-- by MyEclipse Hibernate tool integration.                   -->
 <hibernate-configuration>
 	<session-factory>
-		<!-- properties -->
+		<!-- properties 
 		<property name="connection.username">test</property>
 		<property name="connection.url">jdbc:mysql://localhost/community?useUnicode=true&amp;characterEncoding=utf8</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="connection.password">test</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		
-		<!-- 
+		-->
+		<!-- -->
 		<property name="connection.username">sa</property>
 		<property name="connection.url">jdbc:jtds:sqlserver://10.20.48.225/community</property>
 		<property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<property name="connection.password">IVO.com.cn</property>
 		<property name="connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
-		-->
+		
 		<!-- 
 		<property name="connection.username">test</property>
 		<property name="connection.password">test</property>
