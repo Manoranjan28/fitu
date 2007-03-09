@@ -91,6 +91,18 @@ FCKConfig.ToolbarSets["Default"] = [
 	['About']
 ] ;
 
+FCKConfig.ToolbarSets["Simple"] = [
+	['Source','-'],
+	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+	['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+	['OrderedList','UnorderedList'],
+	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
+	['Link','Unlink'],
+	['Image','Flash','Table','Rule'],
+	['TextColor','BGColor'],
+	['Style','FontSize']
+] ;
+
 FCKConfig.ToolbarSets["Basic"] = [
 	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
 ] ;
