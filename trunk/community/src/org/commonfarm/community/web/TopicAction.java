@@ -86,11 +86,11 @@ public class TopicAction extends StrutsAction implements Preparable {
 	 * @see com.opensymphony.xwork2.Preparable#prepare()
 	 */
 	public void prepare() throws Exception {
-		if (StringUtil.isEmpty(getSearchName())) setSearchName("userGroup");
+		if (StringUtil.isEmpty(getSearchName())) setSearchName("topic");
 		if(actionId == 0) {
-            model = new UserGroup();
+            model = new Topic();
         } else {
-            model = thinkingService.getObject(UserGroup.class, new Long(actionId));
+            model = thinkingService.getObject(Topic.class, new Long(actionId));
         }
 
 	}
