@@ -37,7 +37,7 @@
 </table>
 <!-- Search Criterias START -->
 <div id="search">
-<s:form action="selectUser" onsubmit="return validate();">
+<ww:form action="selectUser" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
 			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/down.png"/>" border="0" /></td>
@@ -51,12 +51,12 @@
 	<div id="criteria" style="display: none;">
 	<table class="criteria">
 		<tr>
-			<td class="label">User ID:</td><td><s:textfield name="s_userId" size="10"/></td>
-			<td class="label">Name:</td><td><s:textfield name="s_secondName" size="10"/></td>
+			<td class="label">User ID:</td><td><ww:textfield name="s_userId" size="10"/></td>
+			<td class="label">Name:</td><td><ww:textfield name="s_secondName" size="10"/></td>
 		</tr>
 	</table>
 	</div>
-</s:form>
+</ww:form>
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>

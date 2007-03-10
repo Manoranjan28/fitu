@@ -31,7 +31,7 @@
 </div>
 <!-- Search Criterias START -->
 <div id="search">
-<s:form action="listUser" onsubmit="return validate();">
+<ww:form action="listUser" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
 			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/up.png"/>" border="0" /></td>
@@ -45,15 +45,15 @@
 	<div id="criteria">
 	<table class="criteria">
 		<tr>
-			<td class="label">Title:</td><td><s:textfield name="s_title" size="10"/></td>
-			<td class="label">Topic:</td><td><s:textfield name="s_topic$name" size="10"/></td>
-			<td class="label">Summary:</td><td><s:textfield name="s_summary" size="10"/></td>
-			<td class="label">Level:</td><td><s:textfield name="s_level" size="5"/></td>
-			<td class="label">Good:</td><td><s:checkbox name="s_goodFlg" /></td>
+			<td class="label">Title:</td><td><ww:textfield name="s_title" size="10"/></td>
+			<td class="label">Topic:</td><td><ww:textfield name="s_topic$name" size="10"/></td>
+			<td class="label">Summary:</td><td><ww:textfield name="s_summary" size="10"/></td>
+			<td class="label">Level:</td><td><ww:textfield name="s_level" size="5"/></td>
+			<td class="label">Good:</td><td><ww:checkbox name="s_goodFlg" /></td>
 		</tr>
 	</table>
 	</div>
-</s:form>
+</ww:form>
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>
@@ -85,7 +85,7 @@
 		<ec:column property="updateUser" />
 		<ec:column property="updateDate" />
 		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
-	        <a href="<c:url value="/app/editArticle.action?modelId=${article.id}"/>">
+	        <a href="<c:url value="/editArticle.action?modelId=${article.id}"/>">
 	            <img align="absmiddle" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>

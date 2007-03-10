@@ -23,22 +23,22 @@
 </div>
 <!-- Form Start -->
 <div id="master">
-<s:form action="space">
+<ww:form action="space">
 	<table class="simple">
-		<tr><s:hidden name="model.id"/>
-			<td>Name</td><td><s:textfield name="model.name"/></td>			
-			<td>Subject</td><td><s:textfield name="model.subject"/></td>
+		<tr><ww:hidden name="model.id"/>
+			<td>Name</td><td><ww:textfield name="model.name"/></td>			
+			<td>Subject</td><td><ww:textfield name="model.subject"/></td>
 		</tr>
 		<tr>
-			<td>Type</td><td><s:textfield name="model.type"/></td>			
-			<td>Category</td><td><s:textfield name="model.category"/></td>
+			<td>Type</td><td><ww:textfield name="model.type"/></td>			
+			<td>Category</td><td><ww:textfield name="model.category"/></td>
 		</tr>
 		<tr>
-			<td>Owner</td><td><s:textfield name="model.owner"/></td>			
-			<td>Descn</td><td><s:textarea name="model.descn" cols="30" rows="4"/></td>
+			<td>Owner</td><td><ww:textfield name="model.owner"/></td>			
+			<td>Descn</td><td><ww:textarea name="model.descn" cols="30" rows="4"/></td>
 		</tr>
 	</table>
-</s:form>
+</ww:form>
 </div>
 <!-- Form End -->
 </body>
