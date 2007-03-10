@@ -39,6 +39,14 @@
 				</div>                  
 				<a href="<c:url value="/app/listUser.action" />">User Management</a> 
 			</div>
+			<div class="pkg">
+			<h3>Community Management</h3>
+				<div class="pkg-body">
+					<a href="<c:url value="/listSpace.action" />">Space Management</a>
+					<a href="<c:url value="/listTopic.action" />">Topic Management</a>
+					<a href="<c:url value="/listArticle.action" />">Article Management</a> 
+				</div>                   
+			</div>
 		</div>        
 	</div>
 	<a id="help-forums" href="http://www.commonfarm.org/forum/">Help Forums</a>     
