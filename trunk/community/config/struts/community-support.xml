@@ -4,7 +4,7 @@
 
 <struts>
 	
-	<package name="community" namespace="/" extends="app_default" >
+	<package name="community" namespace="/" extends="community_default" >
 		<default-interceptor-ref name="defaultStack"/>
 		<!-- Space Management Start -->
         <action name="listSpace" class="spaceAction" method="list">
