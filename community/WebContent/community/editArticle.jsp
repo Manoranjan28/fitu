@@ -8,8 +8,14 @@
 	<link href="<c:url value="/styles/app/messages.css"/>" type=text/css rel=stylesheet>
 	<script type="text/javascript" src="<c:url value="/scripts/app/page.js"/>"></script>
 </head>
-
-<body>
+<script type="text/javascript">
+	function init() {
+		var content = document.getElementById("div_conent").value;
+		alert(content);
+		document.getElementById("conent").value = content;
+	}
+</script>
+<body onload="init()">
 <div id="title">
 	<table class="headerTitle"><tr>
 		<td style="width: 350px;"><div id="pageTitle">Edit Article Infomation</div></td>
@@ -37,8 +43,8 @@
 			</td>
 		</tr>
 		<tr>
-			<td>Content</td>
-			<td><FCK:editor id="content" width="80%" height="320" toolbarSet="Simple" 
+			<td>Content</td><div id="div_conent" style="display: none;"><c:out value="${request.content}" /></div>
+			<td><FCK:editor id="content" width="650" height="380" toolbarSet="Simple" 
 				fontNames="Arial;Comic Sans MS;Courier New;Tahoma;Times New Roman;Verdana"
 				imageBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=connectors/jsp/connector"
 				linkBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Connector=connectors/jsp/connector"
