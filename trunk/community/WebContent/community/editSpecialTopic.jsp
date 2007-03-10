@@ -25,16 +25,16 @@
 </div>
 <!-- Form Start -->
 <div id="master">
-<s:form action="userGroup">
+<ww:form action="userGroup">
 	<table class="simple">
-		<tr><s:hidden name="model.id"/>
-			<td>Name</td><td><s:textfield name="model.name"/></td>
+		<tr><ww:hidden name="model.id"/>
+			<td>Name</td><td><ww:textfield name="model.name"/></td>
 		</tr>
 		<tr>
-			<td>Desc</td><td><s:textfield name="model.descn"/></td>
+			<td>Desc</td><td><ww:textfield name="model.descn"/></td>
 		</tr>
 	</table>
-</s:form>
+</ww:form>
 </div>
 <!-- Form End -->
 </body>
