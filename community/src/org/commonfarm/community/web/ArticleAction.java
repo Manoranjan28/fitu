@@ -4,11 +4,11 @@ import org.commonfarm.community.model.Article;
 import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
-import org.commonfarm.web.StrutsAction;
+import org.commonfarm.web.WebWorkAction;
 
-import com.opensymphony.xwork2.Preparable;
+import com.opensymphony.xwork.Preparable;
 
-public class ArticleAction extends StrutsAction implements Preparable {
+public class ArticleAction extends WebWorkAction implements Preparable {
 //	private static final Log logger = LogFactory.getLog(UserAction.class);
 	private long actionId;
 	
