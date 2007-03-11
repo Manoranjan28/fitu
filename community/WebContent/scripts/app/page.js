@@ -132,6 +132,58 @@ function selectAction(form, urlPath, entityName, valid) {
         form.submit();
     }
 }
+//////////////////////////////////////////////////////////
+function saveOrUpdateFitu(formName, actionPath, valid) {
+	var ok = true;
+	if (valid) {
+		ok = validate();
+	}
+	if (ok) {
+		window.document.forms[formName].action = actionPath + ".fitu";
+		window.document.forms[formName].submit();
+	}
+}
+
+function newFitu(form, urlPath) {
+	form.action = urlPath + ".fitu";
+	form.submit();
+}
+function editFitu(form, urlPath) {
+	if (!atLeaseOneCheck()) {
+    	alert("Please select only one!");
+        return;
+    }
+    if (!moreThanOneCheck()) {
+    	alert("Please select only one!");
+        return;
+    }
+	form.action = urlPath + ".fitu";
+	form.submit();
+}
+function deleteFitu(form, urlPath, entityName, valid) {
+	if (confirm("Confirm to delete "+ entityName + "?")) {
+        if (!atLeaseOneCheck()) {
+            alert("Please select more than one " + entityName + "!");
+            return;
+        }
+        form.ec_ev.value = '';
+        form.ec_efn.value = '';
+        form.action = urlPath + ".fitu";
+        form.submit();
+    }
+}
+function selectFitu(form, urlPath, entityName, valid) {
+	if (confirm("Confirm to select "+ entityName + "?")) {
+        if (!atLeaseOneCheck()) {
+            alert("Please select more than one " + entityName + "!");
+            return;
+        }
+        form.action = urlPath + ".fitu";
+        form.submit();
+    }
+}
+
+
 function hideSearch(ctxPath){
 	if (document.getElementById("searchButt").style.display == 'none') {
 		document.getElementById("searchButt").style.display = 'inline';

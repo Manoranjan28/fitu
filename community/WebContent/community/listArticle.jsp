@@ -31,7 +31,7 @@
 </div>
 <!-- Search Criterias START -->
 <div id="search">
-<ww:form action="listUser" onsubmit="return validate();">
+<ww:form action="listArticle.fitu" onsubmit="return validate();">
 	<table class="searchBar">
 		<tr>
 			<td class="labelImg"><img style="cursor: pointer; cursor: hand;" id="hideImg" onclick="hideSearch('<c:out value='${ctxPath}'/>')" src="<c:url value="/images/icon/16x16/up.png"/>" border="0" /></td>
@@ -57,13 +57,13 @@
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>
-	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/createArticle');" value="Create">
-	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/editArticle');" value="Edit">
-	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/removeArticle', 'Article');" value="Remove">
+	<input class="buttComm" type="button" onclick="newFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/createArticle');" value="Create">
+	<input class="buttComm" type="button" onclick="editFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/editArticle');" value="Edit">
+	<input class="buttComm" type="button" onclick="deleteFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/removeArticle', 'Article');" value="Remove">
 </td></tr></table></div>
 <!-- Search List Start -->
 <div id="result"><table class="result"><tr><td>
-<ec:table items="list" var="article" action="${ctxPath}/listArticle.action"
+<ec:table items="list" var="article" action="${ctxPath}/listArticle.fitu"
 	xlsFileName="Article.xls"
 	showPrint="true"
 	minColWidth="80"
@@ -85,7 +85,7 @@
 		<ec:column property="updateUser" />
 		<ec:column property="updateDate" />
 		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
-	        <a href="<c:url value="/editArticle.action?modelId=${article.id}"/>">
+	        <a href="<c:url value="/editArticle.fitu?modelId=${article.id}"/>">
 	            <img align="absmiddle" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>

@@ -3,3 +3,4 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="ec" uri="http://www.extremecomponents.org" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="ww" uri="/webwork" %>

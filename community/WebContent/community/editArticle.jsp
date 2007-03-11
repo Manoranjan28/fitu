@@ -1,6 +1,4 @@
 <%@ include file="/pages/common/taglibs.jsp" %>
-<%@ taglib uri="/FCKeditor" prefix="FCK"%>
-<%@page import="org.commonfarm.community.model.Article"%>
 <html>
 <head>
 	<%@ include file="/pages/common/meta.jsp"%>
@@ -18,7 +16,7 @@
 </div>
 <div id="editOper">
     <span class="editOpers">
-    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('article', '<c:out value="${ctxPath}"/>/saveArticle');" value="Save">
+    	<input class="buttComm" type="button" onclick="saveOrUpdateFitu('article', '<c:out value="${ctxPath}"/>/saveArticle');" value="Save">
     	<input class="buttComm" type="button" onclick="history.back();" value="Back">
     </span>
 </div>
@@ -38,21 +36,11 @@
 		</tr>
 		<tr>
 			<td>Content</td>
-			<td><FCK:editor id="content" width="650" height="380" toolbarSet="Simple" 
-				fontNames="Arial;Comic Sans MS;Courier New;Tahoma;Times New Roman;Verdana"
-				imageBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=connectors/jsp/connector"
-				linkBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Connector=connectors/jsp/connector"
-				flashBrowserURL="/community/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Flash&Connector=connectors/jsp/connector"
-				imageUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Image"
-				linkUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=File"
-				flashUploadURL="/community/FCKeditor/editor/filemanager/upload/simpleuploader?Type=Flash">
-			<%
-				Article article = (Article) request.getAttribute("model");
-				if (article != null && article.getContent() != null) {
-	        		out.print(article.getContent());
-				}
-	        %>
-			</FCK:editor></td>
+			<td>
+			<ww:richtexteditor name="model.content" 
+				basePath="%{#request.ctxPath}/webwork/richtexteditor/" toolbarCanCollapse="false" 
+				defaultLanguage="zh-cn" height="500"/>
+			</td>
 		</tr>
 	</table>
 </ww:form>
