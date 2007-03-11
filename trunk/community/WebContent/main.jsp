@@ -42,9 +42,9 @@
 			<div class="pkg">
 			<h3>Community Management</h3>
 				<div class="pkg-body">
-					<a href="<c:url value="/listSpace.action" />">Space Management</a>
-					<a href="<c:url value="/listTopic.action" />">Topic Management</a>
-					<a href="<c:url value="/listArticle.action" />">Article Management</a> 
+					<a href="<c:url value="/listSpace.fitu" />">Space Management</a>
+					<a href="<c:url value="/listTopic.fitu" />">Topic Management</a>
+					<a href="<c:url value="/listArticle.fitu" />">Article Management</a> 
 				</div>                   
 			</div>
 		</div>        
