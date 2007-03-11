@@ -13,17 +13,17 @@
 	</search>
 	<!-- App End -->
 	<!-- Community Start -->
-	<search name="space" class="org.commonfarm.community.model.Space" url="listSpace.action">
+	<search name="space" class="org.commonfarm.community.model.Space" url="listSpace.fitu">
 		<item name="name" type="string" mode="like" />
 		<item name="type" type="string" mode="like"/>
 	</search>
-	<search name="topic" class="org.commonfarm.community.model.Topic" url="listTopic.action">
+	<search name="topic" class="org.commonfarm.community.model.Topic" url="listTopic.fitu">
 		<item name="name" type="string" mode="like" />
 	</search>
-	<search name="specialTopic" class="org.commonfarm.community.model.SpecialTopic" url="listSpecialTopic.action">
+	<search name="specialTopic" class="org.commonfarm.community.model.SpecialTopic" url="listSpecialTopic.fitu">
 		<item name="name" type="string" mode="like" />
 	</search>
-	<search name="article" class="org.commonfarm.community.model.SpecialTopic" url="listSpecialTopic.action">
+	<search name="article" class="org.commonfarm.community.model.Article" url="listArticle.fitu">
 		<item name="title"   type="string" mode="like" />
 		<item name="summary" type="string" mode="like" />
 		<item name="level"   type="string" mode="eq" />
