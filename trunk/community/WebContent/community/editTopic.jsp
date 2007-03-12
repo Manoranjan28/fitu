@@ -19,7 +19,7 @@
 </div>
 <div id="editOper">
     <span class="editOpers">
-    	<input class="buttComm" type="button" onclick="saveOrUpdateAction('topic', '<c:out value="${ctxPath}"/>/saveTopic');" value="Save">
+    	<input class="buttComm" type="button" onclick="saveOrUpdateFitu('topic', '<c:out value="${ctxPath}"/>/saveTopic');" value="Save">
     	<input class="buttComm" type="button" onclick="history.back();" value="Back">
     </span>
 </div>

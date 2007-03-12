@@ -54,14 +54,14 @@
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>
-   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/createSpace');" value="Create">
-   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/editSpace');" value="Edit">
-   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/removeSpace', 'Space');" value="Remove">
+   	<input class="buttComm" type="button" onclick="newFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/createSpace');" value="Create">
+   	<input class="buttComm" type="button" onclick="editFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/editSpace');" value="Edit">
+   	<input class="buttComm" type="button" onclick="deleteFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/removeSpace', 'Space');" value="Remove">
 </td></tr></table></div>
 
 <!-- Search List Start -->
 <div id="result"><table class="result"><tr><td>
-<ec:table items="list" var="space" action="${ctxPath}/listSpace.action"
+<ec:table items="list" var="space" action="${ctxPath}/listSpace.fitu"
 	xlsFileName="Space.xls"
 	showPrint="true"
 	minColWidth="80"
@@ -81,7 +81,7 @@
 		<ec:column property="owner"/>
 		<ec:column property="descn" title="Desc" />
 		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
-	        <a href="<c:url value="/app/editSpace.action?modelId=${space.id}"/>">
+	        <a href="<c:url value="/app/editSpace.fitu?modelId=${space.id}"/>">
 	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
