@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<hibernate-configuration>
+	<session-factory>
+		<!-- properties 
+		<property name="connection.username">test</property>
+		<property name="connection.url">jdbc:mysql://localhost/community?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.password">test</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		-->
+		<!-- -->
+		<property name="connection.username">sa</property>
+		<property name="connection.url">jdbc:jtds:sqlserver://10.20.48.225/community</property>
+		<property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="connection.password">IVO.com.cn</property>
+		<property name="connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+		
+		<!-- 
+		<property name="connection.username">test</property>
+		<property name="connection.password">test</property>
+		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:SECOND</property>
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>-->
+		
+		<!-- 
+		<property name="connection.username">sa</property>
+	    <property name="connection.password"></property>
+	    <property name="connection.url">jdbc:hsqldb:mem:.;sql.enforce_strict_size=true</property>
+		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+		-->
+		<!-- Print SQL to stdout. -->
+		<property name="show_sql">true</property>
+		<!-- Permission Models -->
+		<mapping class="org.commonfarm.dao.Test"/>
+		
+		<mapping class="org.commonfarm.app.model.UserGroup"/>
+		<mapping class="org.commonfarm.app.model.User"/>
+		<mapping class="org.commonfarm.app.model.Role"/>
+		
+		<mapping class="org.commonfarm.community.model.Article"/>
+		<mapping class="org.commonfarm.community.model.Attachment"/>
+		<mapping class="org.commonfarm.community.model.Comment"/>
+		<mapping class="org.commonfarm.community.model.Space"/>
+		<mapping class="org.commonfarm.community.model.Topic"/>
+		<mapping class="org.commonfarm.community.model.SpecialTopic"/>
+		<mapping class="org.commonfarm.community.model.UserView"/>
+		
+	</session-factory>
+
+</hibernate-configuration>

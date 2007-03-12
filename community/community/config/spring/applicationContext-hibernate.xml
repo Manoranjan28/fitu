@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName" default-lazy-init="true">
+	<!--Hibernate SessionFatory-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="annotatedClasses">
+			<list>
+				<value>org.commonfarm.dao.Test</value>
+				<value>org.commonfarm.app.model.UserGroup</value>
+				<value>org.commonfarm.app.model.User</value>
+				<value>org.commonfarm.app.model.Role</value>
+				<value>org.commonfarm.community.model.Space</value>
+				<value>org.commonfarm.community.model.Topic</value>
+				<value>org.commonfarm.community.model.SpecialTopic</value>
+				<value>org.commonfarm.community.model.Article</value>
+				<value>org.commonfarm.community.model.Comment</value>
+				<value>org.commonfarm.community.model.Attachment</value>
+				<value>org.commonfarm.community.model.UserView</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!--Hibernate TransactionManager-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- Generic Dao - can be used when doing standard CRUD -->
+    <bean id="commonSearch" class="org.commonfarm.search.CommonSearch">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+	<!-- Generic Dao - can be used when doing standard CRUD -->
+    <bean id="hibernateDAO" class="org.commonfarm.dao.HibernateDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>    
+</beans>
