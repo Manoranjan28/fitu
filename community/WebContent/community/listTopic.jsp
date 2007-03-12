@@ -53,14 +53,14 @@
 </div>
 <!-- Search Criterias END -->
 <div id="operation"><table class="operation"><tr><td>
-   	<input class="buttComm" type="button" onclick="newAction(document.forms.ec, '<c:out value="${ctxPath}"/>/createTopic');" value="Create">
-   	<input class="buttComm" type="button" onclick="editAction(document.forms.ec, '<c:out value="${ctxPath}"/>/editTopic');" value="Edit">
-   	<input class="buttComm" type="button" onclick="deleteAction(document.forms.ec, '<c:out value="${ctxPath}"/>/removeTopic', 'Topic');" value="Remove">
+   	<input class="buttComm" type="button" onclick="newFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/createTopic');" value="Create">
+   	<input class="buttComm" type="button" onclick="editFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/editTopic');" value="Edit">
+   	<input class="buttComm" type="button" onclick="deleteFitu(document.forms.ec, '<c:out value="${ctxPath}"/>/removeTopic', 'Topic');" value="Remove">
 </td></tr></table></div>
 
 <!-- Search List Start -->
 <div id="result"><table class="result"><tr><td>
-<ec:table items="list" var="topic" action="${ctxPath}/listTopic.action"
+<ec:table items="list" var="topic" action="${ctxPath}/listTopic.fitu"
 	xlsFileName="Topic.xls"
 	showPrint="true"
 	minColWidth="80"
@@ -78,12 +78,12 @@
 		<ec:column property="space.name" title="Space"/>
 		<ec:column property="createUser" title="Creator"/>
 		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
-	        <a href="<c:url value="/editTopic.action?modelId=${topic.id}"/>">
+	        <a href="<c:url value="/editTopic.fitu?modelId=${topic.id}"/>">
 	            <img align="absmiddle" alt="Edit" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
 	    <ec:column width="40" property="users" title="User" viewsAllowed="html">
-	        <a href="<c:url value="/selectArticle.action?modelId=${topic.id}"/>">
+	        <a href="<c:url value="/selectArticle.fitu?modelId=${topic.id}"/>">
 	            <img align="absmiddle" alt="Select Article" src="<c:url value="/images/icon/16x16/modify.gif"/>" border="0"/>
 	        </a>
 	    </ec:column>
