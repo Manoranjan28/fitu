@@ -10,7 +10,7 @@
 <script type="text/javascript">
 function new_attach(){
   var count = parseInt($('attach_count').innerHTML);
-  if(count<3){
+  if(count < 1){
     number = count + 1;
     $('attach_count').innerHTML = number;
    new Insertion.Bottom('new_attach_div', '<table> <tr height="30"><td colspan="2"><b>Attachment '+number
