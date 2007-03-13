@@ -8,7 +8,6 @@ import java.util.Set;
 import org.commonfarm.app.model.User;
 import org.commonfarm.app.model.UserGroup;
 import org.commonfarm.community.model.Comment;
-import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
 import org.commonfarm.web.WebWorkAction;
@@ -70,7 +69,7 @@ public class CommentAction extends WebWorkAction implements Preparable {
 	 * Process Update Operation
 	 * @return
 	 */
-	protected boolean processUpdate(Object model) throws BusinessException {
+	protected boolean processUpdate(Object model) {
 		UserGroup group = (UserGroup) model;
 		UserGroup oldGroup = (UserGroup) thinkingService.getObject(UserGroup.class, group.getId());
 		oldGroup.setName(group.getName());

@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.commonfarm.community.model.Article;
 import org.commonfarm.community.model.Topic;
-import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
 import org.commonfarm.web.WebWorkAction;
@@ -66,7 +65,7 @@ public class TopicAction extends WebWorkAction implements Preparable {
 	 * Process Update Operation
 	 * @return
 	 */
-	protected boolean processUpdate(Object model) throws BusinessException {
+	protected boolean processUpdate(Object model) {
 		Topic topic = (Topic) model;
 		Topic oldTopic = (Topic) thinkingService.getObject(Topic.class, topic.getId());
 		oldTopic.setName(topic.getName());
