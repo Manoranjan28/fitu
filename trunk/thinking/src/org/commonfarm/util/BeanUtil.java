@@ -359,7 +359,7 @@ public class BeanUtil extends BeanUtils {
      * @param propertyName
      * @return
      */
-    private static boolean hasProperty(Object bean, String propertyName) {
+    public static boolean hasProperty(Object bean, String propertyName) {
         try {
             Field field = bean.getClass().getDeclaredField(propertyName);
             if (field != null) {
