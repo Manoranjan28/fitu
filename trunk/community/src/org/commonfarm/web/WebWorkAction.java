@@ -114,21 +114,17 @@ public class WebWorkAction extends ActionSupport implements ServletRequestAware,
 	 */
 	public String saveOrUpdate() throws Exception {
 		Object id = BeanUtil.getPropertyValue(model, "id");
-		try {
-			if (id == null) {
-				if (processSave(model)) {
-					BeanUtil.setProperty(model, "id", null);
-					saveMessage(getText("saved"));
-				}
-			} else {
-				if (processUpdate(model)) {
-					saveMessage(getText("updated"));
-				}
+		if (id == null) {
+			if (processSave(model)) {
+				BeanUtil.setProperty(model, "id", null);
+				saveMessage(getText("saved"));
 			}
-		} catch(BusinessException be) {
-			logger.info(be.getMessage());
-			addActionError(be.getMessage());
+		} else {
+			if (processUpdate(model)) {
+				saveMessage(getText("updated"));
+			}
 		}
+
 		return SUCCESS;
 	}
 	
@@ -136,7 +132,7 @@ public class WebWorkAction extends ActionSupport implements ServletRequestAware,
 	 * Process Save Operation
 	 * @return
 	 */
-	protected boolean processSave(Object model) throws BusinessException {
+	protected boolean processSave(Object model) {
 		try {
 			thinkingService.saveObject(model);
 		} catch (Exception e) {
@@ -150,7 +146,7 @@ public class WebWorkAction extends ActionSupport implements ServletRequestAware,
 	 * Process Update Operation
 	 * @return
 	 */
-	protected boolean processUpdate(Object model) throws BusinessException {
+	protected boolean processUpdate(Object model) {
 		try {
 			thinkingService.updateObject(model);
 		} catch (Exception e) {
