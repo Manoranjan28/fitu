@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.Date;
 
 import org.commonfarm.community.model.Article;
+import org.commonfarm.community.model.Attachment;
 import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.StringUtil;
@@ -49,6 +50,12 @@ public class ArticleAction extends WebWorkAction implements Preparable {
 		try {
 			for (int i = 0; i < uploadFiles.length; i++) {
 				upload(uploadFiles[i]);
+				Attachment attach = new Attachment();
+				attach.setName(this.uploadFilesFileName[0]);
+				attach.setSize("");
+				attach.setType("");
+				attach.setLocation("");
+				attach.setDescn(this.fileDescs[0]);
 			}
 			if (getLoginUser() != null) {
 				article.setCreateUser(getLoginUser().getUserId());
