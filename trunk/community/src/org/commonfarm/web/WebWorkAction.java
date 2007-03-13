@@ -4,6 +4,7 @@
 package org.commonfarm.web;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.commonfarm.app.model.User;
 import org.commonfarm.search.SearchProcessor;
 import org.commonfarm.service.BusinessException;
 import org.commonfarm.service.ThinkingService;
@@ -134,6 +136,16 @@ public class WebWorkAction extends ActionSupport implements ServletRequestAware,
 	 */
 	protected boolean processSave(Object model) {
 		try {
+			if (BeanUtil.hasProperty(model, "createUser")) {
+				if (getLoginUser() != null) {
+					BeanUtil.setProperty(model, "createUser", getLoginUser().getUserId());
+				} else {
+					BeanUtil.setProperty(model, "createUser", "test");
+				}
+			}
+			if (BeanUtil.hasProperty(model, "createDate")) {
+				BeanUtil.setProperty(model, "createDate", new Date());
+			}
 			thinkingService.saveObject(model);
 		} catch (Exception e) {
 			addActionError("Save failure! " + e.getMessage());
@@ -197,6 +209,12 @@ public class WebWorkAction extends ActionSupport implements ServletRequestAware,
 	public HttpSession getSession() {
 		if (request == null) return null;
 		return request.getSession();
+	}
+	/**
+	 * Get Login User information
+	 */
+	public User getLoginUser() {
+		return (User) this.getSession().getAttribute("LOGIN_USER");
 	}
 	/**
 	 * Domain Model
