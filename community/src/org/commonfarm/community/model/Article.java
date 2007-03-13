@@ -32,7 +32,7 @@ public class Article {
 	private Set comments;
 	private String createUser;
 	private Date createDate;
-	private Date updateDate;
+	private Date updateDate = new Date();
 	
 	private Topic topic;
 	private SpecialTopic specialTopic;

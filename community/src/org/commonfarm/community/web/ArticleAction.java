@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 
 import org.commonfarm.community.model.Article;
 import org.commonfarm.service.BusinessException;
@@ -21,6 +22,8 @@ public class ArticleAction extends WebWorkAction implements Preparable {
 	
 	/** Request Parameters Start */
 	private File[] uploadFiles;
+	private String[] uploadFilesContentType;
+	private String[] uploadFilesFileName;
 	private String[] fileDescs;
 	/** Request Parameters End */
 	
@@ -42,10 +45,18 @@ public class ArticleAction extends WebWorkAction implements Preparable {
 	 * @return
 	 */
 	protected boolean processSave(Object model) {
+		Article article = (Article) model;
 		try {
 			for (int i = 0; i < uploadFiles.length; i++) {
 				upload(uploadFiles[i]);
 			}
+			if (getLoginUser() != null) {
+				article.setCreateUser(getLoginUser().getUserId());
+			} else {
+				article.setCreateUser("test");
+			}
+			article.setCreateDate(new Date());
+			
 			thinkingService.saveObject(model);
 		} catch (Exception e) {
 			addActionError("Save failure! " + e.getMessage());
@@ -180,5 +191,33 @@ public class ArticleAction extends WebWorkAction implements Preparable {
 	 */
 	public void setFileDescs(String[] fileDescs) {
 		this.fileDescs = fileDescs;
+	}
+
+	/**
+	 * @return the uploadFilesContentType
+	 */
+	public String[] getUploadFilesContentType() {
+		return uploadFilesContentType;
+	}
+
+	/**
+	 * @param uploadFilesContentType the uploadFilesContentType to set
+	 */
+	public void setUploadFilesContentType(String[] uploadFilesContentType) {
+		this.uploadFilesContentType = uploadFilesContentType;
+	}
+
+	/**
+	 * @return the uploadFilesFileName
+	 */
+	public String[] getUploadFilesFileName() {
+		return uploadFilesFileName;
+	}
+
+	/**
+	 * @param uploadFilesFileName the uploadFilesFileName to set
+	 */
+	public void setUploadFilesFileName(String[] uploadFilesFileName) {
+		this.uploadFilesFileName = uploadFilesFileName;
 	}
 }
