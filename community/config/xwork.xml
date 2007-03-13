@@ -2,26 +2,24 @@
 
 <xwork>
     <include file="webwork-default.xml"/>
-	<package name="richtexteditor-browse" extends="webwork-default"
-	        namespace="/webwork/richtexteditor/editor/filemanager/browser/default/connectors/jsp">
-	        <action name="connector" class="org.commonfarm.web.RichtexteditorConnector" method="browse">
-	            <param name="actualServerPath">
-	                /webwork/richtexteditor/data
-	            </param>
-	            <result name="getFolders" type="richtexteditorGetFolders" />
-	            <result name="getFoldersAndFiles" type="richtexteditorGetFoldersAndFiles" />
-	            <result name="createFolder" type="richtexteditorCreateFolder" />
-	            <result name="fileUpload" type="richtexteditorFileUpload" />
-	        </action>
+	<package name="richtexteditor-browse" extends="webwork-default" namespace="/webwork/richtexteditor/editor/filemanager/browser/default/connectors/jsp">
+	    <action name="connector" class="org.commonfarm.web.RichtexteditorConnector" method="browse">
+	        <param name="actualServerPath">
+	            /webwork/richtexteditor/data
+	        </param>
+	        <result name="getFolders" type="richtexteditorGetFolders" />
+	        <result name="getFoldersAndFiles" type="richtexteditorGetFoldersAndFiles" />
+	        <result name="createFolder" type="richtexteditorCreateFolder" />
+	        <result name="fileUpload" type="richtexteditorFileUpload" />
+	    </action>
 	</package>
-	<package name="richtexteditor-upload" extends="webwork-default"
-	        namespace="/webwork/richtexteditor/editor/filemanager/upload">
-	        <action name="uploader" class="org.commonfarm.web.RichtexteditorConnector" method="upload">
-	            <param name="actualServerPath">
-	                /webwork/richtexteditor/data
-	            </param>
-	            <result name="richtexteditorFileUpload" />
-	        </action>
+	<package name="richtexteditor-upload" extends="webwork-default" namespace="/webwork/richtexteditor/editor/filemanager/upload">
+        <action name="uploader" class="org.commonfarm.web.RichtexteditorConnector" method="upload">
+            <param name="actualServerPath">
+                /webwork/richtexteditor/data
+            </param>
+            <result name="richtexteditorFileUpload" />
+        </action>
 	</package>
 	
     <package name="community" extends="webwork-default" >
