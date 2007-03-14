@@ -19,8 +19,8 @@ import org.commonfarm.service.ThinkingService;
 import org.commonfarm.util.BeanUtil;
 
 import com.opensymphony.webwork.interceptor.ServletRequestAware;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork.ActionSupport;
+import com.opensymphony.xwork.ModelDriven;
 
 /**
  * @author david
