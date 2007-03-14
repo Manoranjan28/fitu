@@ -82,7 +82,6 @@
 		<ec:column property="viewCnt" />
 		<ec:column property="createUser" />
 		<ec:column property="createDate" />
-		<ec:column property="updateUser" />
 		<ec:column property="updateDate" />
 		<ec:column width="25" property="edit" title=" " viewsAllowed="html">
 	        <a href="<c:url value="/editArticle.fitu?modelId=${article.id}"/>">
