@@ -64,6 +64,7 @@ public class ArticleAction extends WebWorkAction implements Preparable {
 				attach.setType(StringUtil.getLastString(this.uploadFilesFileName[0], "."));
 				attach.setLocation(location);
 				attach.setDescn(this.fileDescs[0]);
+				article.addAttachment(attach);
 			}
 			if (getLoginUser() != null) {
 				article.setCreateUser(getLoginUser().getUserId());
@@ -72,7 +73,7 @@ public class ArticleAction extends WebWorkAction implements Preparable {
 			}
 			article.setCreateDate(new Date());
 			
-			thinkingService.saveObject(model);
+			thinkingService.saveObject(article);
 		} catch (Exception e) {
 			addActionError("Save failure! " + e.getMessage());
 			return false;

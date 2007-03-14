@@ -3,7 +3,6 @@
  */
 package org.commonfarm.community.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -120,7 +119,7 @@ public class Attachment {
 	/**
 	 * @return the article
 	 */
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToOne(targetEntity = Article.class)
 	@JoinColumn(name = "ARTICLE_ID")
 	public Article getArticle() {
 		return article;
