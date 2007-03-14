@@ -50,11 +50,19 @@ public class ArticleAction extends WebWorkAction implements Preparable {
 		try {
 			for (int i = 0; i < uploadFiles.length; i++) {
 				upload(uploadFiles[i]);
+				String fileSize = new Long(uploadFiles[0].length()/1024).toString();
+				String user = "test";
+				if (getLoginUser() != null) {
+					user = getLoginUser().getUserId();
+				}
+				String location =
+		            request.getContextPath() + "/resources" + "/" +
+		            user + "/" + this.uploadFilesFileName[0];
 				Attachment attach = new Attachment();
 				attach.setName(this.uploadFilesFileName[0]);
-				attach.setSize("");
-				attach.setType("");
-				attach.setLocation("");
+				attach.setSize(fileSize);
+				attach.setType(StringUtil.getLastString(this.uploadFilesFileName[0], "."));
+				attach.setLocation(location);
 				attach.setDescn(this.fileDescs[0]);
 			}
 			if (getLoginUser() != null) {
@@ -78,9 +86,13 @@ public class ArticleAction extends WebWorkAction implements Preparable {
         }
 		String fileName = file.getName();
         // the directory to upload to
+		String user = "test";
+		if (getLoginUser() != null) {
+			user = getLoginUser().getUserId();
+		}
         String uploadDir = 
             ServletActionContext.getServletContext().getRealPath("/resources") +
-            "/" + "user" + "/";
+            "/" + user + "/";
 
         // write the file to the file specified
         File dirPath = new File(uploadDir);
