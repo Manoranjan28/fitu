@@ -1,6 +1,7 @@
 package org.commonfarm.community.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -293,5 +294,11 @@ public class Article {
 	 */
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public void addAttachment(Attachment attachment) {
+		if (attachments == null) attachments = new HashSet();
+		attachment.setArticle(this);
+		attachments.add(attachment);
 	}
 }
