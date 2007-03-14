@@ -67,15 +67,22 @@ function validate() {
 		<tr>
 			<td>Attach</td>
 			<td>
-			<span class="gen">Allow jpg, gif, png, bmp and zip, rar files. Less than three files.</span><br/><br/>
-		        Now <span id="attach_count">0</span> attachment.&nbsp;&nbsp;
-		        <input name="add_attachment" value="New Attachment"  onclick="new_attach();" type="button"/>&nbsp;&nbsp;
-		        <span id="attach_msg" style="color:red;display:none;"></span>
-		        <br/><br/>
-		        
-		       <div id="new_attach_div" style="margin:10px 0px 0px 20px;">
-		       </div>
-		     <br/>
+			<span class="gen">Allow jpg, gif, png, bmp and zip, rar files. Less than three files.</span><br/><br/>		        
+		       	<div id="new_attach_div" style="margin:10px 0px 0px 20px;">
+		       	<table>
+			       	<tr height="30">
+			       		<td colspan="2"><b>Attachment</b></td>
+	    			</tr>
+	    			<tr height="30">
+		    			<td><b>File</b></td>
+		    			<td><input id="uploadFiles" name="uploadFiles" size="30" type="file"></td>
+	    			</tr>
+    				<tr valign="top">
+    					<td><b>Desc</b></td>
+    					<td><textarea id="fileDescs" name="fileDescs" rows="3" cols="35"  size="40" style="width:300px;height:80px;"></textarea></td>
+    				</tr>
+    			</table>
+		       	</div>
 			</td>
 		</tr>
 	</table>
