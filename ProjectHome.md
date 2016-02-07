@@ -1,0 +1,2 @@
+Use Struts2, Spring, Hibernate and AJAX.
+We hope we can provide a excelent community website dev platform and common enterprise application framework. It will support report using iBatis, workflow using jBPM and so on.
